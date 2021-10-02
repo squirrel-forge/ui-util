@@ -1,0 +1,29 @@
+{
+  "name": "@squirrel-forge/util",
+  "version": "0.1.0",
+  "description": "A collection of utilities",
+  "main": "src/es6/index.js",
+  "scripts": {
+    "eslint": "eslint \"src/es6/**\" --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "docs": "docs",
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squirrel-forge/ui-util.git"
+  },
+  "keywords": [
+    "ui",
+    "utilities",
+    "es6"
+  ],
+  "author": "Daniel Hartwell <me@siux.info> (http://siux.info)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/squirrel-forge/ui-util/issues"
+  },
+  "homepage": "https://github.com/squirrel-forge/ui-util#readme"
+}
