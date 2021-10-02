@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Convert string to slug

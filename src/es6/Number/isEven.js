@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Check for even number
  *

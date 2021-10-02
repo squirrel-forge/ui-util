@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Is a plain object
  *

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Hold element position in viewport
  *

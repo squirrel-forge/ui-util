@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Append node after a specific node
  *

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Replace variables in string
  *

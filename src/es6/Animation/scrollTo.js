@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Scroll to with offset
  *

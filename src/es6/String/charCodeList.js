@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Get char code list
  *

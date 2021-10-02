@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * IE11 template polyfill
  * https://github.com/webcomponents/polyfills/blob/master/packages/template/template.js

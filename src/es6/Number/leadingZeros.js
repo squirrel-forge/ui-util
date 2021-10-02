@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Leading Zero helper
  *

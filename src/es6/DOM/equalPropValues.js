@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Equalize element property values
  *

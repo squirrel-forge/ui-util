@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Get json object from element data attribute
  *

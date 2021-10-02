@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Prepend node to node
  *

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Wrap text lines in span elements
  *

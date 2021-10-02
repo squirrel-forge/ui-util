@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Value is float value
  *

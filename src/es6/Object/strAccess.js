@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Access object value by dot syntax string
  *

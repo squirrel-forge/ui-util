@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Round value to specific decimals
  *

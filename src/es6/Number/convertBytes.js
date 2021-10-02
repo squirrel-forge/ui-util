@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Convert bytes to readable number
  *

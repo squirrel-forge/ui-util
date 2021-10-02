@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Escape html special chars
  *
