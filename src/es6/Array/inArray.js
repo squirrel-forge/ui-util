@@ -1,11 +1,6 @@
 'use strict';
 
 /**
- * Requires
- */
-import { Exception } from '../Core/Exception.js';
-
-/**
  * Value exists in array
  *
  * Check if value exists in array or object
@@ -32,7 +27,8 @@ export function inArray( needle, haystack, strict = true, silent = true ) {
         } catch ( e ) {
 
             if ( !silent ) {
-                throw new Exception( 'InArrayException', 'Error iterating array values', 1, e );
+                window.console.error( e );
+                throw new Error( '[InArrayException] Error iterating array values' );
             }
         }
     }
