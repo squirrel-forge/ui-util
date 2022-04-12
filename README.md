@@ -1,53 +1,22 @@
-# @sqirrel-forge/util
+# @sqirrel-forge/ui-util
+A collection of utilities, classes functions and abstracts made for the browser and babel compatible.
 
-A collection of Javascript es6 utilities, none of these are the fastest, shortest or best solution, but functional and reliable.
+## Installation
 
-## Table of contents
+```
+npm i @squirrel-forge/ui-util
+```
 
- - Javascript es6 utilities
-   - [Animation](docs/es6/Animation.md)
-     - [holdElementViewportPosition()](docs/es6/Animation.md#holdElementViewportPosition)
-     - [scrollTo()](docs/es6/Animation.md#scrollTo)
-     - [Slide functions](docs/es6/Animation.md#Slide-functions)
-       - [slideToggle()](docs/es6/Animation.md#slideToggle)
-       - [slideHide()](docs/es6/Animation.md#slideHide)
-       - [slideShow()](docs/es6/Animation.md#slideShow)
-   - [Array](docs/es6/Array.md)
-     - [inArray()](docs/es6/Array.md#inArray)
-     - [mergeArray()](docs/es6/Array.md#mergeArray)
-   - [DOM](docs/es6/DOM.md)
-     - [appendAfter()](docs/es6/DOM.md#appendAfter)
-     - [appendHTML()](docs/es6/DOM.md#appendHTML)
-     - [attributeJSON()](docs/es6/DOM.md#attributeJSON)
-     - [escapeHTML()](docs/es6/DOM.md#escapeHTML)
-     - [getVisibility()](docs/es6/DOM.md#getVisibility)
-     - [prepend()](docs/es6/DOM.md#prepend)
-     - [setTabIndex()](docs/es6/DOM.md#setTabIndex)
-     - [uniqid()](docs/es6/DOM.md#uniqid)
-     - [wrapTextByLines()](docs/es6/DOM.md#wrapTextByLines)
-   - [Number](docs/es6/Number.md)
-     - [convertBytes()](docs/es6/Number.md#convertBytes)
-     - [gcd()](docs/es6/Number.md#gcd#gcd)
-     - [isEven()](docs/es6/Number.md#isEven)
-     - [isFloat()](docs/es6/Number.md#isFloat)
-     - [leadingZeros()](docs/es6/Number.md#leadingZeros)
-     - [rand()](docs/es6/Number.md#rand)
-     - [round()](docs/es6/Number.md#round)
-   - [Object](docs/es6/Object.md)
-     - [cloneObject()](docs/es6/Object.md#cloneObject)
-     - [isPojo()](docs/es6/Object.md#isPojo)
-     - [mergeObject()](docs/es6/Object.md#mergeObject)
-     - [strAccess()](docs/es6/Object.md#strAccess)
-     - [strCreate()](docs/es6/Object.md#strCreate)
-   - [String](docs/es6/String.md)
-     - [charCodeList()](docs/es6/String.md#charCodeList)
-     - [simpleReplace()](docs/es6/String.md#simpleReplace)
-     - [str2node()](docs/es6/String.md#str2node)
-     - [str2time()](docs/es6/String.md#str2time)
-     - [strand()](docs/es6/String.md#strand)
-     - [strSlug()](docs/es6/String.md#strSlug)
-     - [trimChar()](docs/es6/String.md#trimChar)
-     - [ucfirst()](docs/es6/String.md#ucfirst)
-   - [Var](docs/es6/Var.md)
-     - [cast2type()](docs/es6/Var.md#cast2type)
-     - [isEmpty()](docs/es6/Var.md#isEmpty)
+## Usage
+
+```
+import { Class, function } from '@squirrel-forge/ui-util';
+```
+
+## Documentation
+Here you can find the [Documentation](docs/README.md) which is also included in the package.
+
+## Issues and docs
+If you encounter any issues, please report [here](https://github.com/squirrel-forge/ui-util/issues).
+---
+Check the sourcecode on [github](https://github.com/squirrel-forge/ui-util) for detailed comments.

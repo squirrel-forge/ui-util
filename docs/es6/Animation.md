@@ -1,44 +1,42 @@
-### @squirrel-forge/util Documentation
+### @squirrel-forge/ui-util
+> [Back to table of contents](../README.md)
 
-> [Back to Readme](../../README.md)
-
-# Javascript / Animation
+# Documentation
+### Javascript / Animation
 
 ## Table of contents
-
  - [holdElementViewportPosition()](#holdElementViewportPosition)
+ - [scrollComplete()](#scrollComplete)
+ - [Scroller](#Scroller)
  - [scrollTo()](#scrollTo)
- - [slideToggle()](#slideToggle)
- - [slideHide()](#slideHide)
- - [slideShow()](#slideShow)
+ - [Slide functions](#Slide-functions)
+   - [slideToggle()](#slideToggle)
+   - [slideHide()](#slideHide)
+   - [slideShow()](#slideShow)
 
 ---
 
 ### holdElementViewportPosition
-
 holdElementViewportPosition - Maintain viewport position while changing scroll height
 
 #### Description
-
 ```javascript
-holdElementViewportPosition( elem, duration ) : void
+holdElementViewportPosition( elem, duration ) // void
 ```
-
 Maintain element position in viewport while changing scroll height through any type of animation.
 
 #### Parameters
-Parameter    | Type        | Default | Description
------------- | ----------- |:-------:| ---
-**elem**     | HTMLElement |    -    | Element to fix in viewport
-**duration** | Number      |    -    | How long to hold the position in ms
+| Parameter    | Type        | Default | Description                         |
+|--------------|-------------|:-------:|-------------------------------------|
+| **elem**     | HTMLElement |    -    | Element to fix in viewport          |
+| **duration** | Number      |    -    | How long to hold the position in ms |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description  |
+|------------|--------------|
+|  **void**  | None.        |
 
 #### Examples
-
 Hiding an element above the viewport will cause the browser the slide/scroll current content out of view,
 while running the hold position during this animation will maintain the current document view position.
 ```javascript
@@ -48,35 +46,87 @@ slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide:
 
 ---
 
-### scrollTo
+### scrollComplete
+scrollComplete - Run callback after scroll complete
 
+#### Description
+```javascript
+scrollComplete( callback, delay, context ) // void
+```
+Run a callback after tracking a scroll action until it completes, for a max of *x* ms.
+
+#### Parameters
+| Parameter    | Type               | Default | Description               |
+|--------------|--------------------|:-------:|---------------------------|
+| **callback** | Function           |    -    | Complete callback         |
+| **duration** | Number             |   300   | Internal check/call delay |
+| **context**  | Window/HTMLElement | Window  | Context to bind events    |
+
+#### Return Values
+| Type/Value | Description |
+|------------|-------------|
+|  **void**  | None.       |
+
+#### Examples
+Scroll to a target and run a callback after completion.
+```javascript
+scrollComplete( () => { console.log( 'scrollComplete' ); } );
+scrollTo( document.getElementById( 'scroll-target' ) );
+```
+
+---
+
+### Scroller
+Scroller class - Binds local scroll-to links and handles a smooth initial scroll on load.
+
+#### Class overview
+```javascript
+class Scroller {
+  static getUrlWithHash( hash, url ) {} // string
+  constructor( options, debug ) {}
+  config : { // ScrollerOptions
+    offset : null|number|HTMLElement // Offset pixels or element, default: null
+    bind : boolean // Bind scrollTo links, default: true
+    context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
+    selector : string // Scroll to link selector, default: [href^="#"]
+    capture : boolean // Capture initial scroll, default: true
+    initial : number|'ready' // Initial scroll delay after capture
+    hashClean : number // scrollComplete delay, default: 300
+  }
+  initial : null|HTMLElement // Initial scroll-to target
+}
+```
+For more details check the [Scroller source file](../../src/es6/Animation/Scroller.js).
+
+---
+
+### scrollTo
 scrollTo - Scroll to element
 
 #### Description
-
 ```javascript
-scrollTo( element, offset = 0, behavior = 'smooth' ) : void
+scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3, withTop = true ) // void
 ```
-
 Scroll an element into focus, optionally using a numeric offset or element height as offset, like a sticky header.
-For advanced scrolling mechanics and abstracted bindings check the [Scroller](../Helpers/Scroller.md) helper.
-Under the hood this uses native *window.scrollTo* with smoothscroll, [polyfill](../Polyfill.md#smoothscroll) this for for older browsers.
+For advanced scrolling mechanics and abstracted bindings check the [Scroller](Animation/Scroller.md) class.
+Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for for older browsers.
 
 #### Parameters
-Parameter    | Type               | Default  | Description
------------- | ------------------ |:--------:| ---
-**element**  | HTMLElement        |     -    | Element to scroll into viewport
-**offset**   | Number HTMLElement |     0    | Scroll offset in pixels or element height
-**behavior** | String             | 'smooth' | Native window.scrollTo behavior option
+| Parameter    | Type               | Default  | Description                               |
+|--------------|--------------------|:--------:|-------------------------------------------|
+| **element**  | HTMLElement        |    -     | Element to scroll into viewport           |
+| **offset**   | Number/HTMLElement |    0     | Scroll offset in pixels or element height |
+| **behavior** | String             | 'smooth' | Native window.scrollTo behavior option    |
+| **minDiff**  | Number             |    3     | Minimum scroll distance                   |
+| **withTop**  | Boolean            |  false   | Include the top value for                 |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+|  **void**  | None.       |
 
 #### Examples
-
-Binding all local anchor links to use smooth scroll with a dynamic header offset.
+Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](Animation/Scroller.md) class for this.
 ```javascript
 // Get our offset element
 const header = document.getElementById( 'header' );
@@ -115,32 +165,28 @@ The slide functions require following structure to work properly:
 ```
 
 ### slideToggle
-
 slideToggle - Toggle slide animation on element
 
 #### Description
-
 ```javascript
-slideToggle( item, speed = 300, easing = 'ease', callback = null ) : void
+slideToggle( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
-
 Toggle element visibility by sliding up to hide or down to show.
 
 #### Parameters
-Parameter    | Type          | Default | Description
------------- | ------------- |:-------:| ---
-**item**     | HTMLElement   |    -    | Element to toggle
-**speed**    | Number String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback
-**easing**   | String        |  'ease' | CSS easing, can be used as callback
-**callback** | Function      |   null  | Function to execute after animation completion
+| Parameter    | Type          | Default | Description                                                                                           |
+|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
+| **item**     | HTMLElement   |    -    | Element to toggle                                                                                     |
+| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
+| **easing**   | String        |  'ease' | CSS easing, can be used as callback                                                                   |
+| **callback** | Function      |   null  | Function to execute after animation completion                                                        |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
 
 #### Examples
-
 ```javascript
 slideToggle( document.getElementById( 'slidable' ), () => console.log( 'slideToggle::complete' ) );
 ```
@@ -148,32 +194,28 @@ slideToggle( document.getElementById( 'slidable' ), () => console.log( 'slideTog
 ---
 
 ### slideHide
-
 slideHide - Hide slide animation on element
 
 #### Description
-
 ```javascript
-slideHide( item, speed = 300, easing = 'ease', callback = null ) : void
+slideHide( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
-
 Hide element by sliding up.
 
 #### Parameters
-Parameter    | Type          | Default | Description
------------- | ------------- |:-------:| ---
-**item**     | HTMLElement   |    -    | Element to hide
-**speed**    | Number String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback
-**easing**   | String        |  'ease' | CSS easing, can be used as callback
-**callback** | Function      |   null  | Function to execute after animation completion
+| Parameter    | Type          | Default | Description                                                                                           |
+|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
+| **item**     | HTMLElement   |    -    | Element to hide                                                                                       |
+| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
+| **easing**   | String        | 'ease'  | CSS easing, can be used as callback                                                                   |
+| **callback** | Function      |  null   | Function to execute after animation completion                                                        |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
 
 #### Examples
-
 ```javascript
 slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide::complete' ) );
 ```
@@ -181,32 +223,28 @@ slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide:
 ---
 
 ### slideShow
-
 slideShow - Show slide animation on element
 
 #### Description
-
 ```javascript
-slideShow( item, speed = 300, easing = 'ease', callback = null ) : void
+slideShow( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
-
 Show element by sliding down.
 
 #### Parameters
-Parameter    | Type          | Default | Description
------------- | ------------- |:-------:| ---
-**item**     | HTMLElement   |    -    | Element to show
-**speed**    | Number String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback
-**easing**   | String        |  'ease' | CSS easing, can be used as callback
-**callback** | Function      |   null  | Function to execute after animation completion
+| Parameter    | Type          | Default | Description                                                                                           |
+|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
+| **item**     | HTMLElement   |    -    | Element to show                                                                                       |
+| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
+| **easing**   | String        | 'ease'  | CSS easing, can be used as callback                                                                   |
+| **callback** | Function      |  null   | Function to execute after animation completion                                                        |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
 
 #### Examples
-
 ```javascript
 slideShow( document.getElementById( 'slidable' ), () => console.log( 'slideShow::complete' ) );
 ```
