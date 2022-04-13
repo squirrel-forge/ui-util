@@ -4,7 +4,6 @@
   "description": "A collection of utilities, classes, functions and abstracts made for the browser and babel compatible.",
   "main": "src/es6/index.js",
   "scripts": {
-    "eslint": "eslint \"src/es6/**\" --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
