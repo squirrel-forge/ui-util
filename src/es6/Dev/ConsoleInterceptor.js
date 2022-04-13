@@ -11,6 +11,14 @@ import { EventDispatcher } from '../Events/EventDispatcher.js';
 export class ConsoleInterceptor extends EventDispatcher {
 
     /**
+     * Is global state
+     * @private
+     * @property
+     * @type {boolean}
+     */
+    #is_global = false;
+
+    /**
      * Native logging
      * @private
      * @property
@@ -37,13 +45,14 @@ export class ConsoleInterceptor extends EventDispatcher {
     /**
      * Constructor
      * @constructor
-     * @param {null|document|HTMLElement} host - Event host
+     * @param {null|EventDispatcherInterface|HTMLElement} host - Event host
      * @param {boolean} global - Replace window.console
      */
     constructor( host = null, global = true ) {
-        super( host || document );
+        super( host || window );
 
         // Setup interceptor
+        this.#is_global = !!global;
         this.#console = window.console;
         this.#init( this.#console );
 
@@ -128,5 +137,18 @@ export class ConsoleInterceptor extends EventDispatcher {
                 }
             };
         }
+    }
+
+    /**
+     * Detach global
+     * @public
+     * @return {void}
+     */
+    detach() {
+        if ( this.#is_global ) {
+            window.console = this.#console;
+            return true;
+        }
+        return false;
     }
 }
