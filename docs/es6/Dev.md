@@ -15,11 +15,13 @@ ConsoleInterceptor class - Drop-in replacement for window.console making output 
 
 #### Class overview
 ```javascript
-class ConsoleInterceptor {
+// Event names: debug.{console.method}
+class ConsoleInterceptor extends EventDispatcher {
   constructor( options, debug ) {}
-  console : console // Native console
-  native : boolean // Log to native status
-  events : boolean // Log to events status
+  console : Console // Native console
+  native : Boolean // Log to native status
+  events : Boolean // Log to events status
+  detach() {} // Boolean
 }
 ```
 For more details check the [ConsoleInterceptor source file](../../src/es6/Dev/ConsoleInterceptor.js).

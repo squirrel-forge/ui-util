@@ -81,11 +81,12 @@ Scroller class - Binds local scroll-to links and handles a smooth initial scroll
 
 #### Class overview
 ```javascript
-class Scroller {
+// Event names: scroll.initial.complete
+class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}
   config : { // ScrollerOptions
-    offset : null|number|HTMLElement // Offset pixels or element, default: null
+    offset : null|number|HTMLElement|Array // Offset pixels or element or Array of arguments, default: null
     bind : boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
     selector : string // Scroll to link selector, default: [href^="#"]
@@ -94,6 +95,7 @@ class Scroller {
     hashClean : number // scrollComplete delay, default: 300
   }
   initial : null|HTMLElement // Initial scroll-to target
+  scrollTo( element, complete = null ) {} // void
 }
 ```
 For more details check the [Scroller source file](../../src/es6/Animation/Scroller.js).
