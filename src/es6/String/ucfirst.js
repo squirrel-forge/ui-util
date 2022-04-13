@@ -1,12 +1,7 @@
-'use strict';
-
 /**
  * Capitalize first character
- *
  * Equivalent to PHPs ucfirst
- *
  * @param {string} str - Subject string to be modified
- *
  * @return {string} - Capitalized first character of string
  */
 export function ucfirst( str ) {

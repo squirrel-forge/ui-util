@@ -1,11 +1,7 @@
-'use strict';
-
 /**
  * Leading Zero helper
- *
  * @param {number} num - Number to add prefix
  * @param {number} length - Expected length
- *
  * @return {string} - The prefixed number
  */
 export function leadingZeros( num, length = 2 ) {

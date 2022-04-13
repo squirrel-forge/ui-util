@@ -1,13 +1,9 @@
-'use strict';
-
 /**
  * Replace variables in string
- *
  * @param {string} tmpl - String to replace vars in
  * @param {Object} data - Object with replace vars
  * @param {null|string} prefix - Regex prefix
  * @param {null|string} suffix - Regex suffix
- *
  * @return {string} - Rendered template string
  */
 export function simpleReplace( tmpl, data, prefix = ':', suffix = '' ) {

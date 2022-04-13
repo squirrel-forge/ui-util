@@ -1,41 +1,28 @@
-'use strict';
-
 /**
  * Requires
  */
-import { inArray } from '../Array/inArray.js';
 import { str2time } from '../String/str2time.js';
 
 /**
  * Cast to type
- *
- * TODO: check compilation causes equality as assignment warning
- *
+ * TODO: Any more missing type casts?
  * @param {*} value - Value to cast
- * @param {String} type - Type name
- * @param {Boolean} noTypeConversion - Do not convert [array|object|string] across types
- * @param {String} customSplitter - String splitter
- * @param {Array} customStrFalseValues - Array of string values that match false
- *
- *
+ * @param {string} type - Type name
+ * @param {boolean} noTypeConversion - Do not convert [array|object|string] across types
+ * @param {string} splitter - String splitter
+ * @param {Array} strFalseValues - Array of string values that match false
  * @returns {null|*} - Returns null or the expected type on success
  */
-export function cast2type( value, type, noTypeConversion = true, customSplitter = null, customStrFalseValues = null ) {
-    const to = typeof value;
-    let parsed,
-        splitter = ',',
-        strFalseValues = [
-            '0',
-            'false',
-            'off',
-            ''
-        ];
+export function cast2type( value, type, noTypeConversion = true, splitter = ',', strFalseValues = null ) {
 
-    // Allow custom splitter and false testing
-    splitter = customSplitter || splitter;
-    strFalseValues = customStrFalseValues || strFalseValues;
+    // Set string defaults
+    if ( !strFalseValues || !( strFalseValues instanceof Array ) || !strFalseValues.length ) {
+        strFalseValues = [ '0', 'false', 'off', '' ];
+    }
 
     // Parse value
+    let parsed;
+    const to = typeof value;
     if ( to !== 'undefined' && value !== null ) {
         switch ( type ) {
         case 'str' :
@@ -90,7 +77,7 @@ export function cast2type( value, type, noTypeConversion = true, customSplitter 
         case 'boolean' :
             switch ( to ) {
             case 'string' :
-                return !( !value || inArray( value.toLowerCase(), strFalseValues ) );
+                return !( !value || strFalseValues.includes( value.toLowerCase() ) );
             case 'number' :
                 return !!value;
             case 'boolean' :
@@ -122,14 +109,6 @@ export function cast2type( value, type, noTypeConversion = true, customSplitter 
                     }
                     return [];
                 }
-
-                /* cant convert array to object
-                break;
-            case 'object' :
-                if ( !noTypeConversion && (value instanceof Array ) ) {
-                    return value;
-                }
-                */
             }
         }
     }

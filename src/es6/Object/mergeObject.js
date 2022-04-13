@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Requires
  */
@@ -9,14 +7,12 @@ import { isPojo } from './isPojo.js';
 
 /**
  * Merge objects
- *
  * @param {Object} target - Base object
  * @param {Object} changes - Changes object
  * @param {boolean} extend - Extend the base object
  * @param {boolean} recursive - Recursivly merge
  * @param {boolean} clone_array - Clone array values
  * @param {boolean} no_array_merge - Do not merge arrays
- *
  * @return {Object} - Merged object
  */
 export function mergeObject( target, changes, extend = false, recursive = false, clone_array = false, no_array_merge = true ) {

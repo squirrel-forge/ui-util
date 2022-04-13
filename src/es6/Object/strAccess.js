@@ -1,13 +1,9 @@
-'use strict';
-
 /**
  * Access object value by dot syntax string
- *
- * @param {String} strpath - Dotted value path
+ * @param {string} strpath - Dotted value path
  * @param {Object} subject - Object to access
- * @param {Boolean} exact - Whether to match only an exact value, default: true
+ * @param {boolean} exact - Whether to match only an exact value, default: true
  * @param {null|console} debug - Debugger instance
- *
  * @return {null|*} - Closest value matched to path, or in exact mode, null is returned for no match
  */
 export function strAccess( strpath, subject, exact = true, debug = null ) {

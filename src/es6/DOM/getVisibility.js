@@ -1,64 +1,37 @@
-'use strict';
-
 /**
  * @typedef {Object} ElementVisibilityObject
- *
- * @property {number} elem - Percentage of element visible
- * @property {number} height - Vertical pixels visible
- * @property {number} view - Percentage of element visible related to view
+ * @property {number} elem - Element visibility in percent
+ * @property {number} height - Element visibility in pixels
+ * @property {number} view - Vertical view percentage covered
  */
 
 /**
  * Get element vertical visibility
- *
- * @param {HTMLElement} elem - Element to check
- * @param {null|HTMLElement} container - Scrolling container
- *
- * @return {ElementVisibilityObject} - Element visibility object
+ * @param {HTMLElement} element - Target element
+ * @param {null|HTMLElement} container - Scroll container
+ * @return {ElementVisibilityObject} - Visibility data
  */
-export function getVisibility( elem, container = null ) {
-
-    const pos = elem.getBoundingClientRect();
+export function getVisibility( element, container = null ) {
+    const pos = element.getBoundingClientRect();
     const scrollTop = container ? container.scrollTop : document.documentElement.scrollTop;
-
     const top = scrollTop + pos.y;
-    const height = pos.height;
+    const element_height = pos.height;
+    const window_height = container ? container.getBoundingClientRect().height : window.innerHeight;
+    const hidden_before = scrollTop - top;
+    const hidden_after = top + element_height - ( scrollTop + window_height );
+    let height = 0, view = 0, elem = 0;
 
-    const wh = container ? container.getBoundingClientRect().height : window.innerHeight;
-    const hiddenBefore = scrollTop - top;
-    const hiddenAfter = top + height - ( scrollTop + wh );
-    let visibleHeight = 0,
-        viewVisible = 0,
-        elementVisible;
-
-    if (  scrollTop > top + height  || top > scrollTop + wh ) {
-        elementVisible = 0;
-    } else {
-        elementVisible = 100;
-
-        if ( hiddenBefore > 0 ) {
-            elementVisible -= hiddenBefore * 100 / height;
-        }
-
-        if ( hiddenAfter > 0 ) {
-            elementVisible -= hiddenAfter * 100 / height;
-        }
+    // Fully or partially visible
+    if ( !( scrollTop > top + element_height || top > scrollTop + window_height ) ) {
+        elem = 100;
+        if ( hidden_before > 0 ) elem -= hidden_before * 100 / element_height;
+        if ( hidden_after > 0 ) elem -= hidden_after * 100 / element_height;
     }
 
-    if ( elementVisible ) {
-        visibleHeight = height - ( hiddenBefore < 0 ? 0 : hiddenBefore ) - ( hiddenAfter < 0 ? 0 : hiddenAfter );
-        viewVisible = visibleHeight * 100 / wh;
+    // Calculate visible height and relative to viewport
+    if ( elem ) {
+        height = element_height - ( hidden_before < 0 ? 0 : hidden_before ) - ( hidden_after < 0 ? 0 : hidden_after );
+        view = height * 100 / window_height;
     }
-
-    return {
-
-        // Element visibility in %
-        elem : elementVisible,
-
-        // Element visible pixels
-        height : visibleHeight,
-
-        // % of view filled by element
-        view : viewVisible
-    };
+    return { elem, height, view };
 }

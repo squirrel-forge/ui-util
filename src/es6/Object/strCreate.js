@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Requires
  */
@@ -7,9 +5,7 @@ import { isPojo } from './isPojo.js';
 
 /**
  * Get typed path part
- *
  * @private
- *
  * @param {string} part - Path element
  * @return {string|Number} - Typed element
  */
@@ -24,14 +20,12 @@ function getPart( part ) {
 
 /**
  * Create deep object structure from string
- *
  * @param {string} strpath - Dotted value path
  * @param {*} value - Value to be set
  * @param {Object|Array} target - Target object or array
  * @param {boolean} replace - Replace values
  * @param {boolean} any - Extend any type of object
  * @param {Object} debug - Debugger instance
- *
  * @return {Object|Array} - Target
  */
 export function strCreate( strpath, value, target, replace = false, any = false, debug = null ) {

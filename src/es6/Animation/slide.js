@@ -1,43 +1,43 @@
-'use strict';
-
 /**
  * @callback SlideActionCompleteCallback
- *
  * @return {void}
  */
 
 /**
  * Local slide animate with css/height
- *
  * @param {HTMLElement} item - Element to animate
- * @param {null|number} speed - Speed in ms
+ * @param {null|number|string} speed - Speed in s or ms
  * @param {null|string} easing - CSS easing function
  * @param {null|string} state - State to animate to if not in toggle mode
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
- *
  * @return {void}
  */
-function animate( item, speed = null, easing = null, state = null, callback = null ) {
+function _slide_animate_internal( item, speed = null, easing = null, state = null, callback = null ) {
 
     // Set default css properties
+    item.style.display = 'block';
     item.style.overflow = 'hidden';
     item.style.transitionProperty = 'height';
     item.style.transitionTimingFunction = easing || 'ease';
+    item.firstElementChild.style.display = 'block';
 
-    // Callback can be any param except item and state
-    if ( !( callback instanceof Function ) ) {
-        if ( speed instanceof Function ) {
-            callback = speed;
-            speed = null;
-        } else if ( easing instanceof Function ) {
-            callback = easing;
-            easing = null;
-        }
+    // Callback can be any param
+    if ( typeof speed === 'function' ) {
+        callback = speed;
+        speed = null;
+    } else if ( typeof easing === 'function' ) {
+        callback = easing;
+        easing = null;
+    } else if ( typeof state === 'function' ) {
+        callback = state;
+        state = null;
     }
 
-    // Set speed
+    // Set custom speed
     speed = speed || 300;
-    item.style.transitionDuration = speed + 'ms';
+    if ( speed ) {
+        item.style.transitionDuration = typeof speed === 'number' ? speed + ( speed < 1 ? 's' : 'ms' ) : speed;
+    }
 
     // Force correct initial state for given target state
     if ( state === 'show' ) {
@@ -57,9 +57,7 @@ function animate( item, speed = null, easing = null, state = null, callback = nu
 
     /**
      * Complete callback
-     *
      * @private
-     *
      * @return {void}
      */
     const _complete = () => {
@@ -89,49 +87,43 @@ function animate( item, speed = null, easing = null, state = null, callback = nu
 
         // Complete event via timeout
         if ( !hasTransitions ) {
-            window.setTimeout( _complete, speed );
+            window.setTimeout( _complete, speed * 1000 );
         }
-    }, 1 );
+    }, 10 );
 }
 
 /**
  * Slide toggle
- *
  * @param {HTMLElement} item - Element to animate
- * @param {number} speed - Speed in ms
+ * @param {number|string} speed - Speed in s or ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
- *
  * @return {void}
  */
 export function slideToggle( item, speed, easing, callback ) {
-    animate( item, speed, easing, null, callback );
+    _slide_animate_internal( item, speed, easing, null, callback );
 }
 
 /**
  * Slide hide / slideUp equivalent
- *
  * @param {HTMLElement} item - Element to hide
- * @param {number} speed - Speed in ms
+ * @param {number|string} speed - Speed in s or ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
- *
  * @return {void}
  */
 export function slideHide( item, speed, easing, callback ) {
-    animate( item, speed, easing, 'hide', callback );
+    _slide_animate_internal( item, speed, easing, 'hide', callback );
 }
 
 /**
  * Slide show / slideDown equivalent
- *
  * @param {HTMLElement} item - Element to show
- * @param {number} speed - Speed in ms
+ * @param {number|string} speed - Speed in s or ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
- *
  * @return {void}
  */
 export function slideShow( item, speed, easing, callback ) {
-    animate( item, speed, easing, 'show', callback );
+    _slide_animate_internal( item, speed, easing, 'show', callback );
 }

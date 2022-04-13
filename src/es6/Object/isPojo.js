@@ -1,10 +1,6 @@
-'use strict';
-
 /**
  * Is a plain object
- *
  * @param {Object} obj - Object to test
- *
  * @return {boolean} - True if subject is a plain object
  */
 export function isPojo( obj ) {

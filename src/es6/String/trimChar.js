@@ -1,12 +1,8 @@
-'use strict';
-
 /**
  * Trim custom character
- *
  * @param {string} str - String to trim
- * @param {string} charToRemove - Character to trim
- *
- * @return {string} - Trimmed string
+ * @param {string} charToRemove - Char to remove
+ * @return {string} - Trimmed char
  */
 export function trimChar( str, charToRemove ) {
     while ( str.charAt( 0 ) === charToRemove ) {

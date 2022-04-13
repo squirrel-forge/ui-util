@@ -1,10 +1,6 @@
-'use strict';
-
 /**
  * Value is float value
- *
  * @param {number} num - Number to check
- *
  * @return {boolean} - True if value is a float
  */
 export function isFloat( num ) {

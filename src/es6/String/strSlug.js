@@ -1,10 +1,6 @@
-'use strict';
-
 /**
  * Convert string to slug
- *
  * @param {string} str - String to sanitize
- *
  * @return {string} - Sanitized string
  */
 export function strSlug( str ) {

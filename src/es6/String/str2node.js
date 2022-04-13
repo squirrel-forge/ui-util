@@ -1,17 +1,7 @@
-'use strict';
-
-/**
- * IE11 template polyfill
- * https://github.com/webcomponents/polyfills/blob/master/packages/template/template.js
- * https://www.npmjs.com/package/template-polyfill
- */
-
 /**
  * Convert string to html
- *
  * @param {string} str - HTML source string
  * @param {boolean} multiple - Contains multiple nodes, default: true
- *
  * @return {null|HTMLElement|NodeList} - Element or collection of elements
  */
 export function str2node( str, multiple = true ) {

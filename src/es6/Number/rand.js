@@ -1,11 +1,7 @@
-'use strict';
-
 /**
  * Get random integer
- *
  * @param {number} min - Min value
- * @param {number} max - May value
- *
+ * @param {number} max - Max value
  * @return {number} - Random integer
  */
 export function rand( min, max ) {
