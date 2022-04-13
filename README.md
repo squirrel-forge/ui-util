@@ -1,4 +1,4 @@
-# @sqirrel-forge/ui-util
+# @squirrel-forge/ui-util
 A collection of utilities, classes, functions and abstracts made for the browser and babel compatible.
 
 ## Installation

@@ -1,4 +1,4 @@
-# @sqirrel-forge/ui-util Documentation
+# @squirrel-forge/ui-util Documentation
 > [Back to Readme](../README.md)
 
 ## Table of contents
