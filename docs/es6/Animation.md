@@ -118,7 +118,7 @@ Under the hood this uses native *window.scrollTo* with smoothscroll, you may [po
 | **offset**   | Number/HTMLElement |    0     | Scroll offset in pixels or element height |
 | **behavior** | String             | 'smooth' | Native window.scrollTo behavior option    |
 | **minDiff**  | Number             |    3     | Minimum scroll distance                   |
-| **withTop**  | Boolean            |  false   | Include the top value for                 |
+| **withTop**  | Boolean            |  false   | Include the top value of offset element   |
 
 #### Return Values
 | Type/Value | Description |

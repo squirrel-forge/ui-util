@@ -1,301 +1,319 @@
-### @squirrel-forge/util Documentation
+### @squirrel-forge/ui-util
+> [Back to table of contents](../README.md)
 
-> [Back to Readme](../../README.md)
-
-# Javascript / DOM
+# Documentation
+### Javascript / DOM
 
 ## Table of contents
-
  - [appendAfter()](#appendAfter)
  - [appendHTML()](#appendHTML)
  - [attributeJSON()](#attributeJSON)
- - [escapeHTML()](#escapeHTML)
+ - [getElementTagType()](#getElementTagType)
+ - [getScrollbarWidth()](#getScrollbarWidth)
  - [getVisibility()](#getVisibility)
- - [prepend()](#prepend)
- - [setTabIndex()](#setTabIndex)
+ - [prependChild()](#prependChild)
  - [uniqid()](#uniqid)
- - [wrapTextByLines()](#wrapTextByLines)
+ - [requireUniqid()](#requireUniqid)
+ - [unwrap()](#unwrap)
+ - [wrap()](#wrap)
 
 ---
 
 ### appendAfter
-
 appendAfter - Append node after a specific node
 
 #### Description
-
 ```javascript
-appendAfter( newNode, referenceNode ) : void
+appendAfter( newNode, referenceNode ) // void
 ```
-
 Appends a node after a specified node.
 
 #### Parameters
-Parameter         | Type | Default | Description
------------------ | ---- |:-------:| ---
-**newNode**       | Node |    -    | The node to append
-**referenceNode** | Node |    -    | The node after which we want to append
+| Parameter         | Type | Default | Description                            |
+|-------------------|------|:-------:|----------------------------------------|
+| **newNode**       | Node |    -    | The node to append                     |
+| **referenceNode** | Node |    -    | The node after which we want to append |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
 
 #### Examples
-
 ```javascript
-appendAfter( document.getElementById( 'move-me' ), document.getElementById( 'after-this' ) )
+appendAfter( document.getElementById( 'move-me' ), document.getElementById( 'after-this' ) );
 ```
 
 ---
 
 ### appendHTML
-
 appendHTML - Append HTML string as one or multiple elements
 
 #### Description
-
 ```javascript
-appendHTML( element, str ) : void
+appendHTML( element, str ) // void
 ```
-
-Append HTML string as one or multiple elements, uses [str2node()](../String.md#str2node) to convert the string.
+Append HTML string as one or multiple elements, uses [str2node()](String.md#str2node) to convert the string.
 
 #### Parameters
-Parameter   | Type        | Default | Description
------------ | ----------- |:-------:| ---
-**element** | HTMLElement |    -    | Element to append to
-**str**     | String      |    -    | The html string
+| Parameter   | Type        | Default | Description          |
+|-------------|-------------|:-------:|----------------------|
+| **element** | HTMLElement |    -    | Element to append to |
+| **str**     | String      |    -    | The html string      |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | Node.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | Node.       |
 
 #### Examples
-
 ```javascript
-appendHTML( document.getElementById( 'target' ), '<section>...</section' )
+appendHTML( document.getElementById( 'target' ), '<section>...</section>' );
 ```
 
 ---
 
 ### attributeJSON
-
 attributeJSON - Get json object from element data attribute
 
 #### Description
-
 ```javascript
-attributeJSON( name, element, silent = true ) : Object
+attributeJSON( name, element, silent = true ) // Object
 ```
-
 Get json object from element data attribute, can optionally throw exceptions on error.
 
 #### Parameters
-Parameter   | Type        | Default | Description
------------ | ----------- |:-------:| ---
-**name**    | String      |    -    | Attribute name, excluding the 'data-' prefix
-**element** | HTMLElement |    -    | Element to read
-**silent**  | Boolean     |   true  | Set to false to throw an exception on error
+| Parameter   | Type        | Default | Description                         |
+|-------------|-------------|:-------:|-------------------------------------|
+| **name**    | String      |    -    | Attribute name                      |
+| **element** | HTMLElement |    -    | Element to read                     |
+| **silent**  | Boolean     |   true  | False to throw error on parse Error |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**null**   | Invalid or empty attribute
-**Object** | Parsed json object data
+| Type/Value | Description                |
+|------------|----------------------------|
+| **null**   | Invalid or empty attribute |
+| **Object** | Parsed json object data    |
 
 #### Examples
-
 ```html
 <div id="json-data" data-config='{"foo":1}'></div>
 ```
 ```javascript
-attributeJSON( 'config', document.getElementById( 'json-data' ) ) // { foo : 1 }
+attributeJSON( 'data-config', document.getElementById( 'json-data' ) ); // { foo : 1 }
 ```
 
 ---
 
-### escapeHTML
-
-escapeHTML - Escape html special chars
+### getElementTagType
+getElementTagType - Get element tag type string
 
 #### Description
-
 ```javascript
-escapeHTML( text ) : string
+getElementTagType( element ) // string
 ```
-
-Escape html special chars, only: &><"'
+Get element tag type string, compiled from tagName + type.
 
 #### Parameters
-Parameter | Type   | Default | Description
---------- | ------ |:-------:| ---
-**text**  | String |    -    | String to escape
+| Parameter     | Type        | Default | Description                     |
+|---------------|-------------|:-------:|---------------------------------|
+| **element**   | HTMLElement |    -    | Element to get type string from |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**String** | Escaped string
+| Type/Value | Description     |
+|------------|-----------------|
+| **String** | Tag type string |
 
 #### Examples
-
 ```javascript
-escapeHTML( 'foo > 1' ) // 'foo &gt; 1'
+getElementTagType( document.getElementById( 'input[type="hidden"]' ) ); // input-hidden
+```
+
+---
+
+### getScrollbarWidth
+getScrollbarWidth - Get current scrollbar width
+
+#### Description
+```javascript
+getScrollbarWidth() // Number
+```
+Get the current device scrollbar width, creating some hidden elements and measuring the difference.
+
+#### Parameters
+The function has no parameters.
+
+#### Return Values
+| Type/Value | Description               |
+|------------|---------------------------|
+| **Number** | Scrollbar width in pixels |
+
+#### Examples
+```javascript
+getScrollbarWidth(); // 16
 ```
 
 ---
 
 ### getVisibility
-
 getVisibility - Get element vertical visibility
 
 #### Description
-
 ```javascript
-getVisibility( elem, container = null ) : Object
+getVisibility( elem, container = null ) // Object
 ```
-
 Get element vertical visibility, considering scroll position, supplies relative and absolute values.
 
 #### Parameters
-Parameter     | Type        | Default         | Description
-------------- | ----------- |:---------------:| ---
-**elem**      | HTMLElement |        -        | Element to get visibility data for
-**container** | HTMLElement | documentElement | Relative container
+| Parameter     | Type        |     Default     | Description                        |
+|---------------|-------------|:---------------:|------------------------------------|
+| **elem**      | HTMLElement |        -        | Element to get visibility data for |
+| **container** | HTMLElement | documentElement | Relative container                 |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**Object** | Visibility object { elem : Number %, view : Number %, height : Number pixels }
+| Type/Value | Description                                                                    |
+|------------|--------------------------------------------------------------------------------|
+| **Object** | Visibility object { elem : Number %, view : Number %, height : Number pixels } |
 
 #### Examples
-
 ```javascript
-getVisibility( document.getElementById( 'section' ) ) // { elem : 27.4578567, view : 42.5678, height : 347 }
+getVisibility( document.getElementById( 'section' ) ); // { elem : 27.4578567, view : 42.5678, height : 347 }
 ```
 
 ---
 
-### prepend
-
-prepend - Prepend node to node
-
-#### Description
-
-```javascript
-prepend( newNode, referenceNode ) : void
-```
-
-Prepend node to node, node is inserted before the firstChild.
-
-#### Parameters
-Parameter         | Type        | Default | Description
------------------ | ----------- |:-------:| ---
-**newNode**       | HTMLElement |    -    | Element to prepend
-**referenceNode** | HTMLElement |    -    | Element to prepend to
-
-#### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
-
-#### Examples
-
-```javascript
-prepend( document.getElementById( 'node-to-insert' ), document.getElementById( 'node-to-prepend-to' ) )
-```
-
----
-
-### setTabIndex
-
-setTabIndex - Set tabindex for query or collection
+### prependChild
+prependChild - Prepend node to node
 
 #### Description
-
 ```javascript
-setTabIndex( source, value, auto_increment = null ) : void
+prepend( newNode, referenceNode ) // void
 ```
-
-Set tabindex for query or collection.
+Prepend node as child of node, newNode is inserted before the firstChild of referenceNode.
 
 #### Parameters
-Parameter          | Type            | Default | Description
------------------- | --------------- |:-------:| ---
-**source**         | String NodeList |    -    | Query or items to process
-**value**          | String Number   |    -    | Set as tabindex, ignored when using auto_increment
-**auto_increment** | Number          |   null  | Set as number to start auto increment
+| Parameter         | Type        | Default | Description           |
+|-------------------|-------------|:-------:|-----------------------|
+| **newNode**       | HTMLElement |    -    | Element to prepend    |
+| **referenceNode** | HTMLElement |    -    | Element to prepend to |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
 
 #### Examples
-
 ```javascript
-setTabIndex( 'a', 0 )
-setTabIndex( 'a', 0, 10 )
-setTabIndex( 'a', null )
+prepend( document.getElementById( 'node-to-insert' ), document.getElementById( 'node-to-prepend-to' ) );
 ```
 
 ---
 
 ### uniqid
-
 uniqid - Unique html attribute id
 
 #### Description
-
 ```javascript
-uniqid( prefix = '' ) : string
+uniqid( prefix = '', entropy = false ) // string
 ```
-
 Get a unique html attribute id that is unused.
 
 #### Parameters
-Parameter  | Type   | Default | Description
----------- | ------ |:-------:| ---
-**prefix** | String |    ''   | Prefix the id with given string
+| Parameter   | Type    | Default | Description                     |
+|-------------|---------|:-------:|---------------------------------|
+| **prefix**  | String  |   ''    | Prefix the id with given string |
+| **entropy** | Boolean |  false  | Increase the id entropy         |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**String** | Unique unused string id
+| Type/Value | Description             |
+|------------|-------------------------|
+| **String** | Unique unused string id |
 
 #### Examples
-
 ```javascript
-uniqid( 'prefix-' ) // 'prefix-npnm623gm2'
+uniqid( 'prefix-' ); // 'prefix-npnm623gm2'
 ```
 
 ---
 
-### wrapTextByLines
-
-wrapTextByLines - Warp text by lines
+### requireUniqid
+requireUniqid - Require unique html attribute id
 
 #### Description
-
 ```javascript
-wrapTextByLines( elem ) : void
+requireUniqid( element, prefix = '', entropy = false ) // string
 ```
-
-Wrap text by lines in span elements.
+Get a unique html attribute id that is unused.
 
 #### Parameters
-Parameter  | Type        | Default | Description
----------- | ----------- |:-------:| ---
-**elem**   | HTMLElement |    -    | Element to separate into wrapped lines
+| Parameter   | Type        | Default | Description                       |
+|-------------|-------------|:-------:|-----------------------------------|
+| **element** | HTMLElement |    -    | Element that requires a unique id |
+| **prefix**  | String      |   ''    | Prefix the id with given string   |
+| **entropy** | Boolean     |  false  | Increase the id entropy           |
 
 #### Return Values
-Type/Value | Description
----------- | ---
-**void**   | None.
+| Type/Value | Description                          |
+|------------|--------------------------------------|
+| **String** | Unique string id set for the element |
 
 #### Examples
-
 ```javascript
-wrapTextByLines( document.getElementById( 'myelement' ) )
+requireUniqid( document.querySelector( '.requires-id' ), 'prefix-' ); // 'prefix-npnm623gm2'
 ```
+
+---
+
+### unwrap
+unwrap - Unwrap element
+
+#### Description
+```javascript
+unwrap( element ) // void
+```
+Removes the given element and preserves any children.
+
+#### Parameters
+| Parameter   | Type        | Default | Description               |
+|-------------|-------------|:-------:|---------------------------|
+| **element** | HTMLElement |    -    | Element wrapper to remove |
+
+#### Return Values
+| Type/Value | Description |
+|------------|-------------|
+| **void**   | None.       |
+
+#### Examples
+```javascript
+unwrap( document.getElementById( 'element-to-unwrap' ) ); // void
+```
+
+---
+
+### wrap
+wrap - Wrap element/s
+
+#### Description
+```javascript
+unwrap( elements, wrapper = 'div', strict = true ) // HTMLElement
+```
+Wraps given element or elements with a given element
+
+#### Parameters
+| Parameter    | Type                 | Default | Description                                 |
+|--------------|----------------------|:-------:|---------------------------------------------|
+| **elements** | HTMLElement/NodeList |    -    | Element/s to wrap                           |
+| **wrapper**  | HTMLElement/String   |  'div'  | Element to wrap around elements             |
+| **strict**   | Boolean              |  true   | Throw error if wrapper is already connected |
+
+#### Return Values
+| Type/Value      | Description                   |
+|-----------------|-------------------------------|
+| **HTMLElement** | The wrapper element reference |
+
+#### Examples
+```javascript
+wrap( document.querySelectorAll( '.selector' ) ); // HTMLDivElement
+```
+
+---

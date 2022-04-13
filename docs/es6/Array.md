@@ -33,5 +33,5 @@ Merges two or more arrays and returns a new array.
 
 #### Examples
 ```javascript
-mergeArray([1],[2],[3]) // [1,2,3] 
+mergeArray([1],[2],[3]); // [1,2,3] 
 ```

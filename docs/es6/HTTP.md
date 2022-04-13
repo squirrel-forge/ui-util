@@ -1,0 +1,61 @@
+### @squirrel-forge/ui-util
+> [Back to table of contents](../README.md)
+
+# Documentation
+### Javascript / HTTP
+
+## Table of contents
+ - [AsyncRequest](#AsyncRequest)
+ - [JsonP](#JsonP)
+
+---
+
+### AsyncRequest
+AsyncRequest class - An XMLHttpRequest wrapper with events and response parsing
+
+#### Class overview
+```javascript
+// Event names: error, success, complete, progress
+class AsyncRequest extends EventDispatcher {
+  static unique_url( url, cache = false ) {} // string
+  constructor( options = null, parent = null, debug = null ) {}
+  url : string
+  user : string
+  pwd : string
+  method : string
+  cache : boolean
+  type : string
+  successStatus : Array
+  error : boolean
+  status : Number
+  statusText : string
+  readyState : Number
+  responseText : string
+  responseType : string
+  responseParsed : *
+  responseParsingError : *
+  send( data = null, modifyProcessed = null ) {} // void
+  abort() {} // void
+  _parse_auto() {} // void
+  _parse_html() {} // void
+  _parse_svg() {} // void
+  _parse_string() {} // void
+  _parse_json() {} // void
+}
+```
+For more details check the [AsyncRequest source file](../../src/es6/HTTP/AsyncRequest.js).
+
+---
+
+### JsonP
+JsonP class - Extension of the native *Error* with a previous implementation
+
+#### Class overview
+```javascript
+class JsonP {
+  static getCallbackName( prefix = 'jsonPCallback_' ) {} // String
+  static promise( url, limit = 10000 ) {} // Promise
+  constructor( url, success, timeout = null, limit = 10000 ) {}
+}
+```
+For more details check the [JsonP source file](../../src/es6/HTTP/JsonP.js).
