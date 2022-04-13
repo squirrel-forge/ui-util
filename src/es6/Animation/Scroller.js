@@ -10,18 +10,16 @@ import { isPojo } from '../Object/isPojo.js';
 
 /**
  * @typedef {Object} ScrollerOptions
- * @property {null|number|HTMLElement} offset - Offset pixels or element, default: null
+ * @property {null|number|HTMLElement|Array} offset - Offset pixels or element or Array of arguments, default: null
  * @property {boolean} bind - Bind scrollTo links, default: true
  * @property {document.body|HTMLElement} context - Context to select scrollTo links from, default: document.body
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
  * @property {boolean} capture - Capture initial scroll, default: true
  * @property {number|'ready'} initial - Initial scroll delay after capture
- * @property {number} hashClean - scrollComplete delay, default: 300
  */
 
 /**
  * Scroller
- * TODO: replace offset option with optional arguments for scrollTo
  * @class
  */
 export class Scroller extends EventDispatcher {
@@ -71,7 +69,6 @@ export class Scroller extends EventDispatcher {
             selector : '[href^="#"]',
             capture : true,
             initial : 1000,
-            hashClean : 300,
         };
 
         // Update config
@@ -85,6 +82,21 @@ export class Scroller extends EventDispatcher {
     }
 
     /**
+     * Scroll to options wrapper
+     * @public
+     * @param {HTMLElement} element - Target element
+     * @param {null|Function} complete - Complete callback
+     * @return {void}
+     */
+    scrollTo( element, complete = null ) {
+        let params = this.config.offset;
+        if ( !( params instanceof Array ) ) params = [ params ];
+        params.unshift( element );
+        if ( typeof complete === 'function' ) scrollComplete( complete );
+        scrollTo( ...params );
+    }
+
+    /**
      * Event scroll to click
      * @private
      * @param {Event} event - Click event
@@ -94,7 +106,7 @@ export class Scroller extends EventDispatcher {
         const id = event.target.getAttribute( 'href' ).substr( 1 );
         const target = document.getElementById( id );
         if ( target ) {
-            scrollTo( target, this.config.offset );
+            this.scrollTo( target );
             event.preventDefault();
         } else if ( this.debug ) {
             this.debug.warn( this.constructor.name + '::event_scrollToClick No valid target for: ', id );
@@ -157,10 +169,10 @@ export class Scroller extends EventDispatcher {
             scrollComplete( () => {
                 history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substr( 1 ) ) );
                 this.dispatchEvent( 'scroll.initial.complete', { initial : this.initial } );
-            }, this.config.hashClean );
+            } );
 
             // Scroll to initial target
-            scrollTo( this.initial, this.config.offset );
+            this.scrollTo( this.initial );
         }
     }
 }
