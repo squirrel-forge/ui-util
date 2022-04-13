@@ -12,6 +12,13 @@ import { isPojo } from '../Object/isPojo.js';
 class EventDispatcherException extends Exception {}
 
 /**
+ * @typedef {Object} EventDispatcherInterface
+ * @property {Function} addEventListener - Add
+ * @property {Function} removeEventListener - Remove
+ * @property {Function} dispatchEvent - Dispatch
+ */
+
+/**
  * Event dispatcher
  * @class
  */
@@ -58,8 +65,8 @@ export class EventDispatcher {
     /**
      * Constructor
      * @constructor
-     * @param {null|HTMLElement|Object} element - The target element
-     * @param {null|EventDispatcher} parent - Parent event dispatcher, only used for simulated events
+     * @param {null|HTMLElement|EventDispatcherInterface|Object} element - The target element
+     * @param {null|EventDispatcher|EventDispatcherInterface} parent - Parent event dispatcher, only used for simulated events
      * @param {null|console} debug - Console or alike object to show debugging
      */
     constructor( element = null, parent = null, debug = null ) {
@@ -99,7 +106,7 @@ export class EventDispatcher {
     /**
      * Target getter
      * @public
-     * @return {null|HTMLElement|EventDispatcher} - Target reference
+     * @return {null|HTMLElement|EventDispatcher|EventDispatcherInterface} - Target reference
      */
     get target() {
         return this.#target;
@@ -108,7 +115,7 @@ export class EventDispatcher {
     /**
      * Parent getter
      * @public
-     * @return {null|HTMLElement|EventDispatcher} - Parent reference
+     * @return {null|HTMLElement|EventDispatcher|EventDispatcherInterface} - Parent reference
      */
     get parent() {
         return this.#parent;
