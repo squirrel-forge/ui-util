@@ -62,18 +62,25 @@ export class Exception extends Error {
     addPreviousToStack() {
 
         // Only if enabled and stack is a string
-        if ( this.previousToStack && typeof this.stack === 'string' ) {
+        if ( this.previousToStack ) {
 
-            // There is a previous error and it should be displayable
-            if ( this.previous
-                && ( this.previous instanceof Error || this.previous.toString || typeof this.previous === 'string' ) ) {
+            if ( typeof this.stack === 'string' ) {
 
-                // Add previous prefix
-                this.stack = this.stack + '\n';
-                if ( this.previousPrefix ) this.stack = this.stack + this.previousPrefix;
+                // There is a previous error and it should be displayable
+                if ( this.previous
+                    && ( this.previous instanceof Error || this.previous.toString || typeof this.previous === 'string' ) ) {
 
-                // Add the previous stack or error to the current stack
-                this.stack = this.stack + ( typeof this.previous.stack === 'string' ? this.previous.stack : this.previous );
+                    // Add previous prefix
+                    this.stack = this.stack + '\n';
+                    if ( this.previousPrefix ) this.stack = this.stack + this.previousPrefix;
+
+                    // Add the previous stack or error to the current stack
+                    this.stack = this.stack + ( typeof this.previous.stack === 'string' ? this.previous.stack : this.previous );
+                }
+            } else if ( this.previous ) {
+
+                // The stack is no string and cannot be modified
+                window.console.error( this, 'Caused by', this.previous );
             }
         }
     }
