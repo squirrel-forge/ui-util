@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Number
+> [Logic](Logic.md) <[ Number ]> [Object](Object.md)
 
 ## Table of contents
  - [convertBytes()](#convertBytes)
@@ -205,3 +206,7 @@ Round value to specific decimals, default 2.
 ```javascript
 round( 4.5678 ); // 4.57
 ```
+
+---
+
+> [Logic](Logic.md) <[ Number ]> [Object](Object.md)

@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Events
+> [Error](Error.md) <[ Events ]> [HTTP](HTTP.md)
 
 ## Table of contents
  - [bindNodeList()](#bindNodeList)
@@ -104,7 +105,7 @@ EventDispatcher class - Abstract class used for creating dom event connected or 
 class EventDispatcher {
   static isCompat( obj ) {} // Boolean
   constructor( element = null, parent = null, debug = null ) {}
-  debug : console
+  debug : null|Console
   target : null|HTMLElement
   parent : null|EventDispatcher
   isSimulated : Boolean
@@ -116,3 +117,7 @@ class EventDispatcher {
 }
 ```
 For more details check the [EventDispatcher source file](../../src/es6/Events/EventDispatcher.js).
+
+---
+
+> [Error](Error.md) <[ Events ]> [HTTP](HTTP.md)

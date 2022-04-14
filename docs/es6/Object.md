@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Object
+> [Number](Number.md) <[ Object ]> [String](String.md)
 
 ## Table of contents
  - [cloneObject()](#cloneObject)
@@ -182,3 +183,7 @@ strCreate( 'foo.link', '#anchor', base );
 console.log( base );
 // { foo : { label : 'text', link : '#anchor' } }
 ```
+
+---
+
+> [Number](Number.md) <[ Object ]> [String](String.md)

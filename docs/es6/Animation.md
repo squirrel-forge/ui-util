@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Animation
+> [Table of contents](../README.md) <[ Animation ]> [Array](Array.md)
 
 ## Table of contents
  - [holdElementViewportPosition()](#holdElementViewportPosition)
@@ -86,13 +87,13 @@ class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}
   config : { // ScrollerOptions
-    offset : null|number|HTMLElement|Array // Offset pixels or element or Array of arguments, default: null
-    bind : boolean // Bind scrollTo links, default: true
+    offset : null|Number|HTMLElement|Array // Offset pixels or element or Array of arguments, default: null
+    bind : Boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
-    selector : string // Scroll to link selector, default: [href^="#"]
-    capture : boolean // Capture initial scroll, default: true
-    initial : number|'ready' // Initial scroll delay after capture
-    hashClean : number // scrollComplete delay, default: 300
+    selector : String // Scroll to link selector, default: [href^="#"]
+    capture : Boolean // Capture initial scroll, default: true
+    initial : Number|'ready' // Initial scroll delay after capture
+    hashClean : Number // scrollComplete delay, default: 300
   }
   initial : null|HTMLElement // Initial scroll-to target
   scrollTo( element, complete = null ) {} // void
@@ -250,3 +251,7 @@ Show element by sliding down.
 ```javascript
 slideShow( document.getElementById( 'slidable' ), () => console.log( 'slideShow::complete' ) );
 ```
+
+---
+
+> [Table of contents](../README.md) <[ Animation ]> [Array](Array.md)

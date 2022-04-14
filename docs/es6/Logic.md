@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Logic
+> [HTTP](HTTP.md) <[ Logic ]> [Number](Number.md)
 
 ## Table of contents
  - [Config](#Config)
@@ -41,7 +42,7 @@ Plugin class - Plugin class for use with the [Plugins](#Plugins) class
 class Plugin {
   constructor( options = {}, context = null, debug = null ) {}
   options : Object
-  debug : null|console
+  debug : null|Console
   context : null|Object
   _context_check( context ) {} // void
 }
@@ -57,8 +58,8 @@ Plugins class - A plugins handler class for use with the [Plugin](#Plugin) class
 ```javascript
 class Plugins {
   constructor( plugins = [], context = null, append = true, debug = null ) {}
-  append : null|boolean
-  debug : null|console
+  append : null|Boolean
+  debug : null|Console
   context : null|Object
   load( plugins ) {} // void
   init( Construct, options = {}, replace = false ) {} // Object
@@ -70,3 +71,7 @@ class Plugins {
 }
 ```
 For more details check the [Plugins source file](../../src/es6/Logic/Plugins.js).
+
+---
+
+> [HTTP](HTTP.md) <[ Logic ]> [Number](Number.md)

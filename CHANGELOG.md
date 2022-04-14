@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2
+ - Added *Exception.previousToStack()* fallback for none string stacks.
+ - Improved docs nav and some minor typos.
+
 ## 0.8.1
  - Added *detach* method to *ConsoleInterceptor* for global use, change default constructor argument host from document to window.
  - Improved *Scroller* options offset can be arguments array and added *Scroller.scrollTo()* method, removed *scrollComplete( delay )* option.

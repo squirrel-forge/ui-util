@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / HTTP
+> [Events](Events.md) <[ HTTP ]> [Logic](Logic.md)
 
 ## Table of contents
  - [AsyncRequest](#AsyncRequest)
@@ -59,3 +60,7 @@ class JsonP {
 }
 ```
 For more details check the [JsonP source file](../../src/es6/HTTP/JsonP.js).
+
+---
+
+> [Events](Events.md) <[ HTTP ]> [Logic](Logic.md)

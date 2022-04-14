@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Var
+> [String](String.md) <[ Var ]> [Table of contents](../README.md)
 
 ## Table of contents
  - [cast2type()](#cast2type)
@@ -70,3 +71,7 @@ isEmpty( 0 ); // true
 isEmpty( false ); // true
 isEmpty(); // true
 ```
+
+---
+
+> [String](String.md) <[ Var ]> [Table of contents](../README.md)

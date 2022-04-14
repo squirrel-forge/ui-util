@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Array
+> [Animation](Animation.md) <[ Array ]> [Dev](Dev.md)
 
 ## Table of contents
  - [mergeArray()](#mergeArray)
@@ -35,3 +36,7 @@ Merges two or more arrays and returns a new array.
 ```javascript
 mergeArray([1],[2],[3]); // [1,2,3] 
 ```
+
+---
+
+> [Animation](Animation.md) <[ Array ]> [Dev](Dev.md)

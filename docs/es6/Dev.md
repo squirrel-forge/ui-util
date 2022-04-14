@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / Dev
+> [Array](Array.md) <[ Dev ]> [DOM](DOM.md)
 
 ## Table of contents
  - [ConsoleInterceptor](#ConsoleInterceptor)
@@ -54,3 +55,7 @@ Binds a global event to highlight elements focused by keyboard control and retur
 const disableTabFocus = tabFocus(); // Enable tab focus debug
 disableTabFocus(); // Disable tab focus debug
 ```
+
+---
+
+> [Array](Array.md) <[ Dev ]> [DOM](DOM.md)

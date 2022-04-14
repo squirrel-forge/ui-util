@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / DOM
+> [Dev](Dev.md) <[ DOM ]> [Error](Error.md)
 
 ## Table of contents
  - [appendAfter()](#appendAfter)
@@ -317,3 +318,5 @@ wrap( document.querySelectorAll( '.selector' ) ); // HTMLDivElement
 ```
 
 ---
+
+> [Dev](Dev.md) <[ DOM ]> [Error](Error.md)

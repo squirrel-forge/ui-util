@@ -3,6 +3,7 @@
 
 # Documentation
 ### Javascript / String
+> [Object](Object.md) <[ String ]> [Var](Var.md)
 
 ## Table of contents
  - [escapeHTML()](#escapeHTML) 
@@ -227,3 +228,7 @@ Capitalize the first character.
 ```javascript
 ucfirst( 'foo' ); // 'Foo'
 ```
+
+---
+
+> [Object](Object.md) <[ String ]> [Var](Var.md)
