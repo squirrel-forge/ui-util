@@ -1,4 +1,4 @@
-/*!
+/* !
  * @module      : @squirrel-forge/ui-util
  * @version     : 0.8.2
  * @license     : MIT

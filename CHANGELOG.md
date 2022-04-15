@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.8.3
+ - Minor improvements.
+
 ## 0.8.2
  - Added *Exception.previousToStack()* fallback for none string stacks.
  - Improved docs nav and some minor typos.

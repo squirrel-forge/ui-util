@@ -159,7 +159,7 @@ export class Plugins {
      * @return {Object} - Result object
      */
     run( method, params = [], restrict = null ) {
-        if ( this.#debug ) this.#debug.group( this.constructor.name + '::run' );
+        if ( this.#debug ) this.#debug.group( this.constructor.name + '::run', method );
         const results = {};
         const names = Object.keys( this.#plugins );
         for ( let i = 0; i < names.length; i++ ) {

@@ -20,6 +20,7 @@ class EventDispatcherException extends Exception {}
 
 /**
  * Event dispatcher
+ * @abstract
  * @class
  */
 export class EventDispatcher {
