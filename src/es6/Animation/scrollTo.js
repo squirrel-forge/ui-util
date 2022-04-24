@@ -9,7 +9,7 @@
  */
 export function scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3, withTop = true ) {
     if ( offset instanceof HTMLElement ) {
-        offset = offset.getBoundingClientRect().height + ( withTop ? offset.getBoundingClientRect().top : 0 );
+        offset = offset.getBoundingClientRect().height + ( withTop ? offset.getBoundingClientRect().top + document.documentElement.scrollTop : 0 );
     } else if ( offset !== null && ( typeof offset !== 'number' || Number.isNaN( offset ) ) ) {
         throw new Error( 'scrollTo() Argument offset must be a HTMLElement or number' );
     }
