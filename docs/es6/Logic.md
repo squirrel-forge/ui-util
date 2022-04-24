@@ -28,6 +28,7 @@ class Config {
   get( name ) {} // *
   set( name, value ) {} // void
   merge( data, extend = false ) {} // void
+  require( ...names ) {} // Array
 }
 ```
 For more details check the [Config source file](../../src/es6/Logic/Config.js).
