@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.4
+ - Fixed *scrollTo* functions *withTop* option to respect scroll position.
+ - Added *Plugins.require()* to check for and fetch required plugins or throw and error.
+
 ## 0.8.3
  - Minor improvements.
 
