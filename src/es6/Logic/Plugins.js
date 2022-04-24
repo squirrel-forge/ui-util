@@ -240,4 +240,20 @@ export class Plugins {
     has( name ) {
         return !!this.#plugins[ name ];
     }
+
+    /**
+     * Require any number of plugins
+     * @param {string[]} names - Any number of names to check
+     * @return {Array<Object>} - List of plugins
+     */
+    require( ...names ) {
+        const result = [];
+        for ( let i = 0; i < names.length; i++ ) {
+            if ( !this.has( names[ i ] ) ) {
+                throw new PluginsException( 'Failed with unmet plugin requirement: ' + names[ i ] );
+            }
+            result.push( this.get( names[ i ] ) );
+        }
+        return result;
+    }
 }
