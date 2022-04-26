@@ -1,9 +1,9 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Var
-> [String](String.md) <[ Var ]> [Table of contents](../README.md)
+> [String](String.md) <[ Var ]> [Table of contents](../README.md#table-of-contents)
 
 ## Table of contents
  - [cast2type()](#cast2type)
@@ -74,4 +74,4 @@ isEmpty(); // true
 
 ---
 
-> [String](String.md) <[ Var ]> [Table of contents](../README.md)
+> [String](String.md) <[ Var ]> [Table of contents](../README.md#table-of-contents)

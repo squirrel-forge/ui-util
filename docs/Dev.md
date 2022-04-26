@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Dev
@@ -25,7 +25,7 @@ class ConsoleInterceptor extends EventDispatcher {
   detach() {} // Boolean
 }
 ```
-For more details check the [ConsoleInterceptor source file](../../src/es6/Dev/ConsoleInterceptor.js).
+For more details check the [ConsoleInterceptor source file](../src/es6/Dev/ConsoleInterceptor.js).
 
 ---
 

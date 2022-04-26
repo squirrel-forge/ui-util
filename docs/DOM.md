@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / DOM

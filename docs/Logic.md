@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Logic
@@ -31,7 +31,7 @@ class Config {
   require( ...names ) {} // Array
 }
 ```
-For more details check the [Config source file](../../src/es6/Logic/Config.js).
+For more details check the [Config source file](../src/es6/Logic/Config.js).
 
 ---
 
@@ -48,7 +48,7 @@ class Plugin {
   _context_check( context ) {} // void
 }
 ```
-For more details check the [Plugin source file](../../src/es6/Logic/Plugin.js).
+For more details check the [Plugin source file](../src/es6/Logic/Plugin.js).
 
 ---
 
@@ -71,7 +71,7 @@ class Plugins {
   has( name ) {} // boolean
 }
 ```
-For more details check the [Plugins source file](../../src/es6/Logic/Plugins.js).
+For more details check the [Plugins source file](../src/es6/Logic/Plugins.js).
 
 ---
 

@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / HTTP
@@ -44,7 +44,7 @@ class AsyncRequest extends EventDispatcher {
   _parse_json() {} // void
 }
 ```
-For more details check the [AsyncRequest source file](../../src/es6/HTTP/AsyncRequest.js).
+For more details check the [AsyncRequest source file](../src/es6/HTTP/AsyncRequest.js).
 
 ---
 
@@ -59,7 +59,7 @@ class JsonP {
   constructor( url, success, timeout = null, limit = 10000 ) {}
 }
 ```
-For more details check the [JsonP source file](../../src/es6/HTTP/JsonP.js).
+For more details check the [JsonP source file](../src/es6/HTTP/JsonP.js).
 
 ---
 

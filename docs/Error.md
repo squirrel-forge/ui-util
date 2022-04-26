@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Error
@@ -23,7 +23,7 @@ class Exception extends Error {
   addPreviousToStack() {}
 }
 ```
-For more details check the [Exception source file](../../src/es6/Error/Exception.js).
+For more details check the [Exception source file](../src/es6/Error/Exception.js).
 
 ---
 

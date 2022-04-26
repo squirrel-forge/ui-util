@@ -1,5 +1,5 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Events
@@ -116,7 +116,7 @@ class EventDispatcher {
   addEventList( events ) {} // void
 }
 ```
-For more details check the [EventDispatcher source file](../../src/es6/Events/EventDispatcher.js).
+For more details check the [EventDispatcher source file](../src/es6/Events/EventDispatcher.js).
 
 ---
 

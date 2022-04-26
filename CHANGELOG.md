@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.8.6
+ - Updated documentation.
+
 ## 0.8.5
  - Added *options.complete* for *Scroller* class to provide a default complete callback option.
  - Fixed *Scroller.event_scrollToClick()* event target, should be currentTarget.

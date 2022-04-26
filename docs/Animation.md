@@ -1,9 +1,9 @@
 ### @squirrel-forge/ui-util
-> [Back to table of contents](../README.md)
+> [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
 ### Javascript / Animation
-> [Table of contents](../README.md) <[ Animation ]> [Array](Array.md)
+> [Table of contents](../README.md#table-of-contents) <[ Animation ]> [Array](Array.md)
 
 ## Table of contents
  - [holdElementViewportPosition()](#holdElementViewportPosition)
@@ -99,7 +99,7 @@ class Scroller extends EventDispatcher {
   scrollTo( element, complete = null ) {} // void
 }
 ```
-For more details check the [Scroller source file](../../src/es6/Animation/Scroller.js).
+For more details check the [Scroller source file](../src/es6/Animation/Scroller.js).
 
 ---
 
@@ -111,8 +111,8 @@ scrollTo - Scroll to element
 scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3, withTop = true ) // void
 ```
 Scroll an element into focus, optionally using a numeric offset or element height as offset, like a sticky header.
-For advanced scrolling mechanics and abstracted bindings check the [Scroller](Animation/Scroller.md) class.
-Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for for older browsers.
+For advanced scrolling mechanics and abstracted bindings check the [Scroller](#Scroller) class.
+Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for older browsers.
 
 #### Parameters
 | Parameter    | Type               | Default  | Description                               |
@@ -129,7 +129,7 @@ Under the hood this uses native *window.scrollTo* with smoothscroll, you may [po
 |  **void**  | None.       |
 
 #### Examples
-Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](Animation/Scroller.md) class for this.
+Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](#Scroller) class for this.
 ```javascript
 // Get our offset element
 const header = document.getElementById( 'header' );
@@ -254,4 +254,4 @@ slideShow( document.getElementById( 'slidable' ), () => console.log( 'slideShow:
 
 ---
 
-> [Table of contents](../README.md) <[ Animation ]> [Array](Array.md)
+> [Table of contents](../README.md#table-of-contents) <[ Animation ]> [Array](Array.md)
