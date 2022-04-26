@@ -16,6 +16,7 @@ import { isPojo } from '../Object/isPojo.js';
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
  * @property {boolean} capture - Capture initial scroll, default: true
  * @property {number|'ready'} initial - Initial scroll delay after capture
+ * @property {null|Function} complete - Complete callback for local scrollTo
  */
 
 /**
@@ -69,6 +70,7 @@ export class Scroller extends EventDispatcher {
             selector : '[href^="#"]',
             capture : true,
             initial : 1000,
+            complete : null,
         };
 
         // Update config
@@ -88,10 +90,11 @@ export class Scroller extends EventDispatcher {
      * @param {null|Function} complete - Complete callback
      * @return {void}
      */
-    scrollTo( element, complete = null ) {
+    scrollTo( element, complete ) {
         let params = this.config.offset;
         if ( !( params instanceof Array ) ) params = [ params ];
         params.unshift( element );
+        if ( typeof complete === 'undefined' ) complete = this.config.complete;
         if ( typeof complete === 'function' ) scrollComplete( complete );
         scrollTo( ...params );
     }
@@ -103,7 +106,7 @@ export class Scroller extends EventDispatcher {
      * @return {void}
      */
     #event_scrollToClick( event ) {
-        const id = event.target.getAttribute( 'href' ).substr( 1 );
+        const id = event.currentTarget.getAttribute( 'href' ).substr( 1 );
         const target = document.getElementById( id );
         if ( target ) {
             this.scrollTo( target );

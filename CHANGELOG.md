@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.8.5
+ - Added *options.complete* for *Scroller* class to provide a default complete callback option.
+ - Fixed *Scroller.event_scrollToClick()* event target, should be currentTarget.
+
 ## 0.8.4
  - Fixed *scrollTo* functions *withTop* option to respect scroll position.
- - Added *Plugins.require()* to check for and fetch required plugins or throw and error.
+ - Added *Plugins.require()* to check for and fetch required plugins or throw an error.
 
 ## 0.8.3
  - Minor improvements.

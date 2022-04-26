@@ -93,7 +93,7 @@ class Scroller extends EventDispatcher {
     selector : String // Scroll to link selector, default: [href^="#"]
     capture : Boolean // Capture initial scroll, default: true
     initial : Number|'ready' // Initial scroll delay after capture
-    hashClean : Number // scrollComplete delay, default: 300
+    complete : null|Function // Complete callback for local scrollTo
   }
   initial : null|HTMLElement // Initial scroll-to target
   scrollTo( element, complete = null ) {} // void
