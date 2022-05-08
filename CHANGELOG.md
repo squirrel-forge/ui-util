@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.8.7
+ - Fixed *Plugins.runAsync()* method internals.
+
 ## 0.8.6
  - Updated documentation.
 

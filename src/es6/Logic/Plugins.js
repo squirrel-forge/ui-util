@@ -142,9 +142,8 @@ export class Plugins {
         const values = Object.values( run );
         const promises = [];
         for ( let i = 0; i < values.length; i++ ) {
-            const value = values[ i ][ 1 ];
-            if ( typeof value.then === 'function' ) {
-                promises.push( value );
+            if ( typeof values[ i ].then === 'function' ) {
+                promises.push( values[ i ] );
             }
         }
         return promises;
