@@ -6,20 +6,13 @@
 /**
  * Local slide animate with css/height
  * @param {HTMLElement} item - Element to animate
- * @param {null|number|string} speed - Speed in s or ms
+ * @param {null|number} speed - Speed in ms
  * @param {null|string} easing - CSS easing function
  * @param {null|string} state - State to animate to if not in toggle mode
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
  * @return {void}
  */
 function _slide_animate_internal( item, speed = null, easing = null, state = null, callback = null ) {
-
-    // Set default css properties
-    item.style.display = 'block';
-    item.style.overflow = 'hidden';
-    item.style.transitionProperty = 'height';
-    item.style.transitionTimingFunction = easing || 'ease';
-    item.firstElementChild.style.display = 'block';
 
     // Callback can be any param
     if ( typeof speed === 'function' ) {
@@ -28,16 +21,18 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     } else if ( typeof easing === 'function' ) {
         callback = easing;
         easing = null;
-    } else if ( typeof state === 'function' ) {
-        callback = state;
-        state = null;
     }
 
     // Set custom speed
-    speed = speed || 300;
-    if ( speed ) {
-        item.style.transitionDuration = typeof speed === 'number' ? speed + ( speed < 1 ? 's' : 'ms' ) : speed;
-    }
+    speed = typeof speed === 'number' && !Number.isNaN( speed ) ? speed : 300;
+
+    // Set default css properties
+    item.style.display = 'block';
+    item.style.overflow = 'hidden';
+    item.style.transitionProperty = 'height';
+    item.style.transitionTimingFunction = easing || 'ease';
+    item.firstElementChild.style.display = 'block';
+    item.style.transitionDuration = speed + 'ms';
 
     // Force correct initial state for given target state
     if ( state === 'show' ) {
@@ -81,13 +76,14 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     }
 
     // Set the target properties with a delay to avoid calculation tick collision with initial height setting
+    // Timeout is set to 10ms since 1ms might still fall into the same paint as the initial state
     window.setTimeout( () => {
         item[ hidden ? 'removeAttribute' : 'setAttribute' ]( 'aria-hidden', 'true' );
         item.style.height = hidden ? item.firstElementChild.getBoundingClientRect().height + 'px' : 0;
 
         // Complete event via timeout
         if ( !hasTransitions ) {
-            window.setTimeout( _complete, speed * 1000 );
+            window.setTimeout( _complete, speed );
         }
     }, 10 );
 }
@@ -95,7 +91,7 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
 /**
  * Slide toggle
  * @param {HTMLElement} item - Element to animate
- * @param {number|string} speed - Speed in s or ms
+ * @param {number} speed - Speed in ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
  * @return {void}
@@ -107,7 +103,7 @@ export function slideToggle( item, speed, easing, callback ) {
 /**
  * Slide hide / slideUp equivalent
  * @param {HTMLElement} item - Element to hide
- * @param {number|string} speed - Speed in s or ms
+ * @param {number} speed - Speed in ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
  * @return {void}
@@ -119,7 +115,7 @@ export function slideHide( item, speed, easing, callback ) {
 /**
  * Slide show / slideDown equivalent
  * @param {HTMLElement} item - Element to show
- * @param {number|string} speed - Speed in s or ms
+ * @param {number} speed - Speed in ms
  * @param {null|string} easing - CSS easing function
  * @param {null|SlideActionCompleteCallback|Function} callback - Optional complete callback
  * @return {void}
