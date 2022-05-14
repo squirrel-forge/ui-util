@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.9
+ - *Slide* function argument speed only accepts number in ms.
+ - Improved *Plugins* context debug logging origin.
+
 ## 0.8.8
  - Added *CustomEvent* return to *EventDispatcher.dispatchEvent()* method.
  - Added event dispatch *scroll.after* to *Scoller.scrollTo()* method.
