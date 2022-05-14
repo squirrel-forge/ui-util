@@ -196,7 +196,7 @@ export class EventDispatcher {
      * @param {null|object} detail - Event data
      * @param {boolean} bubbles - Allow event to bubble
      * @param {boolean} cancelable - Allow event to be cancelled
-     * @return {void}
+     * @return {CustomEvent} - Event object
      */
     dispatchEvent( name, detail = null, bubbles = true, cancelable = false ) {
         detail = this.#parseEventData( detail );
@@ -220,6 +220,7 @@ export class EventDispatcher {
             // Actual event
             this.#target.dispatchEvent( event );
         }
+        return event;
     }
 
     /**
