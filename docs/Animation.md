@@ -82,7 +82,8 @@ Scroller class - Binds local scroll-to links and handles a smooth initial scroll
 
 #### Class overview
 ```javascript
-// Event names: scroll.initial.complete
+// Event context: window
+// Event names: scroll.initial.complete scroll.before scroll.after
 class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}

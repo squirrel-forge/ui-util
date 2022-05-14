@@ -110,7 +110,7 @@ class EventDispatcher {
   parent : null|EventDispatcher
   isSimulated : Boolean
   hasSimulated( name ) {} // Boolean
-  dispatchEvent( name, detail = null, bubbles = true, cancelable = false ) {} // void
+  dispatchEvent( name, detail = null, bubbles = true, cancelable = false ) {} // CustomEvent
   addEventListener( name, callback, useCaptureOptions = false ) {} // void
   removeEventListener( name, callback, useCaptureOptions = false ) {} // void
   addEventList( events ) {} // void
