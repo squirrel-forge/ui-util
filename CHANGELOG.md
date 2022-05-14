@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.8
+ - Added *CustomEvent* return to *EventDispatcher.dispatchEvent()* method.
+ - Added event dispatch *scroll.after* to *Scoller.scrollTo()* method.
+ - Added *hijack* option to *scroll.before* event for *Scroller.scrollTo()* to allow preventing/hijacking the scroll action.
+
 ## 0.8.7
  - Fixed *Plugins.runAsync()* method internals.
 
