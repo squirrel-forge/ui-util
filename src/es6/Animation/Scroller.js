@@ -95,8 +95,20 @@ export class Scroller extends EventDispatcher {
         if ( !( params instanceof Array ) ) params = [ params ];
         params.unshift( element );
         if ( typeof complete === 'undefined' ) complete = this.config.complete;
-        if ( typeof complete === 'function' ) scrollComplete( complete );
-        scrollTo( ...params );
+        let is_hijacked = false;
+        this.dispatchEvent( 'scroll.before', {
+            scrollTarget : element,
+            hijack : () => { is_hijacked = true; return params; },
+            isHijacked : () => { return is_hijacked; },
+            complete : () => { if ( typeof complete === 'function' ) complete( element ); },
+        } );
+        if ( !is_hijacked ) {
+            scrollComplete( () => {
+                this.dispatchEvent( 'scroll.after', { scrollTarget : element } );
+                if ( typeof complete === 'function' ) complete( element );
+            } );
+            scrollTo( ...params );
+        }
     }
 
     /**
