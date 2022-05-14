@@ -66,6 +66,33 @@ export class Plugins {
     }
 
     /**
+     * Get context name
+     * @private
+     * @return {string} - Context name
+     */
+    #get_context_name() {
+        let name = 'unknown', id = null;
+        if ( this.#context ) {
+            if ( this.#context.constructor && this.#context.constructor.name ) {
+                name = this.#context.constructor.name;
+            }
+            if ( this.#context.type ) name = this.#context.type;
+            if ( this.#context.name ) name = this.#context.name;
+            if ( this.#context.dom && this.#context.dom.id ) id = this.#context.dom.id;
+            if ( this.#context.id ) id = this.#context.id;
+        }
+        return name + ( id ? '#' + id : '' );
+    }
+
+    /**
+     * Get debug prefix
+     * @return {string} - Origin string
+     */
+    #debug_prefix() {
+        return this.#get_context_name() + '->' + this.constructor.name + '::';
+    }
+
+    /**
      * Debug getter
      * @public
      * @return {null|console|Object} - Debug reference
@@ -93,7 +120,7 @@ export class Plugins {
         if ( !( plugins instanceof Array ) ) {
             throw new PluginsException( 'Argument plugins must be an Array' );
         }
-        if ( this.#debug ) this.#debug.group( this.constructor.name + '::load' );
+        if ( this.#debug ) this.#debug.group( this.#debug_prefix() + 'load' );
         for ( let i = 0; i < plugins.length; i++ ) {
             let data = plugins[ i ];
             if ( !( data instanceof Array ) ) {
@@ -125,7 +152,7 @@ export class Plugins {
         } catch ( e ) {
             throw new PluginsException( 'Error initializing plugin: ' + name, e );
         }
-        if ( this.#debug ) this.#debug.log( this.constructor.name + '::init', name );
+        if ( this.#debug ) this.#debug.log( this.#debug_prefix() + 'init', name );
         return this.#plugins[ name ];
     }
 
@@ -158,7 +185,7 @@ export class Plugins {
      * @return {Object} - Result object
      */
     run( method, params = [], restrict = null ) {
-        if ( this.#debug ) this.#debug.group( this.constructor.name + '::run', method );
+        if ( this.#debug ) this.#debug.group( this.#debug_prefix() + 'run', method );
         const results = {};
         const names = Object.keys( this.#plugins );
         for ( let i = 0; i < names.length; i++ ) {
@@ -170,7 +197,7 @@ export class Plugins {
             }
         }
         if ( this.#debug && !Object.keys( results ).length ) {
-            this.#debug.log( this.constructor.name + '::run No results:', method, params, restrict );
+            this.#debug.log( this.#debug_prefix() + 'run No results:', method, params, restrict );
         }
         if ( this.#debug ) this.#debug.groupEnd();
         return results;
@@ -213,9 +240,9 @@ export class Plugins {
             } catch ( e ) {
                 throw new PluginsException( 'Plugin method "' + method + '" failed to run: ' + name, e );
             }
-            if ( this.#debug ) this.#debug.log( this.constructor.name + '::exec', name, method );
+            if ( this.#debug ) this.#debug.log( this.#debug_prefix() + 'exec', name, method );
         } else if ( this.#debug ) {
-            this.#debug.log( this.constructor.name + '::exec Unknown method', method, 'on plugin', name );
+            this.#debug.log( this.#debug_prefix() + 'exec Unknown method', method, 'on plugin', name );
         }
         return result;
     }
