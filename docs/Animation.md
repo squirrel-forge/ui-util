@@ -178,12 +178,12 @@ slideToggle( item, speed = 300, easing = 'ease', callback = null ) // void
 Toggle element visibility by sliding up to hide or down to show.
 
 #### Parameters
-| Parameter    | Type          | Default | Description                                                                                           |
-|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
-| **item**     | HTMLElement   |    -    | Element to toggle                                                                                     |
-| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
-| **easing**   | String        |  'ease' | CSS easing, can be used as callback                                                                   |
-| **callback** | Function      |   null  | Function to execute after animation completion                                                        |
+| Parameter    | Type        | Default | Description                                              |
+|--------------|-------------|:-------:|----------------------------------------------------------|
+| **item**     | HTMLElement |    -    | Element to toggle                                        |
+| **speed**    | Number      |   300   | Speed at which to animate in ms, can be used as callback |
+| **easing**   | String      | 'ease'  | CSS easing, can be used as callback                      |
+| **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
 | Type/Value | Description |
@@ -207,12 +207,12 @@ slideHide( item, speed = 300, easing = 'ease', callback = null ) // void
 Hide element by sliding up.
 
 #### Parameters
-| Parameter    | Type          | Default | Description                                                                                           |
-|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
-| **item**     | HTMLElement   |    -    | Element to hide                                                                                       |
-| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
-| **easing**   | String        | 'ease'  | CSS easing, can be used as callback                                                                   |
-| **callback** | Function      |  null   | Function to execute after animation completion                                                        |
+| Parameter    | Type        | Default | Description                                              |
+|--------------|-------------|:-------:|----------------------------------------------------------|
+| **item**     | HTMLElement |    -    | Element to hide                                          |
+| **speed**    | Number      |   300   | Speed at which to animate in ms, can be used as callback |
+| **easing**   | String      | 'ease'  | CSS easing, can be used as callback                      |
+| **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
 | Type/Value | Description |
@@ -236,12 +236,12 @@ slideShow( item, speed = 300, easing = 'ease', callback = null ) // void
 Show element by sliding down.
 
 #### Parameters
-| Parameter    | Type          | Default | Description                                                                                           |
-|--------------|---------------|:-------:|-------------------------------------------------------------------------------------------------------|
-| **item**     | HTMLElement   |    -    | Element to show                                                                                       |
-| **speed**    | Number/String |   300   | Speed at which to animate in s or ms, numbers below 1 are treated as seconds, can be used as callback |
-| **easing**   | String        | 'ease'  | CSS easing, can be used as callback                                                                   |
-| **callback** | Function      |  null   | Function to execute after animation completion                                                        |
+| Parameter    | Type        | Default | Description                                              |
+|--------------|-------------|:-------:|----------------------------------------------------------|
+| **item**     | HTMLElement |    -    | Element to show                                          |
+| **speed**    | Number      |   300   | Speed at which to animate in ms, can be used as callback |
+| **easing**   | String      | 'ease'  | CSS easing, can be used as callback                      |
+| **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
 | Type/Value | Description |
