@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.10
+ - Remove *withTop* argument for *scrollTo* function.
+ - Allow *scrollTo* argument *offset* as function returning a number.
+
 ## 0.8.9
  - *Slide* function argument speed only accepts number in ms.
  - Improved *Plugins* context debug logging origin.
