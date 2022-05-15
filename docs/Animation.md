@@ -88,7 +88,7 @@ class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}
   config : { // ScrollerOptions
-    offset : null|Number|HTMLElement|Array // Offset pixels or element or Array of arguments, default: null
+    offset : null|Number|HTMLElement|Function|Array // Offset pixels, element, Function or Array of arguments, default: null
     bind : Boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
     selector : String // Scroll to link selector, default: [href^="#"]
@@ -109,20 +109,19 @@ scrollTo - Scroll to element
 
 #### Description
 ```javascript
-scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3, withTop = true ) // void
+scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3 ) // void
 ```
 Scroll an element into focus, optionally using a numeric offset or element height as offset, like a sticky header.
 For advanced scrolling mechanics and abstracted bindings check the [Scroller](#Scroller) class.
 Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for older browsers.
 
 #### Parameters
-| Parameter    | Type               | Default  | Description                               |
-|--------------|--------------------|:--------:|-------------------------------------------|
-| **element**  | HTMLElement        |    -     | Element to scroll into viewport           |
-| **offset**   | Number/HTMLElement |    0     | Scroll offset in pixels or element height |
-| **behavior** | String             | 'smooth' | Native window.scrollTo behavior option    |
-| **minDiff**  | Number             |    3     | Minimum scroll distance                   |
-| **withTop**  | Boolean            |  false   | Include the top value of offset element   |
+| Parameter    | Type                        | Default  | Description                                                  |
+|--------------|-----------------------------|:--------:|--------------------------------------------------------------|
+| **element**  | HTMLElement                 |    -     | Element to scroll into viewport                              |
+| **offset**   | Number/HTMLElement/Function |    0     | Scroll offset in pixels, element height or function callback |
+| **behavior** | String                      | 'smooth' | Native window.scrollTo behavior option                       |
+| **minDiff**  | Number                      |    3     | Minimum scroll distance                                      |
 
 #### Return Values
 | Type/Value | Description |
