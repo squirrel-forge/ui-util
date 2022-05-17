@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0
+ - Updated *EventDispatcher.dispatchEvent* return value to mimic native dispatchEvent return value.
+ - Updated *Scroller.scrollTo* and made *scroll.before* event cancellable and added *scrollTo* params to event data.
+
 ## 0.8.10
  - Remove *withTop* argument for *scrollTo* function.
  - Allow *scrollTo* argument *offset* as function returning a number.
