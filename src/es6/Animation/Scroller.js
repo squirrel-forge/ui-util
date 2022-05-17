@@ -95,14 +95,11 @@ export class Scroller extends EventDispatcher {
         if ( !( params instanceof Array ) ) params = [ params ];
         params.unshift( element );
         if ( typeof complete === 'undefined' ) complete = this.config.complete;
-        let is_hijacked = false;
-        this.dispatchEvent( 'scroll.before', {
+        const not_cancelled = this.dispatchEvent( 'scroll.before', {
             scrollTarget : element,
-            hijack : () => { is_hijacked = true; return params; },
-            isHijacked : () => { return is_hijacked; },
-            complete : () => { if ( typeof complete === 'function' ) complete( element ); },
-        } );
-        if ( !is_hijacked ) {
+            params : params,
+        }, true, true );
+        if ( not_cancelled ) {
             scrollComplete( () => {
                 this.dispatchEvent( 'scroll.after', { scrollTarget : element } );
                 if ( typeof complete === 'function' ) complete( element );
@@ -164,10 +161,14 @@ export class Scroller extends EventDispatcher {
         // Scroll when ready
         if ( this.config.initial === 'ready' ) {
             docReady( () => { this.#initial_scroll( hash ); } );
-        } else {
+        } else if ( typeof this.config.initial === 'number' ) {
 
             // Delayed initial scroll
             window.setTimeout( () => { this.#initial_scroll( hash ); }, this.config.initial );
+        } else {
+
+            // Instant scroll
+            this.#initial_scroll( hash );
         }
     }
 
@@ -178,16 +179,13 @@ export class Scroller extends EventDispatcher {
      * @return {void}
      */
     #initial_scroll( hash ) {
-        if ( this.initial ) {
+        if ( this.initial instanceof HTMLElement ) {
 
-            // Restore hash after scroll/delay
-            scrollComplete( () => {
+            // Scroll to initial target and restore hash after scroll complete
+            this.scrollTo( this.initial, () => {
                 history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substr( 1 ) ) );
                 this.dispatchEvent( 'scroll.initial.complete', { initial : this.initial } );
             } );
-
-            // Scroll to initial target
-            this.scrollTo( this.initial );
         }
     }
 }
