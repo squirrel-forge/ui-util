@@ -91,7 +91,7 @@ class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}
   config : { // ScrollerOptions
-    offset : null|Number|HTMLElement|Function|Array // Offset pixels, element, Function or Array of arguments, default: null
+    offset : Number|HTMLElement|Function|Array // Offset pixels, element, Function or Array of arguments, default: null
     bind : Boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
     selector : String // Scroll to link selector, default: [href^="#"]
