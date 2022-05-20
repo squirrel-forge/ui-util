@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.1
+ - Fixed/changed *Scroller* default offset option from *null* to *0*.
+
 ## 0.9.0
  - Updated *EventDispatcher.dispatchEvent* return value to mimic native dispatchEvent return value.
  - Updated *Scroller.scrollTo* and made *scroll.before* event cancellable and added *scrollTo* params to event data.
