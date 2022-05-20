@@ -10,7 +10,7 @@ import { isPojo } from '../Object/isPojo.js';
 
 /**
  * @typedef {Object} ScrollerOptions
- * @property {null|number|HTMLElement|Function|Array} offset - Offset pixels, element, Function or Array of arguments, default: null
+ * @property {number|HTMLElement|Function|Array} offset - Offset pixels, element, Function or Array of arguments, default: null
  * @property {boolean} bind - Bind scrollTo links, default: true
  * @property {document.body|HTMLElement} context - Context to select scrollTo links from, default: document.body
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
@@ -64,7 +64,7 @@ export class Scroller extends EventDispatcher {
 
         // Set default config
         this.config = {
-            offset : null,
+            offset : 0,
             bind : true,
             context : document.body,
             selector : '[href^="#"]',
