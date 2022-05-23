@@ -14,6 +14,7 @@ import { isPojo } from '../Object/isPojo.js';
  * @property {boolean} bind - Bind scrollTo links, default: true
  * @property {document.body|HTMLElement} context - Context to select scrollTo links from, default: document.body
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
+ * @property {boolean} autoTop - Scroll to top when using only # or #top without an actual element target
  * @property {boolean} capture - Capture initial scroll, default: true
  * @property {number|'ready'} initial - Initial scroll delay after capture
  * @property {null|Function} complete - Complete callback for local scrollTo
@@ -68,6 +69,7 @@ export class Scroller extends EventDispatcher {
             bind : true,
             context : document.body,
             selector : '[href^="#"]',
+            autoTop : false,
             capture : true,
             initial : 1000,
             complete : null,
@@ -80,11 +82,11 @@ export class Scroller extends EventDispatcher {
 
         // Capture and bind
         if ( this.config.capture ) this.#capture();
-        if ( this.config.bind ) this.#bind();
+        if ( this.config.bind ) this.bind();
     }
 
     /**
-     * Scroll to options wrapper
+     * Scroll to wrapper
      * @public
      * @param {HTMLElement} element - Target element
      * @param {null|Function} complete - Complete callback
@@ -115,8 +117,20 @@ export class Scroller extends EventDispatcher {
      * @return {void}
      */
     #event_scrollToClick( event ) {
+
+        // Check if action is disabled
+        if ( event.currentTarget.getAttribute( 'data-scrollto' ) !== 'true' ) {
+            return;
+        }
+
+        // Find the target
         const id = event.currentTarget.getAttribute( 'href' ).substr( 1 );
-        const target = document.getElementById( id );
+        let target = document.getElementById( id );
+        if ( this.config.autoTop && ( !id.length || !target && id === 'top' ) ) {
+            target = document.body;
+        }
+
+        // Scroll to target or warn in debug mode
         if ( target ) {
             this.scrollTo( target );
             event.preventDefault();
@@ -127,16 +141,29 @@ export class Scroller extends EventDispatcher {
 
     /**
      * Bind scroll to events
-     * @private
+     * @public
+     * @param {null|document.body|HTMLElement} context - Context to select scrollTo links from, default: document.body
+     * @param {null|string} selector - Scroll to link selector, default: [href^="#"]
      * @return {void}
      */
-    #bind() {
-        const links = this.config.context.querySelectorAll( this.config.selector );
+    bind( context = null, selector = null ) {
+
+        // Get config defaults
+        context = context || this.config.context;
+        selector = selector || this.config.selector;
+
+        // Find links
+        const links = this.config.context.querySelectorAll( selector );
         if ( !links.length && this.debug ) {
-            this.debug.warn( this.constructor.name + '::bind No scrollTo links found in context:', this.config.context );
+            this.debug.warn( this.constructor.name + '::bind No scrollTo links found in context:', context );
         }
+
+        // Bind all unbound links
         for ( let i = 0; i < links.length; i++ ) {
-            links[ i ].addEventListener( 'click', ( event ) => { this.#event_scrollToClick( event ); } );
+            if ( !links[ i ].hasAttribute( 'data-scrollto' ) ) {
+                links[ i ].addEventListener( 'click', ( event ) => { this.#event_scrollToClick( event ); } );
+                links[ i ].setAttribute( 'data-scrollto', 'true' );
+            }
         }
     }
 
