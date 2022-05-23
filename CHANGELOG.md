@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.2
+ - Added *Ratio* value class for ratio calculations and expression.
+ - Added *autoTop* config option to *Scroller* class utility.
+ - Made *Scroller.bind()* public for binding async contexts at own convenience.
+ - Link bound by *Scroller.bind()* will now be marked by attribute ```<a data-scrollto="true">``` and the scrollTo action may be disabled by setting the attribute to *false* after the listener is bound. 
+
 ## 0.9.1
  - Fixed/changed *Scroller* default offset option from *null* to *0*.
 
