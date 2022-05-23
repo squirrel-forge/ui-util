@@ -182,6 +182,27 @@ rand( 1, 10 ); // (1|2|3|4|5|6|7|8|9|10)
 
 ---
 
+### Ratio
+Ratio class - A ratio value class.
+
+#### Class overview
+```javascript
+class Ratio  {
+  static make( width, height = null, separator = ':' ) {} // string
+  constructor( width, height = null, separator = ':' ) {}
+  separator : String
+  w : Number // Input width
+  h : Number // Input height
+  r : Number // Ratio value
+  x : Number // Ratio width
+  y : Number // Ratio height
+  toString() {} // string
+}
+```
+For more details check the [Ratio source file](../src/es6/Number/Ratio.js).
+
+---
+
 ### round
 round - Round value
 

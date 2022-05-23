@@ -95,11 +95,13 @@ class Scroller extends EventDispatcher {
     bind : Boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
     selector : String // Scroll to link selector, default: [href^="#"]
+    autoTop : Boolean // Scroll to top when using only # or #top without an actual element target
     capture : Boolean // Capture initial scroll, default: true
     initial : Number|'ready' // Initial scroll delay after capture
     complete : null|Function // Complete callback for local scrollTo
   }
   initial : null|HTMLElement // Initial scroll-to target
+  bind( selector = null, context = null ) {} // void
   scrollTo( element, complete = null ) {} // void
 }
 ```
