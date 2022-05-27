@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.3
+ - Fixed *Slide functions* instant animation speed 0 not triggering complete since no transition event was fired. 
+
 ## 0.9.2
  - Added *Ratio* value class for ratio calculations and expression.
  - Added *autoTop* config option to *Scroller* class utility.
