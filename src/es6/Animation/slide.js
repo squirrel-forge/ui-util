@@ -24,7 +24,7 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     }
 
     // Set custom speed
-    speed = typeof speed === 'number' && !Number.isNaN( speed ) ? speed : 300;
+    speed = typeof speed === 'number' && Number.isInteger( speed ) && speed >= 0 ? speed : 300;
 
     // Set default css properties
     item.style.display = 'block';
@@ -71,7 +71,7 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     const hasTransitions = typeof item.style.transition !== 'undefined';
 
     // Complete event via transition event
-    if ( hasTransitions ) {
+    if ( hasTransitions && speed ) {
         item.addEventListener( 'transitionend', _complete, { once : true } );
     }
 
@@ -82,8 +82,8 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
         item.style.height = hidden ? item.firstElementChild.getBoundingClientRect().height + 'px' : 0;
 
         // Complete event via timeout
-        if ( !hasTransitions ) {
-            window.setTimeout( _complete, speed );
+        if ( !hasTransitions || !speed ) {
+            window.setTimeout( _complete, speed + 1 );
         }
     }, 10 );
 }
