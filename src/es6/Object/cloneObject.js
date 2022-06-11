@@ -9,7 +9,7 @@ import { isPojo } from './isPojo.js';
  * @param {boolean} recursive - Recursive mode
  * @returns {Object|Array} - Cloned object or array
  */
-export function cloneObject( source, recursive ) {
+export function cloneObject( source, recursive = false ) {
     recursive = !!recursive;
     const is_array = source instanceof Array;
     const is_plain = isPojo( source );
