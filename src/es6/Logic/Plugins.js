@@ -6,6 +6,7 @@ import { Exception } from '../Error/Exception.js';
 /**
  * Plugins exception
  * @class
+ * @extends Exception
  */
 class PluginsException extends Exception {}
 

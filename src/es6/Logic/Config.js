@@ -11,6 +11,7 @@ import { strAccess } from '../Object/strAccess.js';
 /**
  * Config exception
  * @class
+ * @extends Exception
  */
 class ConfigException extends Exception {}
 

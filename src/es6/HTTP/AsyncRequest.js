@@ -10,6 +10,7 @@ import { mergeObject } from '../Object/mergeObject.js';
 /**
  * Async request exception
  * @class
+ * @extends Exception
  */
 class AsyncRequestException extends Exception {}
 
@@ -27,6 +28,7 @@ class AsyncRequestException extends Exception {}
 /**
  * Async request
  * @class
+ * @extends EventDispatcher
  */
 export class AsyncRequest extends EventDispatcher {
 

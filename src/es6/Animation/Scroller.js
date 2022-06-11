@@ -23,6 +23,7 @@ import { isPojo } from '../Object/isPojo.js';
 /**
  * Scroller
  * @class
+ * @extends EventDispatcher
  */
 export class Scroller extends EventDispatcher {
 

@@ -1,6 +1,7 @@
 /**
  * Exception
  * @class
+ * @extends Error
  */
 export class Exception extends Error {
 

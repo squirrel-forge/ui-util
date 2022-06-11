@@ -8,6 +8,7 @@ import { isPojo } from '../Object/isPojo.js';
 /**
  * Event dispatcher exception
  * @class
+ * @extends Exception
  */
 class EventDispatcherException extends Exception {}
 
