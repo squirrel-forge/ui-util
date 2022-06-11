@@ -119,7 +119,7 @@ class EventDispatcher {
 For more details check the [EventDispatcher source file](../src/es6/Events/EventDispatcher.js).
 
 #### Notes
-When using the simulated mode (with *null* as target), the events are bubbled to the parent element manually unless event.stopPropagation() was called in a listener.
+When using the simulated mode (with *null* as target), the events are bubbled to the parent element manually unless event.stopPropagation() was called in a listener. When bubbling manually, you can use *event.detail.target* and *event.detail.current* just as *target* and *currentTarget* with normal dom events, when a valid object is bound as target then the detail properties will always be the object that triggered the event.
 
 ---
 
