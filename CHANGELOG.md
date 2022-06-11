@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.4
+ - Improved documentation, code and readme.
+ - Set *cloneObject()* argument *recursive* explicitly to default false, causes no change in behaviour.
+
 ## 0.9.3
  - Fixed *Slide functions* instant animation speed 0 not triggering complete since no transition event was fired. 
 
