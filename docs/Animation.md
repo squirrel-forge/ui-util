@@ -82,11 +82,6 @@ Scroller class - Binds local scroll-to links and handles a smooth initial scroll
 
 #### Class overview
 ```javascript
-// Event context: window
-// Events:
-//  - scroll.initial.complete
-//  - scroll.before (cancellable)
-//  - scroll.after
 class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
   constructor( options, debug ) {}
@@ -106,6 +101,12 @@ class Scroller extends EventDispatcher {
 }
 ```
 For more details check the [Scroller source file](../src/es6/Animation/Scroller.js).
+
+#### Events
+Note: *The event context for the scroller is the **window** object*.
+ - **scroll.initial.complete** - Fired when the initial scroll action has been completed.
+ - **scroll.before** - Fired before a scroll action is executed, can be prevented by calling event.preventDefault().
+ - **scroll.after** - Fired after a scroll action has completed.
 
 ---
 

@@ -16,7 +16,6 @@ AsyncRequest class - An XMLHttpRequest wrapper with events and response parsing
 
 #### Class overview
 ```javascript
-// Event names: error, success, complete, progress
 class AsyncRequest extends EventDispatcher {
   static unique_url( url, cache = false ) {} // string
   constructor( options = null, parent = null, debug = null ) {}
@@ -45,6 +44,13 @@ class AsyncRequest extends EventDispatcher {
 }
 ```
 For more details check the [AsyncRequest source file](../src/es6/HTTP/AsyncRequest.js).
+
+#### Events
+ - **error** - Fired when the request failed or returned an error.
+ - **success** - Fired when the request was successful.
+ - **complete** - Fired when the request has completed.
+ - **progress** - Fired when upload progress is made.
+ - **readystatechange** - Fired when the XMLHttpRequest state changes.
 
 ---
 

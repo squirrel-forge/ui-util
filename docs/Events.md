@@ -98,7 +98,7 @@ docReady( () => console.log( 'ready steady go!' ) );
 ---
 
 ### EventDispatcher
-EventDispatcher class - Abstract class used for creating dom event connected or alike objects
+EventDispatcher class - Abstract class used for creating dom event connected or EventTarget alike objects.
 
 #### Class overview
 ```javascript
@@ -106,7 +106,7 @@ class EventDispatcher {
   static isCompat( obj ) {} // Boolean
   constructor( element = null, parent = null, debug = null ) {}
   debug : null|Console
-  target : null|HTMLElement
+  target : null|window|document|HTMLElement|EventTarget
   parent : null|EventDispatcher
   isSimulated : Boolean
   hasSimulated( name ) {} // Boolean
@@ -117,6 +117,9 @@ class EventDispatcher {
 }
 ```
 For more details check the [EventDispatcher source file](../src/es6/Events/EventDispatcher.js).
+
+#### Notes
+When using the simulated mode (with *null* as target), the events are bubbled to the parent element manually unless event.stopPropagation() was called in a listener.
 
 ---
 

@@ -16,7 +16,6 @@ ConsoleInterceptor class - Drop-in replacement for window.console making output 
 
 #### Class overview
 ```javascript
-// Event names: debug.{console.method}
 class ConsoleInterceptor extends EventDispatcher {
   constructor( options, debug ) {}
   console : Console // Native console
@@ -26,6 +25,9 @@ class ConsoleInterceptor extends EventDispatcher {
 }
 ```
 For more details check the [ConsoleInterceptor source file](../src/es6/Dev/ConsoleInterceptor.js).
+
+#### Events
+ - **debug.{console.method}** - Fired when a given {console.method} is called, as in "debug.log" or "debug.error".
 
 ---
 
