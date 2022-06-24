@@ -16,7 +16,7 @@ import { isPojo } from '../Object/isPojo.js';
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
  * @property {boolean} autoTop - Scroll to top when using only # or #top without an actual element target
  * @property {boolean} capture - Capture initial scroll, default: true
- * @property {number|'ready'} initial - Initial scroll delay after capture
+ * @property {number|'ready'|Array} initial - Initial scroll delay after capture
  * @property {null|Function} complete - Complete callback for local scrollTo
  */
 
@@ -189,6 +189,8 @@ export class Scroller extends EventDispatcher {
         // Scroll when ready
         if ( this.config.initial === 'ready' ) {
             docReady( () => { this.#initial_scroll( hash ); } );
+        } else if ( this.config.initial instanceof Array ) {
+            this.#initial_bind_custom( [ ...this.config.initial ] );
         } else if ( typeof this.config.initial === 'number' ) {
 
             // Delayed initial scroll
@@ -201,6 +203,42 @@ export class Scroller extends EventDispatcher {
     }
 
     /**
+     * Bind custom initial event
+     * @private
+     * @param {string} hash - Hash reference
+     * @param {Array} params - Arguments
+     * @return {void}
+     */
+    #initial_bind_custom( hash, params ) {
+
+        // Get event target
+        const target = params.shift();
+
+        // Verify options
+        if ( typeof target.addEventListener !== 'function' ) {
+            throw new Error( this.constructor.name + '::capture() First initial argument must be an event target' );
+        }
+        if ( typeof params[ 0 ] !== 'string' || !params[ 0 ].length ) {
+            throw new Error( this.constructor.name + '::capture() Second initial argument must be an event name' );
+        }
+        if ( typeof params[ 1 ] !== 'function' ) {
+            throw new Error( this.constructor.name + '::capture() Thrid initial argument must be an event handler' );
+        }
+
+        // Wrap callback
+        const callback = params[ 1 ];
+        params[ 1 ] = ( event ) => {
+            callback( event, hash, () => { this.#initial_complete( hash ); } );
+        };
+
+        // By default add once option
+        if ( typeof params[ 2 ] === 'undefined' ) {
+            params[ 2 ] = { once : true };
+        }
+        target.addEventListener( ...params );
+    }
+
+    /**
      * Scroll to initial element and reset hash
      * @private
      * @param {string} hash - Hash to reset to
@@ -210,10 +248,18 @@ export class Scroller extends EventDispatcher {
         if ( this.initial instanceof HTMLElement ) {
 
             // Scroll to initial target and restore hash after scroll complete
-            this.scrollTo( this.initial, () => {
-                history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substr( 1 ) ) );
-                this.dispatchEvent( 'scroll.initial.complete', { initial : this.initial } );
-            } );
+            this.scrollTo( this.initial, () => { this.#initial_complete( hash ); } );
         }
+    }
+
+    /**
+     * Reset hash
+     * @private
+     * @param {string} hash - Hash to reset to
+     * @return {void}
+     */
+    #initial_complete( hash ) {
+        history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substr( 1 ) ) );
+        this.dispatchEvent( 'scroll.initial.complete', { initial : this.initial } );
     }
 }
