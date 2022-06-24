@@ -10,25 +10,17 @@ import { isPojo } from '../Object/isPojo.js';
  */
 export function isEmpty( value ) {
 
-    // Explicit empty values
-    if ( typeof value === 'undefined' || value === null || value === 0 || !value ) {
-        return true;
-    }
+    // Explicit empty/falsy values
+    if ( typeof value === 'undefined' || !value ) return true;
 
     // Get type and check
     switch ( typeof value ) {
     case 'string' :
         return !value.length;
     case 'object' :
-        if ( value instanceof Date ) {
-            return false;
-        }
-        if ( value instanceof Array ) {
-            return !value.length;
-        }
-        if ( !isPojo( value ) ) {
-            return typeof value.length !== 'undefined' ? !value.length : false;
-        }
+        if ( value instanceof Date ) return false;
+        if ( value instanceof Array ) return !value.length;
+        if ( !isPojo( value ) ) return typeof value.length !== 'undefined' ? !value.length : false;
         return !Object.keys( value ).length;
     }
 
