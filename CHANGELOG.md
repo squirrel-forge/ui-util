@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.5
+ - Added *Scroller* config *initial* option as Array to allow custom target and event binding.
+ - Cleanup *isEmpty* function.
+
 ## 0.9.4
  - Improved documentation, code and readme.
  - Set *cloneObject()* argument *recursive* explicitly to default false, causes no change in behaviour.
