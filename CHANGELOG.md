@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.6
+ - Added *tabFocusLock* and *getFocusable* functions for focus handling and context restrictions.
+
 ## 0.9.5
  - Added *Scroller* config *initial* option as Array to allow custom target and event binding.
  - Cleanup *isEmpty* function.
