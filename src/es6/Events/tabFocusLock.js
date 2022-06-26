@@ -29,11 +29,11 @@ function _tab_focus_lock_resolve_condition( condition ) {
 /**
  * Restrict tab focus within given element
  * @param {HTMLElement} context - Focus context
- * @param {null|boolean|Function} condition - Conditional active control
+ * @param {boolean|Function} condition - Conditional active control
  * @param {null|string} selector - Focusable selector
  * @return {(function(): void)} - Unbind/remove function
  */
-export function tabFocusLock( context, condition = null, selector = null ) {
+export function tabFocusLock( context, condition = true, selector = null ) {
 
     /**
      * Keyup event handler
