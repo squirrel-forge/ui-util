@@ -10,6 +10,8 @@
  - [debounce()](#debounce)
  - [docReady()](#docReady)
  - [EventDispatcher](#EventDispatcher)
+ - [getFocusable](#getFocusable)
+ - [tabFocusLock](#tabFocusLock)
 
 ---
 
@@ -120,6 +122,65 @@ For more details check the [EventDispatcher source file](../src/es6/Events/Event
 
 #### Notes
 When using the simulated mode (with *null* as target), the events are bubbled to the parent element manually unless event.stopPropagation() was called in a listener. When bubbling manually, you can use *event.detail.target* and *event.detail.current* just as *target* and *currentTarget* with normal dom events, when a valid object is bound as target then the detail properties will always be the object that triggered the event.
+
+---
+
+### getFocusable
+getFocusable - Get focusable element from context
+
+#### Description
+```javascript
+getFocusable( context, last = false, selector = null ) // null|HTMLElement
+```
+Get first or last focusable element from given context using a selector. 
+
+#### Parameters
+| Parameter    | Type        | Default | Description                                                                                          |
+|--------------|-------------|:-------:|------------------------------------------------------------------------------------------------------|
+| **context**  | HTMLElement |    -    | Context to select from                                                                               |
+| **last**     | Boolean     |  false  | Get first or last element, false for first element, true for last                                    |
+| **selector** | Null/String |  null   | Element selector, default: ```a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])``` |
+
+#### Return Values
+| Type/Value      | Description       |
+|-----------------|-------------------|
+| **HTMLElement** | Focusable element |
+| **null**        | Empty.            |
+
+#### Examples
+```javascript
+const element = getFocusable( document.getElementById( 'dialog-id' ) );
+if ( element ) element.focus();
+```
+
+---
+
+### tabFocusLock
+tabFocusLock - Lock tab focus to context and return unbind function.
+
+#### Description
+```javascript
+tabFocusLock( context, condition = true, selector = null ) // Function
+```
+Restrict tab focus to a given element context, will loop tab focus, by focusing the corresponding first or last element when leaving the context.
+
+#### Parameters
+| Parameter     | Type             | Default | Description                                                               |
+|---------------|------------------|:-------:|---------------------------------------------------------------------------|
+| **context**   | HTMLElement      |    -    | Context to restrict tab focus to                                          |
+| **condition** | Boolean/Function |  true   | Function that return a boolean to enable or disable tab focus restriction |
+| **selector**  | HTMLElement      |  null   | Focusable selector, see the [getFocusable](#getFocusable) function        |
+
+#### Return Values
+| Type/Value   | Description                       |
+|--------------|-----------------------------------|
+| **Function** | Function to unbind event handler. |
+
+#### Examples
+```javascript
+const remove = tabFocusLock( document.getElementById( 'dialog-id' ) );
+// Call remove(); to unbind the handler if not needed anymore.
+```
 
 ---
 

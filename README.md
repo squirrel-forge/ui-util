@@ -53,6 +53,8 @@ Package contents listing by language and namespace.
      - [debounce()](docs/Events.md#debounce)
      - [docReady()](docs/Events.md#docReady)
      - [EventDispatcher](docs/Events.md#EventDispatcher)
+     - [getFocusable](docs/Events.md#getFocusable)
+     - [tabFocusLock](docs/Events.md#tabFocusLock)
    - [HTTP](docs/HTTP.md)
      - [AsyncRequest](docs/HTTP.md#AsyncRequest)
      - [JsonP](docs/HTTP.md#JsonP)
