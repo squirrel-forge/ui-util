@@ -30,10 +30,14 @@ function _tab_focus_lock_resolve_condition( condition ) {
  * Restrict tab focus within given element
  * @param {HTMLElement} context - Focus context
  * @param {boolean|Function} condition - Conditional active control
+ * @param {boolean} loop - Loop element focus
  * @param {null|string} selector - Focusable selector
  * @return {(function(): void)} - Unbind/remove function
  */
-export function tabFocusLock( context, condition = true, selector = null ) {
+export function tabFocusLock( context, condition = true, loop = true, selector = null ) {
+
+    // Last element focus
+    let previous_focus = null;
 
     /**
      * Keyup event handler
@@ -43,10 +47,21 @@ export function tabFocusLock( context, condition = true, selector = null ) {
      */
     const _handle = function _tab_focus_lock_handler( event ) {
         if ( event.keyCode === 9 || event.key === 'Tab' ) {
-            if ( !context.contains( document.activeElement ) && _tab_focus_lock_resolve_condition( condition ) ) {
-                event.preventDefault();
-                const element = getFocusable( context, event.shiftKey, selector );
-                if ( element ) element.focus();
+            if ( _tab_focus_lock_resolve_condition( condition ) ) {
+                if ( !context.contains( document.activeElement ) ) {
+                    event.preventDefault();
+                    let element;
+                    if ( loop ) {
+                        const first = getFocusable( context, false, selector );
+                        const last = getFocusable( context, true, selector );
+                        element = previous_focus === first ? last : first;
+                    } else {
+                        element = getFocusable( context, event.shiftKey, selector );
+                    }
+                    if ( element ) element.focus();
+                } else {
+                    previous_focus = document.activeElement;
+                }
             }
         }
     };
