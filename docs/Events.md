@@ -20,15 +20,16 @@ bindNodeList - Bind multiple events to each node
 
 #### Description
 ```javascript
-bindNodeList( elements, events ) // void
+bindNodeList( elements, events, unbind = false ) // void
 ```
-Bind multiple event listeners on each element in a NodeList or Array.
+Bind or unbind multiple event listeners on each element in a NodeList or Array.
 
 #### Parameters
 | Parameter    | Type           | Default | Description                           |
 |--------------|----------------|:-------:|---------------------------------------|
 | **elements** | Array/NodeList |    -    | Array or NodeList of elements to bind |
 | **events**   | Array          |    -    | Array of listener argument arrays     |
+| **unbind**   | Boolean        |  false  | Remove event listeners                |
 
 #### Return Values
 | Type/Value | Description  |
@@ -37,11 +38,17 @@ Bind multiple event listeners on each element in a NodeList or Array.
 
 #### Examples
 ```javascript
-bindNodeList( document.querySelectorAll( 'a' ), [
+const events = [
     [ 'click', ( event ) => console.log( 'click' ) ],
     [ 'focus', ( event ) => console.log( 'focus' ) ],
     [ 'blur', ( event ) => console.log( 'blur' ) ],
-] );
+];
+
+// Bind the events
+bindNodeList( document.querySelectorAll( 'a' ), events );
+
+// Unbind the events
+bindNodeList( document.querySelectorAll( 'a' ), events, true );
 ```
 
 ---
@@ -160,7 +167,7 @@ tabFocusLock - Lock tab focus to context and return unbind function.
 
 #### Description
 ```javascript
-tabFocusLock( context, condition = true, selector = null ) // Function
+tabFocusLock( context, condition = true, loop = true, selector = null ) // Function
 ```
 Restrict tab focus to a given element context, will loop tab focus, by focusing the corresponding first or last element when leaving the context.
 
@@ -169,6 +176,7 @@ Restrict tab focus to a given element context, will loop tab focus, by focusing 
 |---------------|------------------|:-------:|---------------------------------------------------------------------------|
 | **context**   | HTMLElement      |    -    | Context to restrict tab focus to                                          |
 | **condition** | Boolean/Function |  true   | Function that return a boolean to enable or disable tab focus restriction |
+| **loop**      | Boolean          |  true   | Loop element focus                                                        |
 | **selector**  | HTMLElement      |  null   | Focusable selector, see the [getFocusable](#getFocusable) function        |
 
 #### Return Values
