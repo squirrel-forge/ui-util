@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.7
+ - Added third boolean argument *unbind* with default *true* to *bindNodeList* function.
+ - Added third boolean argument *loop* to *tabFocusLock* function and moved optional *selector* to fourth argument. 
+
 ## 0.9.6
  - Added *tabFocusLock* and *getFocusable* functions for focus handling and context restrictions.
 
