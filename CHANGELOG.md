@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.9.7
- - Added third boolean argument *unbind* with default *true* to *bindNodeList* function.
+ - Added third boolean argument *unbind* with default *false* to *bindNodeList* function.
  - Added third boolean argument *loop* to *tabFocusLock* function and moved optional *selector* to fourth argument. 
 
 ## 0.9.6
