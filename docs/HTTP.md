@@ -87,9 +87,6 @@ class LocationManager extends EventDispatcher {
 ```
 For more details check the [LocationManager source file](../src/es6/HTTP/LocationManager.js).
 
-#### Notes
-All [EventDispatcher](#eventdispatcher) methods are available and event names should be the callback name that is called on given context.
-
 ---
 
 > [Events](Events.md) <[ HTTP ]> [Layout](Layout.md)
