@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.8
+ - Added *isValidFunctionName* function to check string assignments.
+ - Added *CallbackEvents* class prototype to handle callback responses via events.
+ - Added *LocationManager* class to handle url changes and easy state setting and detection.
+ - Moved *getScrollbarWidth* and *getVisibility* internally, only direct imports require a path change.
+ - Updated docs and hopefully fixed all hash links.
+
 ## 0.9.7
  - Added third boolean argument *unbind* with default *false* to *bindNodeList* function.
  - Added third boolean argument *loop* to *tabFocusLock* function and moved optional *selector* to fourth argument. 
