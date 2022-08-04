@@ -6,7 +6,7 @@
 > [DOM](DOM.md) <[ Error ]> [Events](Events.md)
 
 ## Table of contents
- - [Exception](#Exception)
+ - [Exception](#exception)
 
 ---
 

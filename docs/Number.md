@@ -6,11 +6,11 @@
 > [Logic](Logic.md) <[ Number ]> [Object](Object.md)
 
 ## Table of contents
- - [convertBytes()](#convertBytes)
+ - [convertBytes()](#convertbytes)
  - [gcd()](#gcd)
- - [isEven()](#isEven)
- - [isFloat()](#isFloat)
- - [leadingZeros()](#leadingZeros)
+ - [isEven()](#iseven)
+ - [isFloat()](#isfloat)
+ - [leadingZeros()](#leadingzeros)
  - [rand()](#rand)
  - [round()](#round)
 

@@ -7,7 +7,7 @@
 
 ## Table of contents
  - [cast2type()](#cast2type)
- - [isEmpty()](#isEmpty)
+ - [isEmpty()](#isempty)
 
 ---
 

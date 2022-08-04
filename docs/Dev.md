@@ -6,8 +6,8 @@
 > [Array](Array.md) <[ Dev ]> [DOM](DOM.md)
 
 ## Table of contents
- - [ConsoleInterceptor](#ConsoleInterceptor)
- - [tabFocus()](#tabFocus)
+ - [ConsoleInterceptor](#consoleinterceptor)
+ - [tabFocus()](#tabfocus)
 
 ---
 

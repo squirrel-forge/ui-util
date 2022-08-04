@@ -3,12 +3,12 @@
 
 # Documentation
 ### Javascript / Logic
-> [HTTP](HTTP.md) <[ Logic ]> [Number](Number.md)
+> [Layout](Layout.md) <[ Logic ]> [Number](Number.md)
 
 ## Table of contents
- - [Config](#Config)
- - [Plugin](#Plugin)
- - [Plugins](#Plugins)
+ - [Config](#config)
+ - [Plugin](#plugin)
+ - [Plugins](#plugins)
 
 ---
 
@@ -36,7 +36,7 @@ For more details check the [Config source file](../src/es6/Logic/Config.js).
 ---
 
 ### Plugin
-Plugin class - Plugin class for use with the [Plugins](#Plugins) class
+Plugin class - Plugin class for use with the [Plugins](#plugins) class
 
 #### Class overview
 ```javascript
@@ -53,7 +53,7 @@ For more details check the [Plugin source file](../src/es6/Logic/Plugin.js).
 ---
 
 ### Plugins
-Plugins class - A plugins handler class for use with the [Plugin](#Plugin) class
+Plugins class - A plugins handler class for use with the [Plugin](#plugin) class
 
 #### Class overview
 ```javascript
@@ -75,4 +75,4 @@ For more details check the [Plugins source file](../src/es6/Logic/Plugins.js).
 
 ---
 
-> [HTTP](HTTP.md) <[ Logic ]> [Number](Number.md)
+> [Layout](Layout.md) <[ Logic ]> [Number](Number.md)

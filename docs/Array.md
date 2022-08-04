@@ -6,7 +6,7 @@
 > [Animation](Animation.md) <[ Array ]> [Dev](Dev.md)
 
 ## Table of contents
- - [mergeArray()](#mergeArray)
+ - [mergeArray()](#mergearray)
 
 ---
 

@@ -3,11 +3,12 @@
 
 # Documentation
 ### Javascript / HTTP
-> [Events](Events.md) <[ HTTP ]> [Logic](Logic.md)
+> [Events](Events.md) <[ HTTP ]> [Layout](Layout.md)
 
 ## Table of contents
- - [AsyncRequest](#AsyncRequest)
- - [JsonP](#JsonP)
+ - [AsyncRequest](#asyncrequest)
+ - [JsonP](#jsonp)
+ - [LocationManager](#locationmanager)
 
 ---
 
@@ -69,4 +70,26 @@ For more details check the [JsonP source file](../src/es6/HTTP/JsonP.js).
 
 ---
 
-> [Events](Events.md) <[ HTTP ]> [Logic](Logic.md)
+### LocationManager
+LocationManager class - Class for handling urls, get params, push and replace states etc.
+The class extends [EventDispatcher](Events.md#eventdispatcher) class.
+
+#### Class overview
+```javascript
+class LocationManager extends EventDispatcher {
+    static decodeSearch( query ) {} // Object
+    static encodeSearch( data ) {} // String
+    constructor( protocols = null, debug = null ) {}
+    url( data, absolute = true ) {} // String
+    search( param = null ) {} // null|String|Object
+    update( state, title = null, data = null, replace = false ) {} // void
+}
+```
+For more details check the [LocationManager source file](../src/es6/HTTP/LocationManager.js).
+
+#### Notes
+All [EventDispatcher](#eventdispatcher) methods are available and event names should be the callback name that is called on given context.
+
+---
+
+> [Events](Events.md) <[ HTTP ]> [Layout](Layout.md)

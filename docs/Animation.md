@@ -6,14 +6,14 @@
 > [Table of contents](../README.md#table-of-contents) <[ Animation ]> [Array](Array.md)
 
 ## Table of contents
- - [holdElementViewportPosition()](#holdElementViewportPosition)
- - [scrollComplete()](#scrollComplete)
- - [Scroller](#Scroller)
- - [scrollTo()](#scrollTo)
- - [Slide functions](#Slide-functions)
-   - [slideToggle()](#slideToggle)
-   - [slideHide()](#slideHide)
-   - [slideShow()](#slideShow)
+ - [holdElementViewportPosition()](#holdelementviewportposition)
+ - [scrollComplete()](#scrollcomplete)
+ - [Scroller](#scroller)
+ - [scrollTo()](#scrollto)
+ - [Slide functions](#slide-functions)
+   - [slideToggle()](#slidetoggle)
+   - [slideHide()](#slidehide)
+   - [slideShow()](#slideshow)
 
 ---
 
@@ -118,7 +118,7 @@ scrollTo - Scroll to element
 scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3 ) // void
 ```
 Scroll an element into focus, optionally using a numeric offset or element height as offset, like a sticky header.
-For advanced scrolling mechanics and abstracted bindings check the [Scroller](#Scroller) class.
+For advanced scrolling mechanics and abstracted bindings check the [Scroller](#scroller) class.
 Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for older browsers.
 
 #### Parameters
@@ -135,7 +135,7 @@ Under the hood this uses native *window.scrollTo* with smoothscroll, you may [po
 |  **void**  | None.       |
 
 #### Examples
-Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](#Scroller) class for this.
+Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](#scroller) class for this.
 ```javascript
 // Get our offset element
 const header = document.getElementById( 'header' );

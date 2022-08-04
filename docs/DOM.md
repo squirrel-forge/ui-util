@@ -6,15 +6,13 @@
 > [Dev](Dev.md) <[ DOM ]> [Error](Error.md)
 
 ## Table of contents
- - [appendAfter()](#appendAfter)
- - [appendHTML()](#appendHTML)
- - [attributeJSON()](#attributeJSON)
- - [getElementTagType()](#getElementTagType)
- - [getScrollbarWidth()](#getScrollbarWidth)
- - [getVisibility()](#getVisibility)
- - [prependChild()](#prependChild)
+ - [appendAfter()](#appendafter)
+ - [appendHTML()](#appendhtml)
+ - [attributeJSON()](#attributejson)
+ - [getElementTagType()](#getelementtagtype)
+ - [prependChild()](#prependchild)
  - [uniqid()](#uniqid)
- - [requireUniqid()](#requireUniqid)
+ - [requireUniqid()](#requireuniqid)
  - [unwrap()](#unwrap)
  - [wrap()](#wrap)
 
@@ -128,57 +126,6 @@ Get element tag type string, compiled from tagName + type.
 #### Examples
 ```javascript
 getElementTagType( document.getElementById( 'input[type="hidden"]' ) ); // input-hidden
-```
-
----
-
-### getScrollbarWidth
-getScrollbarWidth - Get current scrollbar width
-
-#### Description
-```javascript
-getScrollbarWidth() // Number
-```
-Get the current device scrollbar width, creating some hidden elements and measuring the difference.
-
-#### Parameters
-The function has no parameters.
-
-#### Return Values
-| Type/Value | Description               |
-|------------|---------------------------|
-| **Number** | Scrollbar width in pixels |
-
-#### Examples
-```javascript
-getScrollbarWidth(); // 16
-```
-
----
-
-### getVisibility
-getVisibility - Get element vertical visibility
-
-#### Description
-```javascript
-getVisibility( elem, container = null ) // Object
-```
-Get element vertical visibility, considering scroll position, supplies relative and absolute values.
-
-#### Parameters
-| Parameter     | Type        |     Default     | Description                        |
-|---------------|-------------|:---------------:|------------------------------------|
-| **elem**      | HTMLElement |        -        | Element to get visibility data for |
-| **container** | HTMLElement | documentElement | Relative container                 |
-
-#### Return Values
-| Type/Value | Description                                                                    |
-|------------|--------------------------------------------------------------------------------|
-| **Object** | Visibility object { elem : Number %, view : Number %, height : Number pixels } |
-
-#### Examples
-```javascript
-getVisibility( document.getElementById( 'section' ) ); // { elem : 27.4578567, view : 42.5678, height : 347 }
 ```
 
 ---

@@ -6,13 +6,14 @@
 > [Object](Object.md) <[ String ]> [Var](Var.md)
 
 ## Table of contents
- - [escapeHTML()](#escapeHTML) 
- - [simpleReplace()](#simpleReplace)
+ - [escapeHTML()](#escapehtml) 
+ - [isValidFunctionName()](#isvalidfunctionname) 
+ - [simpleReplace()](#simplereplace)
  - [str2node()](#str2node)
  - [str2time()](#str2time)
  - [strand()](#strand)
- - [strSlug()](#strSlug)
- - [trimChar()](#trimChar)
+ - [strSlug()](#strslug)
+ - [trimChar()](#trimchar)
  - [ucfirst()](#ucfirst)
 
 ---
@@ -39,6 +40,33 @@ Escape html special chars, only: &><"'
 #### Examples
 ```javascript
 escapeHTML( 'foo > 1' ); // 'foo &gt; 1'
+```
+
+---
+
+### isValidFunctionName
+isValidFunctionName - Check string for a valid function name
+
+#### Description
+```javascript
+isValidFunctionName( str ) // boolean
+```
+Very basic function name check, does not deal with reserved words or any other special cases.
+
+#### Parameters
+| Parameter | Type   | Default | Description     |
+|-----------|--------|:-------:|-----------------|
+| **str**   | String |    -    | String to check |
+
+#### Return Values
+| Type/Value  | Description   |
+|-------------|---------------|
+| **Boolean** | True if valid |
+
+#### Examples
+```javascript
+isValidFunctionName( ',._!not-valid' ); // false
+isValidFunctionName( '_fn' ); // true
 ```
 
 ---

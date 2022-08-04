@@ -6,11 +6,11 @@
 > [Number](Number.md) <[ Object ]> [String](String.md)
 
 ## Table of contents
- - [cloneObject()](#cloneObject)
+ - [cloneObject()](#cloneobject)
  - [isPojo()](#isPojo)
- - [mergeObject()](#mergeObject)
- - [strAccess()](#strAccess)
- - [strCreate()](#strCreate)
+ - [mergeObject()](#mergeobject)
+ - [strAccess()](#straccess)
+ - [strCreate()](#strcreate)
 
 ---
 

@@ -6,12 +6,13 @@
 > [Error](Error.md) <[ Events ]> [HTTP](HTTP.md)
 
 ## Table of contents
- - [bindNodeList()](#bindNodeList)
+ - [bindNodeList()](#bindnodelist)
+ - [CallbackEvents()](#callbackevents)
  - [debounce()](#debounce)
- - [docReady()](#docReady)
- - [EventDispatcher](#EventDispatcher)
- - [getFocusable](#getFocusable)
- - [tabFocusLock](#tabFocusLock)
+ - [docReady()](#docready)
+ - [EventDispatcher](#eventdispatcher)
+ - [getFocusable](#getfocusable)
+ - [tabFocusLock](#tabfocuslock)
 
 ---
 
@@ -50,6 +51,23 @@ bindNodeList( document.querySelectorAll( 'a' ), events );
 // Unbind the events
 bindNodeList( document.querySelectorAll( 'a' ), events, true );
 ```
+
+---
+
+### CallbackEvents
+CallbackEvents class - Abstract class used for creating dom event connected or EventTarget alike objects.
+The class extends [EventDispatcher](#eventdispatcher) class.
+
+#### Class overview
+```javascript
+class CallbackEvents extends EventDispatcher {
+  constructor( element = null, scope = window, prefix = 'callback.', debug = null ) {}
+}
+```
+For more details check the [CallbackEvents source file](../src/es6/Events/CallbackEvents.js).
+
+#### Notes
+All [EventDispatcher](#eventdispatcher) methods are available and event names should be the callback name that is called on given context.
 
 ---
 
@@ -177,7 +195,7 @@ Restrict tab focus to a given element context, will loop tab focus, by focusing 
 | **context**   | HTMLElement      |    -    | Context to restrict tab focus to                                          |
 | **condition** | Boolean/Function |  true   | Function that return a boolean to enable or disable tab focus restriction |
 | **loop**      | Boolean          |  true   | Loop element focus                                                        |
-| **selector**  | HTMLElement      |  null   | Focusable selector, see the [getFocusable](#getFocusable) function        |
+| **selector**  | HTMLElement      |  null   | Focusable selector, see the [getFocusable](#getfocusable) function        |
 
 #### Return Values
 | Type/Value   | Description                       |
