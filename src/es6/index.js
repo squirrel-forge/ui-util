@@ -1,6 +1,6 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.7
+ * @version     : 0.9.8
  * @license     : MIT
  * @copyright   : 2022 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
@@ -36,6 +36,7 @@ export { Exception } from './Error/Exception.js';
  * Events
  */
 export { bindNodeList } from './Events/bindNodeList.js';
+export { CallbackEvents } from './Events/CallbackEvents.js';
 export { debounce } from './Events/debounce.js';
 export { docReady } from './Events/docReady.js';
 export { EventDispatcher } from './Events/EventDispatcher.js';
@@ -48,8 +49,6 @@ export { appendAfter } from './DOM/appendAfter.js';
 export { appendHTML } from './DOM/appendHTML.js';
 export { attributeJSON } from './DOM/attributeJSON.js';
 export { getElementTagType } from './DOM/getElementTagType.js';
-export { getScrollbarWidth } from './DOM/getScrollbarWidth.js';
-export { getVisibility } from './DOM/getVisibility.js';
 export { prependChild } from './DOM/prependChild.js';
 export { uniqid, requireUniqid } from './DOM/uniqid.js';
 export { unwrap } from './DOM/unwrap.js';
@@ -60,6 +59,13 @@ export { wrap } from './DOM/wrap.js';
  */
 export { AsyncRequest } from './HTTP/AsyncRequest.js';
 export { JsonP } from './HTTP/JsonP.js';
+export { LocationManager } from './HTTP/LocationManager.js';
+
+/**
+ * Layout
+ */
+export { getScrollbarWidth } from './Layout/getScrollbarWidth.js';
+export { getVisibility } from './Layout/getVisibility.js';
 
 /**
  * Logic
@@ -93,6 +99,7 @@ export { strCreate } from './Object/strCreate.js';
  * String
  */
 export { escapeHTML } from './String/escapeHTML.js';
+export { isValidFunctionName } from './String/isValidFunctionName.js';
 export { simpleReplace } from './String/simpleReplace.js';
 export { str2node } from './String/str2node.js';
 export { str2time } from './String/str2time.js';
