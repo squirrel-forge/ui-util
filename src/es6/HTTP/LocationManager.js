@@ -343,11 +343,13 @@ export class LocationManager extends EventDispatcher {
     update( state, title = null, data = null, replace = false ) {
         title = title || document.title;
         const url = this.url( data );
-        if ( location.href === url ) throw new LocationManagerException( 'Argument data must result in an url change' );
         if ( replace ) {
             history.replaceState( state, title, url );
+            if ( this.debug ) this.debug.log( this.constructor.name + '::update Replace:', url, state );
         } else {
+            if ( location.href === url ) throw new LocationManagerException( 'Argument data must result in an url change' );
             history.pushState( state, title, url );
+            if ( this.debug ) this.debug.log( this.constructor.name + '::update Push:', url, state );
         }
     }
 }
