@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.9
+ - Updated *LocationManager* with some improved debug information.
+ - Updated *LocationManager.update()* method to only throw on push if same url.
+
 ## 0.9.8
  - Added *isValidFunctionName* function to check string assignments.
  - Added *CallbackEvents* class prototype to handle callback responses via events.
