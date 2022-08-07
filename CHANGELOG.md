@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.10
+ - Added *location.pop*, *location.before.update*, *location.replace* and *location.push* events to *LocationManager* class.
+ - Updated docs.
+
 ## 0.9.9
  - Updated *LocationManager* with some improved debug information.
  - Updated *LocationManager.update()* method to only throw on push if same url.
