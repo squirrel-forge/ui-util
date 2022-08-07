@@ -98,11 +98,8 @@ export class LocationManager extends EventDispatcher {
      * @return {void}
      */
     #event_popstate( event ) {
-        if ( this.debug ) {
-            this.debug.groupCollapsed( this.constructor.name + '::popState [ ' + location + ' ]' );
-            this.debug.log( 'State', event.state );
-            this.debug.groupEnd();
-        }
+        if ( this.debug ) this.debug.log( this.constructor.name + '::popState [ ' + location.href + ' ]', event.state );
+        this.dispatchEvent( 'location.pop', { event } );
     }
 
     /**
@@ -314,6 +311,9 @@ export class LocationManager extends EventDispatcher {
     // TODO: path contained in path function
     // pathContained( a, b ) return boolean
 
+    // TODO: resolve path ../ etc
+    // pathResolve( ...abc ) return string
+
     /**
      * Get search params or value
      * @public
@@ -342,14 +342,18 @@ export class LocationManager extends EventDispatcher {
      */
     update( state, title = null, data = null, replace = false ) {
         title = title || document.title;
+        if ( !this.dispatchEvent( 'location.before.update', { title, data, replace }, true, true ) ) return;
         const url = this.url( data );
         if ( replace ) {
+            if ( this.debug ) this.debug.log( this.constructor.name + '::update Replace:', location.href, '[>>>]', url, state );
+            const from = location.href;
             history.replaceState( state, title, url );
-            if ( this.debug ) this.debug.log( this.constructor.name + '::update Replace:', url, state );
+            this.dispatchEvent( 'location.replace', { state, title, url, from } );
         } else {
             if ( location.href === url ) throw new LocationManagerException( 'Argument data must result in an url change' );
-            history.pushState( state, title, url );
             if ( this.debug ) this.debug.log( this.constructor.name + '::update Push:', url, state );
+            history.pushState( state, title, url );
+            this.dispatchEvent( 'location.push', { state, title, url } );
         }
     }
 }
