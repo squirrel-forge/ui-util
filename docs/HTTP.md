@@ -87,6 +87,12 @@ class LocationManager extends EventDispatcher {
 ```
 For more details check the [LocationManager source file](../src/es6/HTTP/LocationManager.js).
 
+#### Events
+ - **location.pop** - Fired right after default *window.popstate* event and contains original event information in *event.detail.event*.
+ - **location.before.update** - Fired before an url update is made with push or replace state, can be prevented by calling event.preventDefault().
+ - **location.replace** - Fired after *history.replaceState()* and contains *title*, *url* and *state* information.
+ - **location.push** - Fired after *history.pushState()* and contains *title*, *url* and *state* information.
+
 ---
 
 > [Events](Events.md) <[ HTTP ]> [Layout](Layout.md)
