@@ -13,8 +13,7 @@ import { cloneObject } from '../Object/cloneObject.js';
 /**
  * @callback TrackingGroup - Callback to supply a dynamic tracking group name
  * @param {Tracker} tracker - Tracker instance that is running the trigger
- * @param {TrackerDefinition} definition - Tracking definition object
- * @param {Array} event_args - Any number of additional arguments assigned by the event calling the trigger
+ * @param {...*} event_args - Any number of additional arguments assigned by the event call the trigger
  * @return {string} - Tracking group name
  */
 
@@ -64,12 +63,12 @@ export class Tracker {
      * Get tracking data
      * @public
      * @static
-     * @param {TrackingData|Object} data - Tracking data
+     * @param {TrackerDefinition|Object} tracker - Tracking definition
      * @param {Array<*>} params - Info arguments
      * @return {TrackingData|Object} - Compiled tracking data
      */
-    static getData( data, params ) {
-        data = cloneObject( data, true );
+    static getData( tracker, params ) {
+        const data = cloneObject( tracker.data, true );
         const entries = Object.entries( data );
         for ( let i = 0; i < entries.length; i++ ) {
             const [ prop, value ] = entries[ i ];
@@ -134,7 +133,7 @@ export class Tracker {
         if ( tracker.trigger( ...params ) ) {
             if ( this.#debug ) this.#debug.log( this.constructor.name + '::track Triggered:', tracker, params );
             this.#track_once( tracker, params );
-            window.dataLayer.push( this.constructor.getData( tracker.data, params ) );
+            window.dataLayer.push( this.constructor.getData( tracker, params ) );
         }
     }
 
@@ -148,7 +147,7 @@ export class Tracker {
     #get_group( tracker, params ) {
         let group = tracker.group;
         if ( typeof tracker.group === 'function' ) {
-            group = tracker.group( this, tracker, params );
+            group = tracker.group( ...params );
         }
         return group || 'default';
     }
