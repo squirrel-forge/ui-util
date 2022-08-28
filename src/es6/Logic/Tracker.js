@@ -25,6 +25,12 @@ import { cloneObject } from '../Object/cloneObject.js';
  */
 
 /**
+ * @callback TrackingExecutor - Executes the tracking call
+ * @param {Object} data - The tracking data
+ * @return {void}
+ */
+
+/**
  * @typedef {Object} TrackingData - Data layer object
  * @property {...*|TrackingDataCallback} * - Any number of properties, values that are functions are executed as TrackingDataCallback
  */
@@ -50,6 +56,14 @@ export class Tracker {
      * @type {null|console|Object}
      */
     #debug = null;
+
+    /**
+     * Tracking function
+     * @private
+     * @property
+     * @type {null|TrackingExecutor|Function}
+     */
+    #exec = null;
 
     /**
      * Events fired once register
@@ -82,12 +96,19 @@ export class Tracker {
     /**
      * Constructor
      * @constructor
+     * @param {null|TrackingExecutor|Function} executor - Tracking function
      * @param {null|console} debug - Console or alike object to show debugging
      */
-    constructor( debug = null ) {
+    constructor( executor = null, debug = null ) {
 
         // Debugger instance
         this.#debug = debug;
+
+        // Customizable executor
+        if ( typeof executor !== 'function' ) {
+            executor = ( data ) => { window.dataLayer.push( data ); };
+        }
+        this.#exec = executor;
     }
 
     /**
@@ -133,7 +154,7 @@ export class Tracker {
         if ( tracker.trigger( ...params ) ) {
             if ( this.#debug ) this.#debug.log( this.constructor.name + '::track Triggered:', tracker, params );
             this.#track_once( tracker, params );
-            window.dataLayer.push( this.constructor.getData( tracker, params ) );
+            this.#exec( this.constructor.getData( tracker, params ) );
         }
     }
 
