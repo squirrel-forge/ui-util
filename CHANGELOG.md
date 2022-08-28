@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.11
+ - Added *Tracker* class a tracking helper class to run tracking events with conditions and dynamic data assignment.
+ - Removed devDependencies from *package.json*.
+
 ## 0.9.10
  - Added *location.pop*, *location.before.update*, *location.replace* and *location.push* events to *LocationManager* class.
  - Updated docs.
