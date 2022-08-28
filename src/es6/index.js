@@ -73,6 +73,7 @@ export { getVisibility } from './Layout/getVisibility.js';
 export { Config } from './Logic/Config.js';
 export { Plugin } from './Logic/Plugin.js';
 export { Plugins } from './Logic/Plugins.js';
+export { Tracker } from './Logic/Tracker.js';
 
 /**
  * Number
