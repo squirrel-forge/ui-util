@@ -82,8 +82,8 @@ Tracker class - A tracking helper class width condition and dynamic data
 #### Class overview
 ```javascript
 class Tracker {
-    static getData( data, params ) {} // TrackingData|Object
-    constructor( debug = null ) {}
+    static getData( tracker, params ) {} // TrackingData|Object
+    constructor( executor = null, debug = null ) {}
     debug : null|Console
     run( trackers, params = [] ) {} // void
     ranOnceAlready( tracker, params = [] ) {} // boolean
