@@ -9,6 +9,7 @@
  - [Config](#config)
  - [Plugin](#plugin)
  - [Plugins](#plugins)
+ - [Tracker](#tracker)
 
 ---
 
@@ -72,6 +73,24 @@ class Plugins {
 }
 ```
 For more details check the [Plugins source file](../src/es6/Logic/Plugins.js).
+
+---
+
+### Tracker
+Tracker class - A tracking helper class width condition and dynamic data
+
+#### Class overview
+```javascript
+class Tracker {
+    static getData( data, params ) {} // TrackingData|Object
+    constructor( debug = null ) {}
+    debug : null|Console
+    run( trackers, params = [] ) {} // void
+    ranOnceAlready( tracker, params = [] ) {} // boolean
+    clearOnce( group = null ) {} // void
+}
+```
+For more details check the [Tracker source file](../src/es6/Logic/Tracker.js).
 
 ---
 

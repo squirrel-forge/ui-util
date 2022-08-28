@@ -65,6 +65,7 @@ Package contents listing by language and namespace.
      - [Config](docs/Logic.md#config)
      - [Plugin](docs/Logic.md#plugin)
      - [Plugins](docs/Logic.md#plugins)
+     - [Tracker](docs/Logic.md#tracker)
    - [Number](docs/Number.md)
      - [convertBytes()](docs/Number.md#convertbytes)
      - [gcd()](docs/Number.md#gcd#gcd)
