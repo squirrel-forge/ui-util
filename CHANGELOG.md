@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.12
+ - Fixed *Tracker* api and internal arguments to be consistent.
+ - Added *Tracker* constructor argument *executor* to allow customization of the actual tracking event firing.
+
 ## 0.9.11
  - Added *Tracker* class a tracking helper class to run tracking events with conditions and dynamic data assignment.
  - Removed devDependencies from *package.json*.
