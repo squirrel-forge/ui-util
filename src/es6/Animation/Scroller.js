@@ -69,7 +69,7 @@ export class Scroller extends EventDispatcher {
             offset : 0,
             bind : true,
             context : document.body,
-            selector : '[href^="#"]',
+            selector : '[href^="#"], [href*="#"]',
             autoTop : false,
             capture : true,
             initial : 1000,
@@ -124,10 +124,20 @@ export class Scroller extends EventDispatcher {
             return;
         }
 
+        // Find the target id
+        let id = null;
+        const href = event.currentTarget.getAttribute( 'href' );
+        const hash = href.indexOf( '#' );
+        if ( hash === 0 ) {
+            id = href.substring( 1 );
+        } else if ( hash > 0 ) {
+            const parts = href.split( '#' );
+            if ( location.pathname === parts[ 0 ] ) id = parts[ 1 ] || '';
+        }
+
         // Find the target
-        const id = event.currentTarget.getAttribute( 'href' ).substr( 1 );
         let target = document.getElementById( id );
-        if ( this.config.autoTop && ( !id.length || !target && id === 'top' ) ) {
+        if ( this.config.autoTop && !target && ( id === '' || id === 'top' ) ) {
             target = document.body;
         }
 
@@ -136,7 +146,7 @@ export class Scroller extends EventDispatcher {
             this.scrollTo( target );
             event.preventDefault();
         } else if ( this.debug ) {
-            this.debug.warn( this.constructor.name + '::event_scrollToClick No valid target for: ', id );
+            this.debug.warn( this.constructor.name + '::event_scrollToClick No valid target for: ', id, event.currentTarget );
         }
     }
 
