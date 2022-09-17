@@ -89,7 +89,7 @@ class Scroller extends EventDispatcher {
     offset : Number|HTMLElement|Function|Array // Offset pixels, element, Function or Array of arguments, default: null
     bind : Boolean // Bind scrollTo links, default: true
     context : document.body|HTMLElement // Context to select scrollTo links from, default: document.body
-    selector : String // Scroll to link selector, default: [href^="#"]
+    selector : String // Scroll to link selector, default: [href^="#"], [href*="#"]
     autoTop : Boolean // Scroll to top when using only # or #top without an actual element target
     capture : Boolean // Capture initial scroll, default: true
     initial : Number|'ready'|Array // Initial scroll delay after capture
