@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.13
+ - Extended *Scroller* binding option to include all links that start or contain a hash.
+ - Extended *Scroller* click handler to handle root path links with hashes if the path matches the current path.
+
 ## 0.9.12
  - Fixed *Tracker* api and internal arguments to be consistent.
  - Added *Tracker* constructor argument *executor* to allow customization of the actual tracking event firing.
