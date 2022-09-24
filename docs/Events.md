@@ -6,6 +6,7 @@
 > [Error](Error.md) <[ Events ]> [HTTP](HTTP.md)
 
 ## Table of contents
+ - [bindMultiClick()](#bindmulticlick)
  - [bindNodeList()](#bindnodelist)
  - [CallbackEvents()](#callbackevents)
  - [debounce()](#debounce)
@@ -13,6 +14,41 @@
  - [EventDispatcher](#eventdispatcher)
  - [getFocusable](#getfocusable)
  - [tabFocusLock](#tabfocuslock)
+
+---
+
+### bindMultiClick
+bindMultiClick - Bind single and double click on one element
+
+#### Description
+```javascript
+bindMultiClick( element, single, double, timeout = 350, beforeDelayed = null ) // void
+```
+Bind a single and a double click event on the same element without causing event collisions.
+
+#### Parameters
+| Parameter         | Type        | Default | Description                                   |
+|-------------------|-------------|:-------:|-----------------------------------------------|
+| **element**       | HTMLElement |    -    | Element to bind handlers to                   |
+| **single**        | Function    |    -    | Single click callback                         |
+| **double**        | Function    |    -    | Double click callback                         |
+| **timeout**       | Number      |   350   | Click frequency timeout                       |
+| **beforeDelayed** | Function    |  null   | Callback to run for each delayed single click |
+
+#### Return Values
+| Type/Value | Description  |
+|------------|--------------|
+| **void**   | None.        |
+
+#### Examples
+```javascript
+// Bind the events
+bindMultiClick( element, () => {
+    console.log( 'single click action' );
+}, () => {
+    console.log( 'double click action' );
+} );
+```
 
 ---
 

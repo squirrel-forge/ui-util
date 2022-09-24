@@ -47,6 +47,7 @@ Package contents listing by language and namespace.
    - [Error](docs/Error.md)
      - [Exception](docs/Error/exception.md)
    - [Events](docs/Events.md)
+     - [bindMultiClick()](docs/Events.md#bindmulticlick)
      - [bindNodeList()](docs/Events.md#bindnodelist)
      - [CallbackEvents](docs/Events.md#callbackevents)
      - [debounce()](docs/Events.md#debounce)
