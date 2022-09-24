@@ -35,6 +35,7 @@ export { Exception } from './Error/Exception.js';
 /**
  * Events
  */
+export { bindMultiClick } from './Events/bindMultiClick.js';
 export { bindNodeList } from './Events/bindNodeList.js';
 export { CallbackEvents } from './Events/CallbackEvents.js';
 export { debounce } from './Events/debounce.js';
