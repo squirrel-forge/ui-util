@@ -92,6 +92,27 @@ class Tracker {
 ```
 For more details check the [Tracker source file](../src/es6/Logic/Tracker.js).
 
+#### Examples
+How to run a tracker.
+```javascript
+tracker.run( [
+    {
+        trigger : ( tracker, arg1, arg2 ) => { return arg1 === 'argument'; },
+        once : 'event_name',
+        group : ( tracker, arg1, arg2 ) => {
+            return arg1 + arg2;
+        },
+        data : {
+            event : 'event_name',
+            dynamic : ( tracker, arg1, arg2 ) => {
+                return arg1.length + arg2.length;
+            },
+        },
+    },
+], [ 'argument', 'argument...' ]);
+```
+Check the [UiVideoPluginTracking](https://github.com/squirrel-forge/ui-video/blob/main/src/es6/Plugins/UiVideoPluginTracking.js) class plugin of the [UiVideoComponent](https://github.com/squirrel-forge/ui-video#readme) for an implementation example.
+
 ---
 
 > [Layout](Layout.md) <[ Logic ]> [Number](Number.md)
