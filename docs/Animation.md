@@ -166,8 +166,23 @@ for( let i = 0; i < anchors.length; i++ ) {
 ## Slide functions
 The slide functions require following structure to work properly:
 ```html
-<div id="slidable" style="padding:0;transform:none">
-    <div style="margin:0;transform:none">
+<style>
+   .slidable,
+   .slidable__content {
+      /* Display is enforced via js */
+      display: block;
+      /* Following some properties recommended NOT to be used,
+         to avoid inconsistent effects during animation */
+      margin: 0;
+      padding: 0;
+      transform: none;
+      border: none;
+      outline: none;
+      box-shadow: none;
+   }
+</style>
+<div id="slidable" class="slidable">
+    <div class="slidable__content">
         ...content to show or hide...
     </div>
 </div>
