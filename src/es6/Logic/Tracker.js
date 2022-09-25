@@ -37,9 +37,9 @@ import { cloneObject } from '../Object/cloneObject.js';
 
 /**
  * @typedef {Object} TrackerDefinition - Tracking definition object
- * @property {TrackingTrigger|Function} trigger - Event trigger function
+ * @property {true|TrackingTrigger|Function} trigger - Event trigger function
  * @property {undefined|string} once - Unique reference name
- * @property {string|TrackingGroup|Function} group - Event grouping name or function
+ * @property {undefined|string|TrackingGroup|Function} group - Event grouping name or function
  * @property {TrackingData|Object} data - Data that is pushed to dataLayer
  */
 
@@ -151,7 +151,7 @@ export class Tracker {
         if ( this.ranOnceAlready( tracker, params ) ) return;
 
         // Check for a tracking condition
-        if ( tracker.trigger( ...params ) ) {
+        if ( tracker.trigger === true || tracker.trigger( ...params ) ) {
             if ( this.#debug ) this.#debug.log( this.constructor.name + '::track Triggered:', tracker, params );
             this.#track_once( tracker, params );
             this.#exec( this.constructor.getData( tracker, params ) );
