@@ -8,6 +8,7 @@
 ## Table of contents
  - [escapeHTML()](#escapehtml) 
  - [isValidFunctionName()](#isvalidfunctionname) 
+ - [normalizePath()](#normalizepath) 
  - [simpleReplace()](#simplereplace)
  - [str2node()](#str2node)
  - [str2time()](#str2time)
@@ -71,6 +72,33 @@ isValidFunctionName( '_fn' ); // true
 
 ---
 
+### normalizePath
+normalizePath - Normalizes a path string for comparison.
+
+#### Description
+```javascript
+normalizePath( path ) // string
+```
+Very basic normalization, removes prefix and trailing slash from given path string.
+
+#### Parameters
+| Parameter | Type   | Default | Description   |
+|-----------|--------|:-------:|---------------|
+| **str**   | String |    -    | Path to check |
+
+#### Return Values
+| Type/Value | Description     |
+|------------|-----------------|
+| **String** | Normalized path |
+
+#### Examples
+```javascript
+normalizePath( '/foo/bla/' ); // 'foo/bla'
+normalizePath( '/foo/bla' ); // 'foo/bla'
+```
+
+---
+
 ### simpleReplace
 simpleReplace - Replace variables inside a string
 
@@ -78,7 +106,7 @@ simpleReplace - Replace variables inside a string
 ```javascript
 simpleReplace( tmpl, data, prefix = ':', suffix = '' ) // string
 ```
-Replaces an object properties as variables in a given string with the corresponding object values.
+Replaces an objects properties as variables in a given string with the corresponding object values.
 
 #### Parameters
 | Parameter  | Type   | Default | Description                             |
