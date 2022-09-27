@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.16
+ - Added path normalize for *Scroller.event_scrollToClick()* path comparison.
+
 ## 0.9.15
  - Added *normalizePath()* function, to normalize path strings for comparison.
 
