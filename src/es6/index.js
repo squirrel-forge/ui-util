@@ -1,6 +1,6 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.14
+ * @version     : 0.9.15
  * @license     : MIT
  * @copyright   : 2022 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
@@ -102,6 +102,7 @@ export { strCreate } from './Object/strCreate.js';
  */
 export { escapeHTML } from './String/escapeHTML.js';
 export { isValidFunctionName } from './String/isValidFunctionName.js';
+export { normalizePath } from './String/normalizePath.js';
 export { simpleReplace } from './String/simpleReplace.js';
 export { str2node } from './String/str2node.js';
 export { str2time } from './String/str2time.js';
