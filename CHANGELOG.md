@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.15
+ - Added *normalizePath()* function, to normalize path strings for comparison.
+
 ## 0.9.14
  - Added *bindMultiClick()* method, for clean single and double click binding on same element without conflicts.
 
