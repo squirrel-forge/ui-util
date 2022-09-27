@@ -7,6 +7,7 @@ import { scrollComplete } from './scrollComplete.js';
 import { scrollTo } from './scrollTo.js';
 import { mergeObject } from '../Object/mergeObject.js';
 import { isPojo } from '../Object/isPojo.js';
+import { normalizePath } from '../String/normalizePath';
 
 /**
  * @typedef {Object} ScrollerOptions
@@ -132,7 +133,7 @@ export class Scroller extends EventDispatcher {
             id = href.substring( 1 );
         } else if ( hash > 0 ) {
             const parts = href.split( '#' );
-            if ( location.pathname === parts[ 0 ] ) id = parts[ 1 ] || '';
+            if ( normalizePath( location.pathname ) === normalizePath( parts[ 0 ] ) ) id = parts[ 1 ] || '';
         }
 
         // Find the target
