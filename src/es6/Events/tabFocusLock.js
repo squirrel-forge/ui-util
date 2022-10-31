@@ -7,7 +7,7 @@
  */
 export function getFocusable( context, last = false, selector = null ) {
     selector = selector || 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const elements = context.querySelectorAll( selector );
+    const elements = [ ...context.querySelectorAll( selector ) ];
     if ( elements.length ) {
         if ( last === true ) return elements.pop();
         return elements.shift();

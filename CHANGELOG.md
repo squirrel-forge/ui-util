@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.17
+ - Fixed *getFocusable()* NodeList does not support array methods.
+
 ## 0.9.16
  - Added path normalize for *Scroller.event_scrollToClick()* path comparison.
 
