@@ -1,6 +1,6 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.16
+ * @version     : 0.9.18
  * @license     : MIT
  * @copyright   : 2022 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
@@ -28,6 +28,19 @@ export { ConsoleInterceptor } from './Dev/ConsoleInterceptor.js';
 export { tabFocus } from './Dev/tabFocus.js';
 
 /**
+ * DOM
+ */
+export { appendAfter } from './DOM/appendAfter.js';
+export { appendHTML } from './DOM/appendHTML.js';
+export { attributeJSON } from './DOM/attributeJSON.js';
+export { getElementTagType } from './DOM/getElementTagType.js';
+export { getPropertyValues } from './DOM/getPropertyValues.js';
+export { prependChild } from './DOM/prependChild.js';
+export { uniqid, requireUniqid } from './DOM/uniqid.js';
+export { unwrap } from './DOM/unwrap.js';
+export { wrap } from './DOM/wrap.js';
+
+/**
  * Error
  */
 export { Exception } from './Error/Exception.js';
@@ -42,18 +55,6 @@ export { debounce } from './Events/debounce.js';
 export { docReady } from './Events/docReady.js';
 export { EventDispatcher } from './Events/EventDispatcher.js';
 export { tabFocusLock, getFocusable } from './Events/tabFocusLock.js';
-
-/**
- * HTML
- */
-export { appendAfter } from './DOM/appendAfter.js';
-export { appendHTML } from './DOM/appendHTML.js';
-export { attributeJSON } from './DOM/attributeJSON.js';
-export { getElementTagType } from './DOM/getElementTagType.js';
-export { prependChild } from './DOM/prependChild.js';
-export { uniqid, requireUniqid } from './DOM/uniqid.js';
-export { unwrap } from './DOM/unwrap.js';
-export { wrap } from './DOM/wrap.js';
 
 /**
  * HTTP

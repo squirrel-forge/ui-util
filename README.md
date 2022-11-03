@@ -39,6 +39,7 @@ Package contents listing by language and namespace.
      - [appendHTML()](docs/DOM.md#appendhtml)
      - [attributeJSON()](docs/DOM.md#attributejson)
      - [getElementTagType()](docs/DOM.md#getelementtagtype)
+     - [getPropertyValues()](docs/DOM.md#getpropertyvalues)
      - [prependChild()](docs/DOM.md#prependchild)
      - [uniqid()](docs/DOM.md#uniqid)
      - [requireUniqid()](docs/DOM.md#requireuniqid)

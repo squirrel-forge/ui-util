@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.18
+ - Added *getPropertyValues()* for fetching custom property values of a given context.
+
 ## 0.9.17
  - Fixed *getFocusable()* NodeList does not support array methods.
 

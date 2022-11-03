@@ -10,6 +10,7 @@
  - [appendHTML()](#appendhtml)
  - [attributeJSON()](#attributejson)
  - [getElementTagType()](#getelementtagtype)
+ - [getPropertyValues()](#getpropertyvalues)
  - [prependChild()](#prependchild)
  - [uniqid()](#uniqid)
  - [requireUniqid()](#requireuniqid)
@@ -126,6 +127,41 @@ Get element tag type string, compiled from tagName + type.
 #### Examples
 ```javascript
 getElementTagType( document.getElementById( 'input[type="hidden"]' ) ); // input-hidden
+```
+
+---
+
+### getPropertyValues
+getPropertyValues - Get custom property values from given context
+
+#### Description
+```javascript
+getPropertyValues( values, context = null, assoc = true ) // string|Object|Array<string>
+```
+Get values from custom properties in given context, returns the actual computed value.
+
+#### Parameters
+| Parameter   | Type             |  Default   | Description                                             |
+|-------------|------------------|:----------:|---------------------------------------------------------|
+| **values**  | string/Array     |     -      | Property name/s excluding the double dash               |
+| **context** | Body/HTMLElement | null/:root | Context to read values from, default: html/root element |
+| **assoc**   | boolean          |    true    | Return associative object with property names           |
+
+#### Return Values
+| Type/Value        | Description                   |
+|-------------------|-------------------------------|
+| **String**        | Single property value         |
+| **Object**        | Associative object with props |
+| **Array<string>** | List of values                |
+
+#### Examples
+```css
+:root {
+   --prop-name: 10px; 
+}
+```
+```javascript
+getPropertyValues( 'prop-name' ); // '10px'
 ```
 
 ---
