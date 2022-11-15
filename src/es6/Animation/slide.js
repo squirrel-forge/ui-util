@@ -27,11 +27,11 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     speed = typeof speed === 'number' && Number.isInteger( speed ) && speed >= 0 ? speed : 300;
 
     // Set default css properties
-    item.style.display = 'block';
+    item.style.display = '';
     item.style.overflow = 'hidden';
     item.style.transitionProperty = 'height';
     item.style.transitionTimingFunction = easing || 'ease';
-    item.firstElementChild.style.display = 'block';
+    item.firstElementChild.style.display = '';
     item.style.transitionDuration = speed + 'ms';
 
     // Force correct initial state for given target state
