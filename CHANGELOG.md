@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.19
+ - Added *colorand()* for generating a random color hex value.
+ - Changed/fixed *slide* functions forcing a **display: block** to only removing a possible hidden state.
+
 ## 0.9.18
  - Added *getPropertyValues()* for fetching custom property values of a given context.
 
