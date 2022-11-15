@@ -6,6 +6,7 @@
 > [Object](Object.md) <[ String ]> [Var](Var.md)
 
 ## Table of contents
+ - [colorand()](#colorand) 
  - [escapeHTML()](#escapehtml) 
  - [isValidFunctionName()](#isvalidfunctionname) 
  - [normalizePath()](#normalizepath) 
@@ -16,6 +17,30 @@
  - [strSlug()](#strslug)
  - [trimChar()](#trimchar)
  - [ucfirst()](#ucfirst)
+
+---
+
+### colorand
+colorand - Generate random hex color value
+
+#### Description
+```javascript
+colorand() // string
+```
+Generates a random hex color value
+
+#### Parameters
+The function has no parameters.
+
+#### Return Values
+| Type/Value | Description |
+|------------|-------------|
+| **String** | Color hex   |
+
+#### Examples
+```javascript
+colorand(); // #67aa9d
+```
 
 ---
 

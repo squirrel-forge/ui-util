@@ -83,6 +83,7 @@ Package contents listing by language and namespace.
      - [strAccess()](docs/Object.md#straccess)
      - [strCreate()](docs/Object.md#strcreate)
    - [String](docs/String.md)
+     - [colorand()](docs/String.md#colorand)
      - [escapeHTML()](docs/String.md#escapehtml)
      - [isValidFunctionName()](docs/String.md#isvalidfunctionname)
      - [normalizePath()](docs/String.md#normalizePath)
