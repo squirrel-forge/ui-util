@@ -101,6 +101,7 @@ export { strCreate } from './Object/strCreate.js';
 /**
  * String
  */
+export { colorand } from './String/colorand.js';
 export { escapeHTML } from './String/escapeHTML.js';
 export { isValidFunctionName } from './String/isValidFunctionName.js';
 export { normalizePath } from './String/normalizePath.js';
