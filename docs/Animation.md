@@ -6,6 +6,7 @@
 > [Table of contents](../README.md#table-of-contents) <[ Animation ]> [Array](Array.md)
 
 ## Table of contents
+ - [cssTransition()](#csstransition)
  - [holdElementViewportPosition()](#holdelementviewportposition)
  - [scrollComplete()](#scrollcomplete)
  - [Scroller](#scroller)
@@ -14,6 +15,44 @@
    - [slideToggle()](#slidetoggle)
    - [slideHide()](#slidehide)
    - [slideShow()](#slideshow)
+
+---
+
+### cssTransition
+cssTransition - CSS transition helper for granular action control
+
+#### Description
+```javascript
+cssTransition( element, initial = null, target = null, complete = null, delay = 10 ) // void
+```
+Allows for easy css transition control, changing an elements values with initial and complete state.
+
+#### Parameters
+| Parameter    | Type          | Default | Description                |
+|--------------|---------------|:-------:|----------------------------|
+| **element**  | HTMLElement   |    -    | Element to fix in viewport |
+| **initial**  | null/Function |  null   | Set the initial state      |
+| **target**   | null/Function |  null   | Set the target state       |
+| **complete** | null/Function |  null   | Set the complete state     |
+| **delay**    | Number        |   10    | Micro action delay         |
+
+#### Return Values
+| Type/Value | Description  |
+|------------|--------------|
+|  **void**  | None.        |
+
+#### Examples
+This example hides an existing element with an opacity transition and sets initial and final visibility.
+```javascript
+cssTransition( element, ( element ) => {
+   element.style.visibility = '';
+   element.style.opacity = 1;
+}, ( element ) => {
+    element.style.opacity = 0;
+}, ( element ) => {
+   element.style.visibility = 'hidden'; 
+} );
+```
 
 ---
 

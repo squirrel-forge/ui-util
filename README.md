@@ -21,6 +21,7 @@ Package contents listing by language and namespace.
 
  - Javascript
    - [Animation](docs/Animation.md)
+     - [cssTransition()](docs/Animation.md#csstransition)
      - [holdElementViewportPosition()](docs/Animation.md#holdelementviewportposition)
      - [scrollComplete()](docs/Animation.md#scrollcomplete)
      - [Scroller](docs/Animation.md#scroller)
