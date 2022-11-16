@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.9.20
+ - Added *cssTransition* helper for handling transitions.
+
 ## 0.9.19
  - Added *colorand()* for generating a random color hex value.
  - Changed/fixed *slide* functions forcing a **display: block** to only removing a possible hidden state.
