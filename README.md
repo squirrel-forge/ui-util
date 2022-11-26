@@ -54,6 +54,7 @@ Package contents listing by language and namespace.
      - [CallbackEvents](docs/Events.md#callbackevents)
      - [debounce()](docs/Events.md#debounce)
      - [docReady()](docs/Events.md#docready)
+     - [Draggables()](docs/Events.md#draggables)
      - [EventDispatcher](docs/Events.md#eventdispatcher)
      - [getFocusable](docs/Events.md#getfocusable)
      - [tabFocusLock](docs/Events.md#tabfocuslock)

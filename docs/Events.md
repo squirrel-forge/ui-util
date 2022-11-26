@@ -11,6 +11,7 @@
  - [CallbackEvents()](#callbackevents)
  - [debounce()](#debounce)
  - [docReady()](#docready)
+ - [Draggables()](#draggables)
  - [EventDispatcher](#eventdispatcher)
  - [getFocusable](#getfocusable)
  - [tabFocusLock](#tabfocuslock)
@@ -157,6 +158,42 @@ Run a given callback when the document is ready, checks *document.readyState* co
 ```javascript
 docReady( () => console.log( 'ready steady go!' ) );
 ```
+
+---
+
+### Draggables
+
+Draggables class - Mouse drag handler for multiple elements.
+
+#### Class overview
+
+```javascript
+class Draggables {
+    constructor( draggables = null, context = window ) {}
+    thresholdX : Number
+    thresholdY : Number
+    bind( draggables ) {} // void
+}
+```
+
+Draggable object definition:
+```javascript
+const draggable = {
+    draggable : HTMLElement,
+    container : HTMLElement,
+    onbefore : ( event, _dgbl ) => {}, // udefined|false
+    onstart : ( event, _dgbl ) => {}, // void
+    onend : ( event, position, delta, _dgbl ) => {}, // void
+    onmove : ( event, position, delta, _dgbl ) => {}, // void
+    onclick : ( event, position, delta, _dgbl ) => {}, // void
+    axis : ('both'|'x'|'y'),
+    offsetX : ('start'|'center'|'end'),
+    offsetY : ('start'|'center'|'end'),
+    local : false,
+}
+```
+
+For more details check the [Draggables source file](../src/es6/Events/Draggables.js).
 
 ---
 
