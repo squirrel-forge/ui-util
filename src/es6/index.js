@@ -1,6 +1,6 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.20
+ * @version     : 0.9.21
  * @license     : MIT
  * @copyright   : 2022 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
@@ -54,6 +54,7 @@ export { bindNodeList } from './Events/bindNodeList.js';
 export { CallbackEvents } from './Events/CallbackEvents.js';
 export { debounce } from './Events/debounce.js';
 export { docReady } from './Events/docReady.js';
+export { Draggables } from './Events/Draggables.js';
 export { EventDispatcher } from './Events/EventDispatcher.js';
 export { tabFocusLock, getFocusable } from './Events/tabFocusLock.js';
 
