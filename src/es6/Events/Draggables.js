@@ -21,8 +21,8 @@ class DraggablesException extends Exception {}
  * @property {null|DraggableOnBefore|Function} onbefore - On before callback
  * @property {null|DraggableOnStart|Function} onstart - On start callback
  * @property {null|DraggableOnEnd|Function} onend - On end callback
- * @property {null|DraggableSetter|Function} setter - On drag set position callback
- * @property {null|DraggableClick|Function} click - On click callback
+ * @property {null|DraggableOnMove|Function} onmove - On drag set position callback
+ * @property {null|DraggableOnClick|Function} onclick - On click callback
  * @property {('both'|'x'|'y')} axis - Draggable axis
  * @property {('start'|'center'|'end')} offsetX - Draggable element x offset orientation
  * @property {('start'|'center'|'end')} offsetY - Draggable element y offset orientation
@@ -56,8 +56,8 @@ class DraggablesException extends Exception {}
  */
 
 /**
- * Draggable setter callback
- * @callback DraggableSetter
+ * Draggable move callback
+ * @callback DraggableOnMove
  * @param {MouseEvent} event - Mouse move event
  * @param {DraggablePosition} position - Current position
  * @param {DraggablePositionChange} change - Position change
@@ -67,7 +67,7 @@ class DraggablesException extends Exception {}
 
 /**
  * Draggable click callback
- * @callback DraggableClick
+ * @callback DraggableOnClick
  * @param {MouseEvent} event - Mouse up event
  * @param {DraggablePositionChange} change - Position change
  * @param {DraggableData} _dgbl - Draggable data
@@ -121,8 +121,8 @@ export class Draggables {
         onbefore : null,
         onstart : null,
         onend : null,
-        setter : null,
-        click : null,
+        onmove : null,
+        onclick : null,
         axis : 'both',
         offsetX : 'start',
         offsetY : 'start',
@@ -243,7 +243,7 @@ export class Draggables {
      * @return {void}
      */
     #bind_global() {
-        this.#context.addEventListener( 'mousemove', ( event ) => { this.#event_global_mousemove( event ); } );
+        this.#context.addEventListener( 'mousemove', ( event ) => { this.#event_global_mousemove( event ); }, { passive : true } );
         this.#context.addEventListener( 'mouseup', ( event ) => { this.#event_global_mouseup( event ); } );
     }
 
@@ -268,7 +268,7 @@ export class Draggables {
     #validate( _dgbl ) {
         if ( !( _dgbl.draggable instanceof HTMLElement ) ) throw new DraggablesException( 'Argument draggable must be a HTMLElement' );
         if ( !( _dgbl.container instanceof HTMLElement ) ) throw new DraggablesException( 'Argument container must be a HTMLElement' );
-        if ( typeof _dgbl.setter !== 'function' ) throw new DraggablesException( 'Argument setter must be a Function' );
+        if ( typeof _dgbl.onmove !== 'function' && typeof _dgbl.onend !== 'function' ) throw new DraggablesException( 'Argument onmove or onend must be a Function' );
     }
 
     /**
@@ -303,8 +303,8 @@ export class Draggables {
         // Get current X and Y
         const position = this.#get_position( delta.deltaX, delta.deltaY, _dgbl );
 
-        // Call setter
-        _dgbl.setter( event, position, delta, _dgbl );
+        // Call on move handler
+        _dgbl.onmove( event, position, delta, _dgbl );
     }
 
     /**
@@ -408,10 +408,10 @@ export class Draggables {
         const position = this.#get_position( delta.deltaX, delta.deltaY, _dgbl );
 
         // Run click handler if not moved
-        if ( _dgbl.click && ( _dgbl.axis === 'both' && !delta.xMoved && !delta.yMoved
+        if ( _dgbl.onclick && ( _dgbl.axis === 'both' && !delta.xMoved && !delta.yMoved
             || _dgbl.axis === 'x' && !delta.xMoved
             || _dgbl.axis === 'y' && !delta.yMoved ) ) {
-            _dgbl.click( event, position, delta, _dgbl );
+            _dgbl.onclick( event, position, delta, _dgbl );
         } else if ( _dgbl.onend ) {
 
             // Run drag end handler
