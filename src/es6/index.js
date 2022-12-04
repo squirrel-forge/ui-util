@@ -27,6 +27,7 @@ export { mergeArray } from './Array/mergeArray.js';
  */
 export { ConsoleInterceptor } from './Dev/ConsoleInterceptor.js';
 export { tabFocus } from './Dev/tabFocus.js';
+export { TestRunner } from './Dev/TestRunner.js';
 
 /**
  * DOM
