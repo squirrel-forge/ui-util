@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.21
+ - Added *Draggables* class handler for draggable dom elements.
+ - Added *TestRunner* class for simple frontend based tests.
+ - Added *afterPaint* function callback handler, for precision dom manipulation.
+ - Improved *cssTransition* helper with *afterPaint* handler and updates arguments.
+
 ## 0.9.20
  - Added *cssTransition* helper for handling transitions.
 

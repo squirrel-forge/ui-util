@@ -10,6 +10,7 @@
 /**
  * Animation
  */
+export { afterPaint } from './Animation/afterPaint.js';
 export { cssTransition } from './Animation/cssTransition.js';
 export { holdElementViewportPosition } from './Animation/holdElementViewportPosition.js';
 export { scrollComplete } from './Animation/scrollComplete.js';
