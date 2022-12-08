@@ -1,11 +1,16 @@
 ### @squirrel-forge/ui-util
+
 > [Back to table of contents](../README.md#table-of-contents)
 
 # Documentation
+
 ### Javascript / Animation
+
 > [Table of contents](../README.md#table-of-contents) <[ Animation ]> [Array](Array.md)
 
 ## Table of contents
+
+ - [afterPaint()](#afterpaint)
  - [cssTransition()](#csstransition)
  - [holdElementViewportPosition()](#holdelementviewportposition)
  - [scrollComplete()](#scrollcomplete)
@@ -18,31 +23,75 @@
 
 ---
 
-### cssTransition
-cssTransition - CSS transition helper for granular action control
+### afterPaint
+
+afterPaint - Run callback after the next frame was painted.
 
 #### Description
+
 ```javascript
-cssTransition( element, initial = null, target = null, complete = null, delay = 10 ) // void
+afterPaint( callback ) // void
 ```
-Allows for easy css transition control, changing an elements values with initial and complete state.
+Ensures callback run after the next frame was painted, any dom/style changes will be fully reflected when the callback runs.
 
 #### Parameters
-| Parameter    | Type          | Default | Description                |
-|--------------|---------------|:-------:|----------------------------|
-| **element**  | HTMLElement   |    -    | Element to fix in viewport |
-| **initial**  | null/Function |  null   | Set the initial state      |
-| **target**   | null/Function |  null   | Set the target state       |
-| **complete** | null/Function |  null   | Set the complete state     |
-| **delay**    | Number        |   10    | Micro action delay         |
+
+| Parameter    | Type          | Default | Description                 |
+|--------------|---------------|:-------:|-----------------------------|
+| **callback** | Function      |    -    | Callback to run after paint |
 
 #### Return Values
+
 | Type/Value | Description  |
 |------------|--------------|
 |  **void**  | None.        |
 
 #### Examples
+
+This example turns the element red and after the red was painted it makes the element blue,
+if you add a transition a blend will run from red to blue instead of instantly being blue.
+
+```javascript
+elem.style.backgroundColor = 'red';
+runAfterFramePaint(() => {
+   elem.style.backgroundColor = 'blue';
+});
+```
+
+---
+
+### cssTransition
+
+cssTransition - CSS transition helper for granular action control
+
+#### Description
+
+```javascript
+cssTransition( element, initial = null, target = null, ended = null, complete = null ) // void
+```
+
+Allows for easy css transition control, changing an elements values with initial and complete state.
+
+#### Parameters
+
+| Parameter    | Type          | Default | Description                |
+|--------------|---------------|:-------:|----------------------------|
+| **element**  | HTMLElement   |    -    | Element to fix in viewport |
+| **initial**  | null/Function |  null   | Set the initial state      |
+| **target**   | null/Function |  null   | Set the target state       |
+| **ended**    | null/Function |  null   | Set the ended state        |
+| **complete** | null/Function |  null   | Set the complete state     |
+
+#### Return Values
+
+| Type/Value | Description  |
+|------------|--------------|
+|  **void**  | None.        |
+
+#### Examples
+
 This example hides an existing element with an opacity transition and sets initial and final visibility.
+
 ```javascript
 cssTransition( element, ( element ) => {
    element.style.visibility = '';
@@ -57,28 +106,35 @@ cssTransition( element, ( element ) => {
 ---
 
 ### holdElementViewportPosition
+
 holdElementViewportPosition - Maintain viewport position while changing scroll height
 
 #### Description
+
 ```javascript
 holdElementViewportPosition( elem, duration ) // void
 ```
+
 Maintain element position in viewport while changing scroll height through any type of animation.
 
 #### Parameters
+
 | Parameter    | Type        | Default | Description                         |
 |--------------|-------------|:-------:|-------------------------------------|
 | **elem**     | HTMLElement |    -    | Element to fix in viewport          |
 | **duration** | Number      |    -    | How long to hold the position in ms |
 
 #### Return Values
+
 | Type/Value | Description  |
 |------------|--------------|
 |  **void**  | None.        |
 
 #### Examples
+
 Hiding an element above the viewport will cause the browser the slide/scroll current content out of view,
 while running the hold position during this animation will maintain the current document view position.
+
 ```javascript
 holdElementViewportPosition( document.getElementById( 'below-slidable' ), 300 );
 slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide::complete' ) );
@@ -87,15 +143,19 @@ slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide:
 ---
 
 ### scrollComplete
+
 scrollComplete - Run callback after scroll complete
 
 #### Description
+
 ```javascript
 scrollComplete( callback, delay, context ) // void
 ```
+
 Run a callback after tracking a scroll action until it completes, for a max of *x* ms.
 
 #### Parameters
+
 | Parameter    | Type               | Default | Description               |
 |--------------|--------------------|:-------:|---------------------------|
 | **callback** | Function           |    -    | Complete callback         |
@@ -103,12 +163,15 @@ Run a callback after tracking a scroll action until it completes, for a max of *
 | **context**  | Window/HTMLElement | Window  | Context to bind events    |
 
 #### Return Values
+
 | Type/Value | Description |
 |------------|-------------|
 |  **void**  | None.       |
 
 #### Examples
+
 Scroll to a target and run a callback after completion.
+
 ```javascript
 scrollComplete( () => { console.log( 'scrollComplete' ); } );
 scrollTo( document.getElementById( 'scroll-target' ) );
@@ -117,9 +180,11 @@ scrollTo( document.getElementById( 'scroll-target' ) );
 ---
 
 ### Scroller
+
 Scroller class - Binds local scroll-to links and handles a smooth initial scroll on load.
 
 #### Class overview
+
 ```javascript
 class Scroller extends EventDispatcher {
   static getUrlWithHash( hash, url ) {} // string
@@ -139,9 +204,11 @@ class Scroller extends EventDispatcher {
   scrollTo( element, complete = null ) {} // void
 }
 ```
+
 For more details check the [Scroller source file](../src/es6/Animation/Scroller.js).
 
 #### Events
+
 Note: *The event context for the scroller is the **window** object*.
  - **scroll.initial.complete** - Fired when the initial scroll action has been completed.
  - **scroll.before** - Fired before a scroll action is executed, can be prevented by calling event.preventDefault().
@@ -150,17 +217,21 @@ Note: *The event context for the scroller is the **window** object*.
 ---
 
 ### scrollTo
+
 scrollTo - Scroll to element
 
 #### Description
+
 ```javascript
 scrollTo( element, offset = 0, behavior = 'smooth', minDiff = 3 ) // void
 ```
+
 Scroll an element into focus, optionally using a numeric offset or element height as offset, like a sticky header.
 For advanced scrolling mechanics and abstracted bindings check the [Scroller](#scroller) class.
 Under the hood this uses native *window.scrollTo* with smoothscroll, you may [polyfill](https://www.npmjs.com/package/smoothscroll-polyfill) this for older browsers.
 
 #### Parameters
+
 | Parameter    | Type                        | Default  | Description                                                  |
 |--------------|-----------------------------|:--------:|--------------------------------------------------------------|
 | **element**  | HTMLElement                 |    -     | Element to scroll into viewport                              |
@@ -169,12 +240,15 @@ Under the hood this uses native *window.scrollTo* with smoothscroll, you may [po
 | **minDiff**  | Number                      |    3     | Minimum scroll distance                                      |
 
 #### Return Values
+
 | Type/Value | Description |
 |------------|-------------|
 |  **void**  | None.       |
 
 #### Examples
+
 Binding all local anchor links to use smooth scroll with a dynamic header offset, in practice you should use the [Scroller](#scroller) class for this.
+
 ```javascript
 // Get our offset element
 const header = document.getElementById( 'header' );
@@ -203,7 +277,9 @@ for( let i = 0; i < anchors.length; i++ ) {
 ---
 
 ## Slide functions
+
 The slide functions require following structure to work properly:
+
 ```html
 <style>
    .slidable,
@@ -228,15 +304,19 @@ The slide functions require following structure to work properly:
 ```
 
 ### slideToggle
+
 slideToggle - Toggle slide animation on element
 
 #### Description
+
 ```javascript
 slideToggle( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
+
 Toggle element visibility by sliding up to hide or down to show.
 
 #### Parameters
+
 | Parameter    | Type        | Default | Description                                              |
 |--------------|-------------|:-------:|----------------------------------------------------------|
 | **item**     | HTMLElement |    -    | Element to toggle                                        |
@@ -245,11 +325,13 @@ Toggle element visibility by sliding up to hide or down to show.
 | **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
+
 | Type/Value | Description |
 |------------|-------------|
 | **void**   | None.       |
 
 #### Examples
+
 ```javascript
 slideToggle( document.getElementById( 'slidable' ), () => console.log( 'slideToggle::complete' ) );
 ```
@@ -257,15 +339,19 @@ slideToggle( document.getElementById( 'slidable' ), () => console.log( 'slideTog
 ---
 
 ### slideHide
+
 slideHide - Hide slide animation on element
 
 #### Description
+
 ```javascript
 slideHide( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
+
 Hide element by sliding up.
 
 #### Parameters
+
 | Parameter    | Type        | Default | Description                                              |
 |--------------|-------------|:-------:|----------------------------------------------------------|
 | **item**     | HTMLElement |    -    | Element to hide                                          |
@@ -274,11 +360,13 @@ Hide element by sliding up.
 | **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
+
 | Type/Value | Description |
 |------------|-------------|
 | **void**   | None.       |
 
 #### Examples
+
 ```javascript
 slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide::complete' ) );
 ```
@@ -286,15 +374,19 @@ slideHide( document.getElementById( 'slidable' ), () => console.log( 'slideHide:
 ---
 
 ### slideShow
+
 slideShow - Show slide animation on element
 
 #### Description
+
 ```javascript
 slideShow( item, speed = 300, easing = 'ease', callback = null ) // void
 ```
+
 Show element by sliding down.
 
 #### Parameters
+
 | Parameter    | Type        | Default | Description                                              |
 |--------------|-------------|:-------:|----------------------------------------------------------|
 | **item**     | HTMLElement |    -    | Element to show                                          |
@@ -303,11 +395,13 @@ Show element by sliding down.
 | **callback** | Function    |  null   | Function to execute after animation completion           |
 
 #### Return Values
+
 | Type/Value | Description |
 |------------|-------------|
 | **void**   | None.       |
 
 #### Examples
+
 ```javascript
 slideShow( document.getElementById( 'slidable' ), () => console.log( 'slideShow::complete' ) );
 ```

@@ -21,6 +21,7 @@ Package contents listing by language and namespace.
 
  - Javascript
    - [Animation](docs/Animation.md)
+     - [afterPaint()](docs/Animation.md#afterpaint)
      - [cssTransition()](docs/Animation.md#csstransition)
      - [holdElementViewportPosition()](docs/Animation.md#holdelementviewportposition)
      - [scrollComplete()](docs/Animation.md#scrollcomplete)
@@ -35,6 +36,7 @@ Package contents listing by language and namespace.
    - [Dev](docs/Dev.md)
      - [ConsoleInterceptor](docs/Dev.md#consoleinterceptor)
      - [tabFocus()](docs/Dev.md#tabfocus)
+     - [TestRunner()](docs/Dev.md#testrunner)
    - [DOM](docs/DOM.md)
      - [appendAfter()](docs/DOM.md#appendafter)
      - [appendHTML()](docs/DOM.md#appendhtml)
