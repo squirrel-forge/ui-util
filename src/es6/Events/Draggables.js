@@ -4,7 +4,6 @@
 import { Exception } from '../Error/Exception.js';
 import { cloneObject } from '../Object/cloneObject.js';
 import { mergeObject } from '../Object/mergeObject.js';
-import { ucfirst } from '../String/ucfirst.js';
 
 /**
  * Draggables exception
@@ -24,8 +23,10 @@ class DraggablesException extends Exception {}
  * @property {null|DraggableOnMove|Function} onmove - On drag set position callback
  * @property {null|DraggableOnClick|Function} onclick - On click callback
  * @property {('both'|'x'|'y')} axis - Draggable axis
- * @property {('start'|'center'|'end')} offsetX - Draggable element x offset orientation
- * @property {('start'|'center'|'end')} offsetY - Draggable element y offset orientation
+ * @property {('start'|'left'|'center'|'middle'|'right'|'end')} offsetX - Draggable element x offset orientation
+ * @property {('start'|'top'|'center'|'middle'|'bottom'|'end')} offsetY - Draggable element y offset orientation
+ * @property {boolean} overflowX - Allow drag overflow on x
+ * @property {boolean} overflowY - Allow drag overflow on y
  * @property {boolean} local - Use local click handler
  */
 
@@ -126,6 +127,8 @@ export class Draggables {
         axis : 'both',
         offsetX : 'start',
         offsetY : 'start',
+        overflowX : false,
+        overflowY : false,
         local : false,
     };
 
@@ -355,20 +358,25 @@ export class Draggables {
         let px = this.#start[ axis ] + delta - parent[ rel ] - this.#offset[ axis ];
 
         // Add offset if required
-        switch ( _dgbl[ 'offset' + ucfirst( axis ) ] ) {
+        switch ( _dgbl[ 'offset' + axis.toUpperCase() ] ) {
         case 'end' :
+        case 'right' :
+        case 'bottom' :
             px += element[ size ];
             break;
+        case 'middle' :
         case 'center' :
             px += element[ size ] / 2;
             break;
         }
 
         // Enforce limits
-        if ( px < 0 ) {
-            px = 0;
-        } else if ( px > parent[ size ] ) {
-            px = parent[ size ];
+        if ( !_dgbl[ 'overflow' + axis.toUpperCase() ] ) {
+            if ( px < 0 ) {
+                px = 0;
+            } else if ( px > parent[ size ] ) {
+                px = parent[ size ];
+            }
         }
 
         // Get relative percentage
@@ -456,26 +464,33 @@ export class Draggables {
      * Bind draggable
      * @private
      * @param {DraggableData} _dgbl - Draggable data
-     * @return {void}
+     * @return {DraggableData} - Compiled draggable data
      */
     #bind( _dgbl ) {
         _dgbl = this.#data( _dgbl );
         this.#validate( _dgbl );
         _dgbl.draggable.addEventListener( 'mousedown', ( event ) => { this.#event_local_mousedown( event, _dgbl ); } );
         if ( _dgbl.local ) _dgbl.draggable.addEventListener( 'mouseup', ( event ) => { this.#event_local_mouseup( event, _dgbl ); } );
+        return _dgbl;
     }
 
     /**
      * Bind draggable/s
      * @public
      * @param {DraggableData|Array<DraggableData>} draggables - Draggable data
-     * @return {void}
+     * @return {DraggableData|Array<DraggableData>} - Compiled draggable data
      */
     bind( draggables ) {
         if ( !draggables ) throw new Error( 'Argument draggables must be an Object or Array of DraggableData' );
-        if ( !( draggables instanceof Array ) ) draggables = [ draggables ];
-        for ( let i = 0; i < draggables.length; i++ ) {
-            this.#bind( draggables[ i ] );
+        let was_array = true;
+        if ( !( draggables instanceof Array ) ) {
+            was_array = false;
+            draggables = [ draggables ];
         }
+        const result = [];
+        for ( let i = 0; i < draggables.length; i++ ) {
+            result.push( this.#bind( draggables[ i ] ) );
+        }
+        return was_array ? result : result.pop();
     }
 }
