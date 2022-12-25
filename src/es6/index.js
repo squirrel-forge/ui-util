@@ -1,6 +1,6 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.21
+ * @version     : 0.9.22
  * @license     : MIT
  * @copyright   : 2022 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
@@ -12,6 +12,7 @@
  */
 export { afterPaint } from './Animation/afterPaint.js';
 export { cssTransition } from './Animation/cssTransition.js';
+export { Easing } from './Animation/Easing.js';
 export { holdElementViewportPosition } from './Animation/holdElementViewportPosition.js';
 export { scrollComplete } from './Animation/scrollComplete.js';
 export { Scroller } from './Animation/Scroller.js';
