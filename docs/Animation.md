@@ -12,6 +12,7 @@
 
  - [afterPaint()](#afterpaint)
  - [cssTransition()](#csstransition)
+ - [Easing()](#easing)
  - [holdElementViewportPosition()](#holdelementviewportposition)
  - [scrollComplete()](#scrollcomplete)
  - [Scroller](#scroller)
@@ -102,6 +103,52 @@ cssTransition( element, ( element ) => {
    element.style.visibility = 'hidden'; 
 } );
 ```
+
+---
+
+### Easing
+
+Easing class - Static class with numerous easing handlers.
+
+#### Class overview
+
+```javascript
+class Easing {
+    static linear( t ) {} // number
+    static easeInSine( t ) {} // number
+    static easeOutSine( t ) {} // number
+    static easeInOutSine( t ) {} // number
+    static easeInQuad( t ) {} // number
+    static easeOutQuad( t ) {} // number
+    static easeInOutQuad( t ) {} // number
+    static easeInCubic( t ) {} // number
+    static easeOutCubic( t ) {} // number
+    static easeInOutCubic( t ) {} // number
+    static easeInQuart( t ) {} // number
+    static easeOutQuart( t ) {} // number
+    static easeInOutQuart( t ) {} // number
+    static easeInQuint( t ) {} // number
+    static easeOutQuint( t ) {} // number
+    static easeInOutQuint( t ) {} // number
+    static easeInExpo( t ) {} // number
+    static easeOutExpo( t ) {} // number
+    static easeInOutExpo( t ) {} // number
+    static easeInCirc( t ) {} // number
+    static easeOutCirc( t ) {} // number
+    static easeInOutCirc( t ) {} // number
+    static easeInBack( t, magnitude = 1.70158 ) {} // number
+    static easeOutBack( t, magnitude = 1.70158 ) {} // number
+    static easeInOutBack( t, magnitude = 1.70158 ) {} // number
+    static easeInElastic( t, magnitude = 0.7 ) {} // number
+    static easeOutElastic( t, magnitude = 0.7 ) {} // number
+    static easeInOutElastic( t, magnitude = 0.65 ) {} // number
+    static easeOutBounce( t ) {} // number
+    static easeInBounce( t ) {} // number
+    static easeInOutBounce( t ) {} // number
+}
+```
+
+For more details check the [Easing source file](../src/es6/Animation/Easing.js).
 
 ---
 

@@ -23,6 +23,7 @@ Package contents listing by language and namespace.
    - [Animation](docs/Animation.md)
      - [afterPaint()](docs/Animation.md#afterpaint)
      - [cssTransition()](docs/Animation.md#csstransition)
+     - [Easing()](docs/Animation.md#easing)
      - [holdElementViewportPosition()](docs/Animation.md#holdelementviewportposition)
      - [scrollComplete()](docs/Animation.md#scrollcomplete)
      - [Scroller](docs/Animation.md#scroller)

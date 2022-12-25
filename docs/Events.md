@@ -187,9 +187,11 @@ const draggable = {
     onmove : ( event, position, delta, _dgbl ) => {}, // void
     onclick : ( event, position, delta, _dgbl ) => {}, // void
     axis : ('both'|'x'|'y'),
-    offsetX : ('start'|'center'|'end'),
-    offsetY : ('start'|'center'|'end'),
-    local : false,
+    offsetX : ('start'|'left'|'center'|'middle'|'right'|'end'),
+    offsetY : ('start'|'top'|'center'|'middle'|'bottom'|'end'),
+    overflowX : Boolean,
+    overflowY : Boolean,
+    local : Boolean,
 }
 ```
 
