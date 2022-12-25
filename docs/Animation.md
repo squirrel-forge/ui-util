@@ -115,36 +115,36 @@ Easing class - Static class with numerous easing handlers.
 ```javascript
 class Easing {
     static linear( t ) {} // number
-    static easeInSine( t ) {} // number
-    static easeOutSine( t ) {} // number
-    static easeInOutSine( t ) {} // number
-    static easeInQuad( t ) {} // number
-    static easeOutQuad( t ) {} // number
-    static easeInOutQuad( t ) {} // number
-    static easeInCubic( t ) {} // number
-    static easeOutCubic( t ) {} // number
-    static easeInOutCubic( t ) {} // number
-    static easeInQuart( t ) {} // number
-    static easeOutQuart( t ) {} // number
-    static easeInOutQuart( t ) {} // number
-    static easeInQuint( t ) {} // number
-    static easeOutQuint( t ) {} // number
-    static easeInOutQuint( t ) {} // number
-    static easeInExpo( t ) {} // number
-    static easeOutExpo( t ) {} // number
-    static easeInOutExpo( t ) {} // number
-    static easeInCirc( t ) {} // number
-    static easeOutCirc( t ) {} // number
-    static easeInOutCirc( t ) {} // number
-    static easeInBack( t, magnitude = 1.70158 ) {} // number
-    static easeOutBack( t, magnitude = 1.70158 ) {} // number
-    static easeInOutBack( t, magnitude = 1.70158 ) {} // number
-    static easeInElastic( t, magnitude = 0.7 ) {} // number
-    static easeOutElastic( t, magnitude = 0.7 ) {} // number
-    static easeInOutElastic( t, magnitude = 0.65 ) {} // number
-    static easeOutBounce( t ) {} // number
-    static easeInBounce( t ) {} // number
-    static easeInOutBounce( t ) {} // number
+    static inSine( t ) {} // number
+    static outSine( t ) {} // number
+    static inOutSine( t ) {} // number
+    static inQuad( t ) {} // number
+    static outQuad( t ) {} // number
+    static inOutQuad( t ) {} // number
+    static inCubic( t ) {} // number
+    static outCubic( t ) {} // number
+    static inOutCubic( t ) {} // number
+    static inQuart( t ) {} // number
+    static outQuart( t ) {} // number
+    static inOutQuart( t ) {} // number
+    static inQuint( t ) {} // number
+    static outQuint( t ) {} // number
+    static inOutQuint( t ) {} // number
+    static inExpo( t ) {} // number
+    static outExpo( t ) {} // number
+    static inOutExpo( t ) {} // number
+    static inCirc( t ) {} // number
+    static outCirc( t ) {} // number
+    static inOutCirc( t ) {} // number
+    static inBack( t, magnitude = 1.70158 ) {} // number
+    static outBack( t, magnitude = 1.70158 ) {} // number
+    static inOutBack( t, magnitude = 1.70158 ) {} // number
+    static inElastic( t, magnitude = 0.7 ) {} // number
+    static outElastic( t, magnitude = 0.7 ) {} // number
+    static inOutElastic( t, magnitude = 0.65 ) {} // number
+    static outBounce( t ) {} // number
+    static inBounce( t ) {} // number
+    static inOutBounce( t ) {} // number
 }
 ```
 

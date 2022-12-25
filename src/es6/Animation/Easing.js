@@ -22,7 +22,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInSine( t ) {
+    static inSine( t ) {
         return -1 * Math.cos( t * ( Math.PI / 2 ) ) + 1;
     }
 
@@ -33,7 +33,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutSine( t ) {
+    static outSine( t ) {
         return Math.sin( t * ( Math.PI / 2 ) );
     }
 
@@ -44,7 +44,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutSine( t ) {
+    static inOutSine( t ) {
         return -0.5 * ( Math.cos( Math.PI * t ) - 1 );
     }
 
@@ -55,7 +55,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInQuad( t ) {
+    static inQuad( t ) {
         return t * t;
     }
 
@@ -66,7 +66,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutQuad( t ) {
+    static outQuad( t ) {
         return t * ( 2 - t );
     }
 
@@ -77,7 +77,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutQuad( t ) {
+    static inOutQuad( t ) {
         return t < 0.5 ? 2 * t * t : -1 + ( 4 - 2 * t ) * t;
     }
 
@@ -88,7 +88,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInCubic( t ) {
+    static inCubic( t ) {
         return t * t * t;
     }
 
@@ -99,7 +99,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutCubic( t ) {
+    static outCubic( t ) {
         const t1 = t - 1;
         return t1 * t1 * t1 + 1;
     }
@@ -111,7 +111,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutCubic( t ) {
+    static inOutCubic( t ) {
         return t < 0.5 ? 4 * t * t * t : ( t - 1 ) * ( 2 * t - 2 ) * ( 2 * t - 2 ) + 1;
     }
 
@@ -122,7 +122,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInQuart( t ) {
+    static inQuart( t ) {
         return t * t * t * t;
     }
 
@@ -133,7 +133,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutQuart( t ) {
+    static outQuart( t ) {
         const t1 = t - 1;
         return 1 - t1 * t1 * t1 * t1;
     }
@@ -145,7 +145,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutQuart( t ) {
+    static inOutQuart( t ) {
         const t1 = t - 1;
         return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * t1 * t1 * t1 * t1;
     }
@@ -157,7 +157,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInQuint( t ) {
+    static inQuint( t ) {
         return t * t * t * t * t;
     }
 
@@ -168,7 +168,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutQuint( t ) {
+    static outQuint( t ) {
         const t1 = t - 1;
         return 1 + t1 * t1 * t1 * t1 * t1;
     }
@@ -180,7 +180,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutQuint( t ) {
+    static inOutQuint( t ) {
         const t1 = t - 1;
         return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * t1 * t1 * t1 * t1 * t1;
     }
@@ -192,7 +192,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInExpo( t ) {
+    static inExpo( t ) {
         if ( t === 0 ) return 0;
         return Math.pow( 2, 10 * ( t - 1 ) );
     }
@@ -204,7 +204,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutExpo( t ) {
+    static outExpo( t ) {
         if ( t === 1 ) return 1;
         return -Math.pow( 2, -10 * t ) + 1;
     }
@@ -216,7 +216,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutExpo( t ) {
+    static inOutExpo( t ) {
         if ( t === 0 || t === 1 ) return t;
         const scaledTime = t * 2;
         const scaledTime1 = scaledTime - 1;
@@ -233,7 +233,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInCirc( t ) {
+    static inCirc( t ) {
         return -1 * ( Math.sqrt( 1 - t * t ) - 1 );
     }
 
@@ -244,7 +244,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutCirc( t ) {
+    static outCirc( t ) {
         const t1 = t - 1;
         return Math.sqrt( 1 - t1 * t1 );
     }
@@ -256,7 +256,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutCirc( t ) {
+    static inOutCirc( t ) {
         const scaledTime = t * 2;
         const scaledTime1 = scaledTime - 2;
         if ( scaledTime < 1 ) {
@@ -273,7 +273,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeInBack( t, magnitude = 1.70158 ) {
+    static inBack( t, magnitude = 1.70158 ) {
         return t * t * ( ( magnitude + 1 ) * t - magnitude );
     }
 
@@ -285,7 +285,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeOutBack( t, magnitude = 1.70158 ) {
+    static outBack( t, magnitude = 1.70158 ) {
         const scaledTime = t - 1;
         return scaledTime * scaledTime * ( ( magnitude + 1 ) * scaledTime + magnitude ) + 1;
     }
@@ -298,7 +298,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeInOutBack( t, magnitude = 1.70158 ) {
+    static inOutBack( t, magnitude = 1.70158 ) {
         const scaledTime = t * 2;
         const scaledTime2 = scaledTime - 2;
         const s = magnitude * 1.525;
@@ -320,7 +320,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeInElastic( t, magnitude = 0.7 ) {
+    static inElastic( t, magnitude = 0.7 ) {
         if ( t === 0 || t === 1 ) return t;
         const scaledTime1 = t - 1;
         const p = 1 - magnitude;
@@ -339,7 +339,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeOutElastic( t, magnitude = 0.7 ) {
+    static outElastic( t, magnitude = 0.7 ) {
         const p = 1 - magnitude;
         const scaledTime = t * 2;
         if ( t === 0 || t === 1 ) return t;
@@ -356,7 +356,7 @@ export class Easing {
      * @param {Number} magnitude - Modifier value
      * @return {Number} - Eased value
      */
-    static easeInOutElastic( t, magnitude = 0.65 ) {
+    static inOutElastic( t, magnitude = 0.65 ) {
         const p = 1 - magnitude;
         if ( t === 0 || t === 1 ) return t;
         const scaledTime = t * 2;
@@ -379,7 +379,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeOutBounce( t ) {
+    static outBounce( t ) {
         if ( t < 1 / 2.75 ) {
             return 7.5625 * t * t;
         } else if ( t < 2 / 2.75 ) {
@@ -401,7 +401,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInBounce( t ) {
+    static inBounce( t ) {
         return 1 - this.easeOutBounce( 1 - t );
     }
 
@@ -412,7 +412,7 @@ export class Easing {
      * @param {Number} t - Input value
      * @return {Number} - Eased value
      */
-    static easeInOutBounce( t ) {
+    static inOutBounce( t ) {
         if ( t < 0.5 ) return this.easeInBounce( t * 2 ) * 0.5;
         return this.easeOutBounce( t * 2 - 1 ) * 0.5 + 0.5;
     }
