@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.22
+ - Improved *Draggables* handler, now returns the compiled draggables to allow modifying of options at runtime, primarily the axis and offset, modifying other options might cause unforeseen effects.
+ - Added additional alignment naming variants, left, right, top and bottom to *Draggables*.
+ - Added drag overflow options to *Draggables* 
+ - Added basic *Easing* static class for a bunch of easing functions.
+ - Fixed *EventDispatcher.#runSimulated()* internal method issues with binding and unbind within listeners.
+
 ## 0.9.21
  - Added *Draggables* class handler for draggable dom elements.
  - Added *TestRunner* class for simple frontend based tests.
