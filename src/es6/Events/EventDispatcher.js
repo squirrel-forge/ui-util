@@ -155,13 +155,26 @@ export class EventDispatcher {
      */
     #runSimulated( name, event, data ) {
         if ( this.#simulated[ name ] && this.#simulated[ name ].length ) {
-            for ( let i = 0; i < this.#simulated[ name ].length; i++ ) {
-                this.#simulated[ name ][ i ].apply( this, [ event ] );
+
+            // Clone handlers at runtime, any listeners bound from within running listeners
+            // will not run until the next event dispatch
+            const handlers = [ ...this.#simulated[ name ] ];
+            for ( let i = 0; i < handlers.length; i++ ) {
+
+                // Skip any handlers that are unbound at runtime if they haven't run yet
+                // This allows for unbind within running event listeners
+                if ( !this.#simulated[ name ].includes( handlers[ i ] ) ) continue;
+
+                // Run handler
+                try {
+                    handlers[ i ].apply( this, [ event ] );
+                } catch ( e ) {
+                    window.console.error( new EventDispatcherException( 'Simulated event error', e ) );
+                }
 
                 // Remove handler if required
-                if ( this.#simulated[ name ][ i ].__EventDispatcherOnce === true ) {
-                    this.#simulated[ name ].splice( i, 1 );
-                    i--;
+                if ( handlers[ i ] && handlers[ i ].__EventDispatcherOnce === true ) {
+                    this.#removeSimulatedListener( name, handlers[ i ] );
                 }
 
                 // Break out of execution chain
@@ -184,9 +197,13 @@ export class EventDispatcher {
             }
 
             // Bubble event to parent
-            const cloned = cloneObject( data );
-            cloned.current = this.#parent;
-            this.#parent.dispatchEvent( name, cloned );
+            if ( this.#parent instanceof EventDispatcher ) {
+                const cloned = cloneObject( data );
+                cloned.current = this.#parent;
+                this.#parent.dispatchEvent( name, cloned );
+            } else {
+                this.#parent.dispatchEvent( event );
+            }
         }
     }
 
