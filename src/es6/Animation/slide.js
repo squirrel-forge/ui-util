@@ -67,6 +67,8 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
         }
     };
 
+    // TODO: speed 0 skip to complete ? wait for paint ?
+
     // Has transitionend event
     const hasTransitions = typeof item.style.transition !== 'undefined';
 
@@ -78,6 +80,8 @@ function _slide_animate_internal( item, speed = null, easing = null, state = nul
     // Set the target properties with a delay to avoid calculation tick collision with initial height setting
     // Timeout is set to 10ms since 1ms might still fall into the same paint as the initial state
     window.setTimeout( () => {
+
+        // TODO: wrap into set function and call at speed 0 skip
         item[ hidden ? 'removeAttribute' : 'setAttribute' ]( 'aria-hidden', 'true' );
         item.style.height = hidden ? item.firstElementChild.getBoundingClientRect().height + 'px' : 0;
 
