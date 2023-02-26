@@ -16,6 +16,7 @@ class DraggablesException extends Exception {}
  * Draggable data
  * @typedef {Object} DraggableData
  * @property {HTMLElement} draggable - Draggable element
+ * @property {HTMLElement} override - Draggable event target override
  * @property {HTMLElement} container - Constraint container
  * @property {null|DraggableOnBefore|Function} onbefore - On before callback
  * @property {null|DraggableOnStart|Function} onstart - On start callback
@@ -118,6 +119,7 @@ export class Draggables {
      */
     #defaults = {
         draggable : null,
+        override : null,
         container : null,
         onbefore : null,
         onstart : null,
@@ -333,7 +335,7 @@ export class Draggables {
      */
     #get_position( deltaX, deltaY, _dgbl ) {
         const parent = _dgbl.container.getBoundingClientRect();
-        const element = _dgbl.draggable.getBoundingClientRect();
+        const element = ( _dgbl.override || _dgbl.draggable ).getBoundingClientRect();
         let x, y;
         if ( _dgbl.axis === 'both' || _dgbl.axis === 'x' ) x = this.#get_axis_pos( _dgbl, deltaX, 'x', 'left', 'width', parent, element );
         if ( _dgbl.axis === 'both' || _dgbl.axis === 'y' ) y = this.#get_axis_pos( _dgbl, deltaY, 'y', 'top', 'height', parent, element );
@@ -449,7 +451,7 @@ export class Draggables {
         this.#start.y = event.clientY;
 
         // Define offset for draggable object
-        const target = event.target.getBoundingClientRect();
+        const target = ( _dgbl.override || event.target ).getBoundingClientRect();
         this.#offset.x = event.clientX - target.left;
         this.#offset.y = event.clientY - target.top;
 
