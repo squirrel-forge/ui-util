@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.23
+ - Improved *bindNodeList()* arguments and errors.
+ - Added *Draggables* *override* option to override event target position and size.
+ - Added *poll()* polling helper, for those rare and hated situations where there is no event or callback.
+
 ## 0.9.22
  - Improved *Draggables* handler, now returns the compiled draggables to allow modifying of options at runtime, primarily the axis and offset, modifying other options might cause unforeseen effects.
  - Added additional alignment naming variants, left, right, top and bottom to *Draggables*.
