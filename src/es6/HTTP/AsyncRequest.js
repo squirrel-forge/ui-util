@@ -312,7 +312,7 @@ export class AsyncRequest extends EventDispatcher {
                 this._parse_json();
             } else if ( type === 'image/svg+xml' ) {
                 this._parse_svg();
-            } else if ( src.substr( 0, 5 ) !== '<?xml' && src.substr( 0, 9 ) !== '<!DOCTYPE'
+            } else if ( src.substring( 0, 5 ) !== '<?xml' && src.substring( 0, 9 ) !== '<!DOCTYPE'
                 && ( type === 'text/html' || type === 'application/xhtml+xml' || type === 'application/x-httpd-php'
                 || src[ 0 ] === '<' && src[ src.length - 1 ] === '>' ) ) {
                 this._parse_html();

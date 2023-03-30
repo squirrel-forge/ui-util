@@ -310,7 +310,7 @@ for( let i = 0; i < anchors.length; i++ ) {
     anchors[ i ].addEventListener( 'click', function( event ) {
 
         // Remove # from link and attempt to select as id
-        const target = document.getElementById( this.getAttribute( 'href' ).substr( 1 ) );
+        const target = document.getElementById( this.getAttribute( 'href' ).substring( 1 ) );
 
         // Scroll to valid target and prevent default scroll/jump
         if ( target ) {

@@ -191,9 +191,10 @@ export class Scroller extends EventDispatcher {
         if ( hash && hash.length > 1 ) {
 
             // Only update if an actual target is found
-            this.initial = document.getElementById( hash.substr( 1 ) );
+            // TODO: and the target must be visible
+            this.initial = document.getElementById( hash.substring( 1 ) );
             if ( this.initial ) {
-                history.replaceState( null, document.title, this.constructor.getUrlWithHash( 's2:' + hash.substr( 1 ) ) );
+                history.replaceState( null, document.title, this.constructor.getUrlWithHash( 's2:' + hash.substring( 1 ) ) );
             }
         }
 
@@ -270,7 +271,7 @@ export class Scroller extends EventDispatcher {
      * @return {void}
      */
     #initial_complete( hash ) {
-        history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substr( 1 ) ) );
+        history.replaceState( null, document.title, this.constructor.getUrlWithHash( hash.substring( 1 ) ) );
         this.dispatchEvent( 'scroll.initial.complete', { initial : this.initial } );
     }
 }
