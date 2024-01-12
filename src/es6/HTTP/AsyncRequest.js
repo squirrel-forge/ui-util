@@ -23,6 +23,7 @@ class AsyncRequestException extends Exception {}
  * @property {boolean} cache
  * @property {('auto'|'html','string','json')} type
  * @property {Array.<number>} successStatus
+ * @property {string} eventPrefix
  */
 
 /**
@@ -62,6 +63,7 @@ export class AsyncRequest extends EventDispatcher {
 
             type : 'auto',
             successStatus : [ 200, 201, 202, 203 ],
+            eventPrefix : '',
 
             error : null,
             status : null,
@@ -185,12 +187,12 @@ export class AsyncRequest extends EventDispatcher {
         }
 
         // State change
-        this.dispatchEvent( 'readystatechange', { event } );
+        this.dispatchEvent( this.eventPrefix + 'readystatechange', { event } );
 
         // Finished handlers
         if ( this.readyState === 4 ) {
-            this.dispatchEvent( this.error ? 'error' : 'success', { event } );
-            this.dispatchEvent( 'complete', { event } );
+            this.dispatchEvent( this.eventPrefix + ( this.error ? 'error' : 'success' ), { event } );
+            this.dispatchEvent( this.eventPrefix + 'complete', { event } );
         }
     }
 
@@ -205,7 +207,7 @@ export class AsyncRequest extends EventDispatcher {
         if ( event && event.lengthComputable ) {
             percent = event.loaded / event.total * 100;
         }
-        this.dispatchEvent( 'progress', { percent, event } );
+        this.dispatchEvent( this.eventPrefix + 'progress', { percent, event } );
     }
 
     /**
