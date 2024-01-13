@@ -1,7 +1,9 @@
 /**
  * Requires
  */
-import { Exception, EventDispatcher, isPojo } from '@squirrel-forge/ui-util';
+import { Exception } from '../Error/Exception.js';
+import { EventDispatcher } from '../Events/EventDispatcher.js';
+import { isPojo } from '../Object/isPojo.js';
 
 /**
  * Location Manager Exception
