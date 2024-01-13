@@ -29,6 +29,8 @@ class DraggablesException extends Exception {}
  * @property {boolean} overflowX - Allow drag overflow on x
  * @property {boolean} overflowY - Allow drag overflow on y
  * @property {boolean} local - Use local click handler
+ * @property {boolean} position - Calculate position
+ * @property {Draggables} parent - Parent instance
  */
 
 /**
@@ -132,21 +134,8 @@ export class Draggables {
         overflowX : false,
         overflowY : false,
         local : false,
+        position : true,
     };
-
-    /**
-     * Dragging state
-     * @private
-     * @type {boolean}
-     */
-    #dragging = false;
-
-    /**
-     * Dragging reset timeout
-     * @private
-     * @type {number}
-     */
-    #reset_timeout = 0;
 
     /**
      * Active draggable data
@@ -261,6 +250,12 @@ export class Draggables {
     #data( _dgbl ) {
         const data = cloneObject( this.#defaults );
         mergeObject( data, _dgbl );
+        Object.defineProperty( data, 'parent', {
+            value: this,
+            writable: false,
+            configurable: false,
+            enumerable: true,
+        } );
         return data;
     }
 
@@ -302,11 +297,8 @@ export class Draggables {
             return;
         }
 
-        // Begin dragging
-        this.#dragging = true;
-
         // Get current X and Y
-        const position = this.#get_position( delta.deltaX, delta.deltaY, _dgbl );
+        const position = _dgbl.position ? this.#get_position( delta.deltaX, delta.deltaY, _dgbl ) : null;
 
         // Call on move handler
         _dgbl.onmove( event, position, delta, _dgbl );
@@ -415,7 +407,7 @@ export class Draggables {
         const delta = this.#get_delta( event );
 
         // Get current X and Y
-        const position = this.#get_position( delta.deltaX, delta.deltaY, _dgbl );
+        const position = _dgbl.position ? this.#get_position( delta.deltaX, delta.deltaY, _dgbl ) : null;
 
         // Run click handler if not moved
         if ( _dgbl.onclick && ( _dgbl.axis === 'both' && !delta.xMoved && !delta.yMoved
@@ -427,11 +419,6 @@ export class Draggables {
             // Run drag end handler
             _dgbl.onend( event, position, delta, _dgbl );
         }
-
-        // Clear dragging state
-        setTimeout( () => {
-            this.#dragging = false;
-        }, this.#reset_timeout );
     }
 
     /**
