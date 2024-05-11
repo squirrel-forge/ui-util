@@ -1,8 +1,8 @@
 /* !
  * @module      : @squirrel-forge/ui-util
- * @version     : 0.9.22
+ * @version     : 0.10.0
  * @license     : MIT
- * @copyright   : 2022 squirrel-forge
+ * @copyright   : 2024 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
  * @description : A collection of utilities, classes, functions and abstracts made for the browser and babel compatible.
  */
@@ -23,6 +23,12 @@ export { slideToggle, slideHide, slideShow } from './Animation/slide.js';
  * Array
  */
 export { mergeArray } from './Array/mergeArray.js';
+
+/**
+ * Data
+ */
+export { LStorage } from './Data/LStorage.js';
+export { saveBlobAs } from './Data/saveBlobAs.js';
 
 /**
  * Dev
@@ -55,10 +61,12 @@ export { Exception } from './Error/Exception.js';
 export { bindMultiClick } from './Events/bindMultiClick.js';
 export { bindNodeList } from './Events/bindNodeList.js';
 export { CallbackEvents } from './Events/CallbackEvents.js';
+export { copyToClipboard, copyToClipboardFallback } from './Events/copyToClipboard.js';
 export { debounce } from './Events/debounce.js';
 export { docReady } from './Events/docReady.js';
 export { Draggables } from './Events/Draggables.js';
 export { EventDispatcher } from './Events/EventDispatcher.js';
+export { hasTouch } from './Events/hasTouch.js';
 export { poll } from './Events/poll.js';
 export { tabFocusLock, getFocusable } from './Events/tabFocusLock.js';
 
@@ -101,6 +109,7 @@ export { round } from './Number/round.js';
 export { cloneObject } from './Object/cloneObject.js';
 export { isPojo } from './Object/isPojo.js';
 export { mergeObject } from './Object/mergeObject.js';
+export { objectEmpty } from './Object/objectEmpty.js';
 export { strAccess } from './Object/strAccess.js';
 export { strCreate } from './Object/strCreate.js';
 
@@ -109,13 +118,16 @@ export { strCreate } from './Object/strCreate.js';
  */
 export { colorand } from './String/colorand.js';
 export { escapeHTML } from './String/escapeHTML.js';
+export { hex2rgb } from './String/hex2rgb.js';
 export { isValidFunctionName } from './String/isValidFunctionName.js';
 export { normalizePath } from './String/normalizePath.js';
+export { strCamel2dash } from './String/strCamel2dash.js';
 export { simpleReplace } from './String/simpleReplace.js';
 export { str2node } from './String/str2node.js';
 export { str2time } from './String/str2time.js';
 export { strand } from './String/strand.js';
 export { strSlug } from './String/strSlug.js';
+export { strStyle } from './String/strStyle.js';
 export { trimChar } from './String/trimChar.js';
 export { ucfirst } from './String/ucfirst.js';
 
