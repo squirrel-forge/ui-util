@@ -2,7 +2,7 @@
  * Access object value by dot syntax string
  * @param {string} strpath - Dotted value path
  * @param {Object} subject - Object to access
- * @param {boolean} exact - Whether to match only an exact value, default: true
+ * @param {boolean} exact - Whether to match only an exact value, default: true, can be set to 1 to enable no property restriction
  * @param {null|console} debug - Debugger instance
  * @return {null|*} - Closest value matched to path, or in exact mode, null is returned for no match
  */
@@ -24,7 +24,7 @@ export function strAccess( strpath, subject, exact = true, debug = null ) {
     for ( i = 0; i < parts.length; i++ ) {
         part = parts[ i ];
         path.push( part );
-        to = Object.prototype.hasOwnProperty.call( value, part ) ? typeof value[ part ] : 'undefined';
+        to = exact === 1 || Object.prototype.hasOwnProperty.call( value, part ) ? typeof value[ part ] : 'undefined';
         if ( value[ part ] === null ) {
             to = 'undefined';
         }
