@@ -6,7 +6,14 @@
  * @return {null|HTMLElement} - Focusable element
  */
 export function getFocusable( context, last = false, selector = null ) {
-    selector = selector || 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    selector = selector || [
+        'a:not([data-focus="no-auto"])',
+        'button:not(:disabled):not([data-focus="no-auto"])',
+        'input:not(:disabled):not([type="hidden"]):not([data-focus="no-auto"])',
+        'select:not(:disabled):not([data-focus="no-auto"])',
+        'textarea:not(:disabled):not([data-focus="no-auto"])',
+        '[tabindex]:not([tabindex="-1"]):not(:disabled):not([data-focus="no-auto"])'
+    ].join( ', ' );
     const elements = [ ...context.querySelectorAll( selector ) ];
     if ( elements.length ) {
         if ( last === true ) return elements.pop();
