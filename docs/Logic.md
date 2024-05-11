@@ -32,7 +32,7 @@ class Config {
   require( ...names ) {} // Array
 }
 ```
-For more details check the [Config source file](../src/es6/Logic/Config.js).
+For more details check the [Config source file](../src/js/Logic/Config.js).
 
 ---
 
@@ -49,7 +49,7 @@ class Plugin {
   _context_check( context ) {} // void
 }
 ```
-For more details check the [Plugin source file](../src/es6/Logic/Plugin.js).
+For more details check the [Plugin source file](../src/js/Logic/Plugin.js).
 
 ---
 
@@ -72,7 +72,7 @@ class Plugins {
   has( name ) {} // boolean
 }
 ```
-For more details check the [Plugins source file](../src/es6/Logic/Plugins.js).
+For more details check the [Plugins source file](../src/js/Logic/Plugins.js).
 
 ---
 
@@ -90,7 +90,7 @@ class Tracker {
     clearOnce( group = null ) {} // void
 }
 ```
-For more details check the [Tracker source file](../src/es6/Logic/Tracker.js).
+For more details check the [Tracker source file](../src/js/Logic/Tracker.js).
 
 #### Examples
 How to run a tracker.
@@ -111,7 +111,7 @@ tracker.run( [
     },
 ], [ 'argument', 'argument...' ]);
 ```
-Check the [UiVideoPluginTracking](https://github.com/squirrel-forge/ui-video/blob/main/src/es6/Plugins/UiVideoPluginTracking.js) class plugin of the [UiVideoComponent](https://github.com/squirrel-forge/ui-video#readme) for an implementation example.
+Check the [UiVideoPluginTracking](https://github.com/squirrel-forge/ui-video/blob/main/src/js/Plugins/UiVideoPluginTracking.js) class plugin of the [UiVideoComponent](https://github.com/squirrel-forge/ui-video#readme) for an implementation example.
 
 ---
 

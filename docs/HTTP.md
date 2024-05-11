@@ -44,7 +44,7 @@ class AsyncRequest extends EventDispatcher {
   _parse_json() {} // void
 }
 ```
-For more details check the [AsyncRequest source file](../src/es6/HTTP/AsyncRequest.js).
+For more details check the [AsyncRequest source file](../src/js/HTTP/AsyncRequest.js).
 
 #### Events
  - **error** - Fired when the request failed or returned an error.
@@ -66,7 +66,7 @@ class JsonP {
   constructor( url, success, timeout = null, limit = 10000 ) {}
 }
 ```
-For more details check the [JsonP source file](../src/es6/HTTP/JsonP.js).
+For more details check the [JsonP source file](../src/js/HTTP/JsonP.js).
 
 ---
 
@@ -85,7 +85,7 @@ class LocationManager extends EventDispatcher {
     update( state, title = null, data = null, replace = false ) {} // void
 }
 ```
-For more details check the [LocationManager source file](../src/es6/HTTP/LocationManager.js).
+For more details check the [LocationManager source file](../src/js/HTTP/LocationManager.js).
 
 #### Events
  - **location.pop** - Fired right after default *window.popstate* event and contains original event information in *event.detail.event*.

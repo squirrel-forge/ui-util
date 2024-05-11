@@ -199,7 +199,7 @@ class Ratio  {
   toString() {} // string
 }
 ```
-For more details check the [Ratio source file](../src/es6/Number/Ratio.js).
+For more details check the [Ratio source file](../src/js/Number/Ratio.js).
 
 ---
 

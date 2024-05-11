@@ -23,7 +23,7 @@ class Exception extends Error {
   addPreviousToStack() {}
 }
 ```
-For more details check the [Exception source file](../src/es6/Error/Exception.js).
+For more details check the [Exception source file](../src/js/Error/Exception.js).
 
 ---
 

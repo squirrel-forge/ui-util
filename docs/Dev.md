@@ -32,7 +32,7 @@ class ConsoleInterceptor extends EventDispatcher {
 }
 ```
 
-For more details check the [ConsoleInterceptor source file](../src/es6/Dev/ConsoleInterceptor.js).
+For more details check the [ConsoleInterceptor source file](../src/js/Dev/ConsoleInterceptor.js).
 
 #### Events
 
@@ -90,7 +90,7 @@ class TestRunner {
 }
 ```
 
-For more details check the [ConsoleInterceptor source file](../src/es6/Dev/ConsoleInterceptor.js).
+For more details check the [ConsoleInterceptor source file](../src/js/Dev/ConsoleInterceptor.js).
 
 ---
 

@@ -148,7 +148,7 @@ class Easing {
 }
 ```
 
-For more details check the [Easing source file](../src/es6/Animation/Easing.js).
+For more details check the [Easing source file](../src/js/Animation/Easing.js).
 
 ---
 
@@ -252,7 +252,7 @@ class Scroller extends EventDispatcher {
 }
 ```
 
-For more details check the [Scroller source file](../src/es6/Animation/Scroller.js).
+For more details check the [Scroller source file](../src/js/Animation/Scroller.js).
 
 #### Events
 
