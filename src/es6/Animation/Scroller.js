@@ -15,6 +15,7 @@ import { normalizePath } from '../String/normalizePath';
  * @property {boolean} bind - Bind scrollTo links, default: true
  * @property {document.body|HTMLElement} context - Context to select scrollTo links from, default: document.body
  * @property {string} selector - Scroll to link selector, default: [href^="#"]
+ * @property {null|document.documentElement|HTMLElement} scrollContext - Context to scroll
  * @property {boolean} autoTop - Scroll to top when using only # or #top without an actual element target
  * @property {boolean} capture - Capture initial scroll, default: true
  * @property {number|'ready'|Array} initial - Initial scroll delay after capture
@@ -71,6 +72,7 @@ export class Scroller extends EventDispatcher {
             bind : true,
             context : document.body,
             selector : '[href^="#"], [href*="#"]',
+            scrollContext : null,
             autoTop : false,
             capture : true,
             initial : 1000,
@@ -92,11 +94,14 @@ export class Scroller extends EventDispatcher {
      * @public
      * @param {HTMLElement} element - Target element
      * @param {null|Function} complete - Complete callback
+     * @param {number|HTMLElement|Function|Array} offset - Offset
+     * @param {null|document.documentElement|HTMLElement} context - Scroll context
      * @return {void}
      */
-    scrollTo( element, complete ) {
-        let params = this.config.offset;
+    scrollTo( element, complete, offset = null, context = null ) {
+        let params = offset ?? this.config.offset;
         if ( !( params instanceof Array ) ) params = [ params ];
+        params.unshift( context ?? this.config.scrollContext );
         params.unshift( element );
         if ( typeof complete === 'undefined' ) complete = this.config.complete;
         const not_cancelled = this.dispatchEvent( 'scroll.before', {
