@@ -124,6 +124,16 @@ export class EventDispatcher {
     }
 
     /**
+     * Override parent instance
+     * @public
+     * @param {null|HTMLElement|EventDispatcher|EventDispatcherInterface} parent - Parent reference
+     * @return {void}
+     */
+    overrideParent( parent ) {
+        this.#parent = parent;
+    }
+
+    /**
      * Check if simulated
      * @public
      * @return {boolean} - True if no target element is set
