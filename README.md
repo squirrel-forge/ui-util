@@ -34,6 +34,9 @@ Package contents listing by language and namespace.
        - [slideShow()](docs/Animation.md#slideshow)
    - [Array](docs/Array.md)
      - [mergeArray()](docs/Array.md#mergearray)
+   - [Data]
+     - [LStorage]
+     - [saveBlobAs()]
    - [Dev](docs/Dev.md)
      - [ConsoleInterceptor](docs/Dev.md#consoleinterceptor)
      - [tabFocus()](docs/Dev.md#tabfocus)
@@ -55,10 +58,13 @@ Package contents listing by language and namespace.
      - [bindMultiClick()](docs/Events.md#bindmulticlick)
      - [bindNodeList()](docs/Events.md#bindnodelist)
      - [CallbackEvents](docs/Events.md#callbackevents)
+     - [copyToClipboard()]
+     - [copyToClipboardFallback()]
      - [debounce()](docs/Events.md#debounce)
      - [docReady()](docs/Events.md#docready)
      - [Draggables()](docs/Events.md#draggables)
      - [EventDispatcher](docs/Events.md#eventdispatcher)
+     - [hasTouch()]
      - [getFocusable](docs/Events.md#getfocusable)
      - [tabFocusLock](docs/Events.md#tabfocuslock)
    - [HTTP](docs/HTTP.md)
@@ -68,6 +74,7 @@ Package contents listing by language and namespace.
    - [Layout](docs/Layout.md)
      - [getScrollbarWidth()](docs/Layout.md#getscrollbarwidth)
      - [getVisibility()](docs/DOM.md#getvisibility)
+     - [measureText()]
    - [Logic](docs/Logic.md)
      - [Config](docs/Logic.md#config)
      - [Plugin](docs/Logic.md#plugin)
@@ -85,18 +92,22 @@ Package contents listing by language and namespace.
      - [cloneObject()](docs/Object.md#cloneobject)
      - [isPojo()](docs/Object.md#ispojo)
      - [mergeObject()](docs/Object.md#mergeobject)
+     - [objectEmpty()]
      - [strAccess()](docs/Object.md#straccess)
      - [strCreate()](docs/Object.md#strcreate)
    - [String](docs/String.md)
      - [colorand()](docs/String.md#colorand)
      - [escapeHTML()](docs/String.md#escapehtml)
+     - [hex2rgb()]
      - [isValidFunctionName()](docs/String.md#isvalidfunctionname)
      - [normalizePath()](docs/String.md#normalizePath)
      - [simpleReplace()](docs/String.md#simplereplace)
      - [str2node()](docs/String.md#str2node)
      - [str2time()](docs/String.md#str2time)
      - [strand()](docs/String.md#strand)
+     - [strCamel2Dash()]
      - [strSlug()](docs/String.md#strslug)
+     - [strStyle()]
      - [trimChar()](docs/String.md#trimchar)
      - [ucfirst()](docs/String.md#ucfirst)
    - [Var](docs/Var.md)

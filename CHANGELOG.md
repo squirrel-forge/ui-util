@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.10.0
+ - Updated *scrollTo()* and *Scroller* to allow for improved context handling.
+ - Updated *tabFocusLock()* to respect *disabled* or elements with *data-focus* set to "no-auto".
+ - Updated *EventDispatcher* to allow for parent override.
+ - Added extended behavior for *strAccess()* to allow reading of not "own prototype property" values.
+ - Added *hex2rgb()* for color conversion.
+ - Updated *simpleReplace()* with additional argument to allow for custom value conversion.
+ - Added *strCamel2Dash()* for string conversion.
+ - Added *strStyle()* convert css style object to style string.
+ - Added *objectEmpty* to check if an object has empty properties.
+ - Added *measureText()* to measure the size of a text block.
+ - Added *hasTouch()* for a basic touch support check.
+ - Updated *debounce()* to handle variable number of arguments and added an "always callback" that may cancel the delayed execution.
+ - Added *copyToClipboard()* and *copyToClipboardFallback()* for clipboard copy handling.
+ - Added *saveBlobAs()* to trigger browsers download "save as" of a generated file blob.
+ - Added *LStorage* acting as a localStorage wrapper.
+
+## 0.9.24
+ - Added *eventPrefix* option to *AsyncRequest* class.
+ - Added *position* option to *Draggable* to allow diabling of automatic position calculation.
+ - Added *parent* property to *Draggable* referring to the *Draggables* parent instance.
+ - Fixed deprecated *substr* calls with *substring* function.
+
 ## 0.9.23
  - Improved *bindNodeList()* arguments and errors.
  - Added *Draggables* *override* option to override event target position and size.
