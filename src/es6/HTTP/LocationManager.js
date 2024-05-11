@@ -61,6 +61,8 @@ export class LocationManager extends EventDispatcher {
      * @return {Object} - Search params object
      */
     static decodeSearch( query ) {
+
+        // TODO: should switch to "new URLSearchParams( query )"
         if ( query.charAt( 0 ) === '?' ) {
             query = query.substring( 1 );
         }
