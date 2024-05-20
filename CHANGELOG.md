@@ -16,6 +16,8 @@
  - Added *copyToClipboard()* and *copyToClipboardFallback()* for clipboard copy handling.
  - Added *saveBlobAs()* to trigger browsers download "save as" of a generated file blob.
  - Added *LStorage* acting as a localStorage wrapper.
+ - Added *orientation()* helper to resolve values to an orientation string.
+ - Added *snapValue()* to snap a number to an interval using a tolerance.
 
 ## 0.9.24
  - Added *eventPrefix* option to *AsyncRequest* class.

@@ -99,9 +99,11 @@ export { gcd } from './Number/gcd.js';
 export { isEven } from './Number/isEven.js';
 export { isFloat } from './Number/isFloat.js';
 export { leadingZeros } from './Number/leadingZeros.js';
+export { orientation } from './Number/orientation.js';
 export { rand } from './Number/rand.js';
 export { Ratio } from './Number/Ratio.js';
 export { round } from './Number/round.js';
+export { snapValue } from './Number/snapValue.js';
 
 /**
  * Object
