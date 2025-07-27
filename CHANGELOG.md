@@ -5,6 +5,7 @@
  - Updated *tabFocusLock()* to respect *disabled* or elements with *data-focus* set to "no-auto".
  - Updated *EventDispatcher* to allow for parent override.
  - Added extended behavior for *strAccess()* to allow reading of not "own prototype property" values.
+ - Added extended behavior for *trimChar()* to allow for multiple chars and added *ltrimChar()* and *rtrimChar()*.
  - Added *hex2rgb()* for color conversion.
  - Updated *simpleReplace()* with additional argument to allow for custom value conversion.
  - Added *strCamel2Dash()* for string conversion.
