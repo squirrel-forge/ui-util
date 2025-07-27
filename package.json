@@ -4,7 +4,10 @@
   "description": "A collection of utilities, classes, functions and abstracts made for the browser and babel compatible.",
   "main": "src/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "simple-webpack src/js __dev/build -p -s",
+    "build:js:debug": "simple-webpack src/js __dev/build -p -s --no-minify --keep-names",
+    "build": "npm run build:js"
   },
   "directories": {
     "docs": "docs",
@@ -27,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/squirrel-forge/ui-util/issues"
   },
-  "homepage": "https://github.com/squirrel-forge/ui-util#readme"
+  "homepage": "https://github.com/squirrel-forge/ui-util#readme",
+  "devDependencies": {
+    "@squirrel-forge/simple-webpack": "^0.12.x"
+  }
 }
