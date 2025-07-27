@@ -2,7 +2,7 @@
  * @module      : @squirrel-forge/ui-util
  * @version     : 0.10.0
  * @license     : MIT
- * @copyright   : 2024 squirrel-forge
+ * @copyright   : 2025 squirrel-forge
  * @author      : Daniel Hartwell aka. siux <me@siux.info>
  * @description : A collection of utilities, classes, functions and abstracts made for the browser and babel compatible.
  */
@@ -17,6 +17,7 @@ export { holdElementViewportPosition } from './Animation/holdElementViewportPosi
 export { scrollComplete } from './Animation/scrollComplete.js';
 export { Scroller } from './Animation/Scroller.js';
 export { scrollTo } from './Animation/scrollTo.js';
+export { scrollTrigger, scrollTriggerAll } from './Animation/scrollTrigger.js';
 export { slideToggle, slideHide, slideShow } from './Animation/slide.js';
 
 /**
@@ -54,6 +55,7 @@ export { wrap } from './DOM/wrap.js';
  * Error
  */
 export { Exception } from './Error/Exception.js';
+export { ExceptionHandler } from './Error/ExceptionHandler.js';
 
 /**
  * Events
@@ -74,6 +76,7 @@ export { tabFocusLock, getFocusable } from './Events/tabFocusLock.js';
  * HTTP
  */
 export { AsyncRequest } from './HTTP/AsyncRequest.js';
+export { CookieManager } from './HTTP/CookieManager.js';
 export { JsonP } from './HTTP/JsonP.js';
 export { LocationManager } from './HTTP/LocationManager.js';
 
@@ -130,7 +133,7 @@ export { str2time } from './String/str2time.js';
 export { strand } from './String/strand.js';
 export { strSlug } from './String/strSlug.js';
 export { strStyle } from './String/strStyle.js';
-export { trimChar } from './String/trimChar.js';
+export { ltrimChar, rtrimChar, trimChar } from './String/trimChar.js';
 export { ucfirst } from './String/ucfirst.js';
 
 /**
