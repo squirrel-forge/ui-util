@@ -5,7 +5,6 @@ import { EventDispatcher } from '../Events/EventDispatcher.js';
 
 /**
  * Console interceptor
- * TODO: add method to disconnect/restore native console
  * @class
  * @extends EventDispatcher
  */
@@ -143,7 +142,7 @@ export class ConsoleInterceptor extends EventDispatcher {
     /**
      * Detach global
      * @public
-     * @return {void}
+     * @return {boolean} - Did disconnect status
      */
     detach() {
         if ( this.#is_global ) {
