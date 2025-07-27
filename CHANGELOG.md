@@ -18,6 +18,7 @@
  - Added *saveBlobAs()* to trigger browsers download "save as" of a generated file blob.
  - Added *LStorage* acting as a localStorage wrapper.
  - Added *CookieManager* acting as a cookies wrapper for easy access.
+ - Added *ExceptionHandler* to allow for runtime interface exception reporting.
  - Added *scrollTrigger()* and *scrollTriggerAll()* for simple scroll based one time transitions.
  - Added *orientation()* helper to resolve values to an orientation string.
  - Added *snapValue()* to snap a number to an interval using a tolerance.
