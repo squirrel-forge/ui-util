@@ -17,6 +17,7 @@
  - Added *copyToClipboard()* and *copyToClipboardFallback()* for clipboard copy handling.
  - Added *saveBlobAs()* to trigger browsers download "save as" of a generated file blob.
  - Added *LStorage* acting as a localStorage wrapper.
+ - Added *CookieManager* acting as a cookies wrapper for easy access.
  - Added *orientation()* helper to resolve values to an orientation string.
  - Added *snapValue()* to snap a number to an interval using a tolerance.
 
