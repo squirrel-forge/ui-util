@@ -251,10 +251,10 @@ export class Draggables {
         const data = cloneObject( this.#defaults );
         mergeObject( data, _dgbl );
         Object.defineProperty( data, 'parent', {
-            value: this,
-            writable: false,
-            configurable: false,
-            enumerable: true,
+            value : this,
+            writable : false,
+            configurable : false,
+            enumerable : true,
         } );
         return data;
     }
@@ -266,9 +266,15 @@ export class Draggables {
      * @return {void}
      */
     #validate( _dgbl ) {
-        if ( !( _dgbl.draggable instanceof HTMLElement ) ) throw new DraggablesException( 'Argument draggable must be a HTMLElement' );
-        if ( !( _dgbl.container instanceof HTMLElement ) ) throw new DraggablesException( 'Argument container must be a HTMLElement' );
-        if ( typeof _dgbl.onmove !== 'function' && typeof _dgbl.onend !== 'function' ) throw new DraggablesException( 'Argument onmove or onend must be a Function' );
+        if ( !( _dgbl.draggable instanceof HTMLElement ) ) {
+            throw new DraggablesException( 'Argument draggable must be a HTMLElement' );
+        }
+        if ( !( _dgbl.container instanceof HTMLElement ) ) {
+            throw new DraggablesException( 'Argument container must be a HTMLElement' );
+        }
+        if ( typeof _dgbl.onmove !== 'function' && typeof _dgbl.onend !== 'function' ) {
+            throw new DraggablesException( 'Argument onmove or onend must be a Function' );
+        }
     }
 
     /**
@@ -307,7 +313,8 @@ export class Draggables {
     /**
      * Get delta values
      * @private
-     * @return {DraggablePositionChange}
+     * @param {MouseEvent} event - Mouse move event
+     * @return {DraggablePositionChange} - Position change data
      */
     #get_delta( event ) {
         const deltaX = event.clientX - this.#start.x;

@@ -21,7 +21,7 @@ export class LStorage {
      * Storage is available
      * @public
      * @static
-     * @return {boolean}
+     * @return {boolean} - Local storage availability
      */
     static available() {
         const test = strand();
@@ -30,7 +30,7 @@ export class LStorage {
             if ( localStorage.getItem( test ) !== test ) return false;
             localStorage.removeItem( test );
             return true;
-        } catch( e ) {
+        } catch ( e ) {
             return false;
         }
     }
@@ -45,8 +45,8 @@ export class LStorage {
         return new Promise( ( resolve ) => {
             let _lsTotal = 0, _xLen, _x;
             for ( _x in localStorage ) {
-                if ( !localStorage.hasOwnProperty( _x ) ) continue;
-                _xLen = ( ( localStorage[ _x ].length + _x.length ) * 2 );
+                if ( !Object.prototype.hasOwnProperty.call( localStorage, [ _x ] ) ) continue;
+                _xLen =  ( localStorage[ _x ].length + _x.length ) * 2;
                 _lsTotal += _xLen;
             }
             resolve( _lsTotal );
@@ -85,7 +85,9 @@ export class LStorage {
                             }
                             size += offset;
                         }
-                    } catch ( e ) {}
+                    } catch ( e ) {
+                        window.console.error( e );
+                    }
                 }
             }
             resolve( size );
@@ -136,7 +138,9 @@ export class LStorage {
      * @param {Object} temp - Temp reference
      */
     constructor( prefix = '', temp = {} ) {
-        if ( typeof prefix !== 'string' ) throw new LStorageException( `First argument prefix, must be of type string` );
+        if ( typeof prefix !== 'string' ) {
+            throw new LStorageException( 'First argument prefix, must be of type string' );
+        }
         this.#prefix = prefix;
         this.#temp = temp;
         this.#available = LStorage.available();
@@ -156,7 +160,9 @@ export class LStorage {
      * @return {void}
      */
     set prefix( value ) {
-        if ( typeof value !== 'string' ) throw new LStorageException( `Property prefix, must be of type string` );
+        if ( typeof value !== 'string' ) {
+            throw new LStorageException( 'Property prefix, must be of type string' );
+        }
         this.#prefix = value;
     }
 
@@ -167,7 +173,9 @@ export class LStorage {
      * @return {*|null|string} - Value
      */
     get( key ) {
-        if ( typeof key !== 'string' ) throw new LStorageException( `First argument key, must be of type string` );
+        if ( typeof key !== 'string' ) {
+            throw new LStorageException( 'First argument key, must be of type string' );
+        }
         const ident = `${this.#prefix}${key}`;
         if ( !this.#available ) return this.#temp[ ident ] ?? null;
         return localStorage.getItem( ident );
@@ -181,8 +189,12 @@ export class LStorage {
      * @return {void}
      */
     set( key, value ) {
-        if ( typeof key !== 'string' ) throw new LStorageException( `First argument key, must be of type string` );
-        if ( typeof value !== 'string' ) throw new LStorageException( `Second argument value, must be of type string` );
+        if ( typeof key !== 'string' ) {
+            throw new LStorageException( 'First argument key, must be of type string' );
+        }
+        if ( typeof value !== 'string' ) {
+            throw new LStorageException( 'Second argument value, must be of type string' );
+        }
         const ident = `${this.#prefix}${key}`;
         if ( !this.#available ) {
             this.#temp[ ident ] = value;

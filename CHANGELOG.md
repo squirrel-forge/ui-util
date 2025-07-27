@@ -1,6 +1,7 @@
 # Changelog
 
 ## 0.10.0
+ - Minor readability and formatting fixes.
  - Updated *scrollTo()* and *Scroller* to allow for improved context handling.
  - Updated *tabFocusLock()* to respect *disabled* or elements with *data-focus* set to "no-auto".
  - Updated *EventDispatcher* to allow for parent override.

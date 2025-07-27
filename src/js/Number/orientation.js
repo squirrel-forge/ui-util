@@ -5,5 +5,5 @@
  * @return {('square'|'landscape'|'portrait')} - Orientation string
  */
 export function orientation( width, height ) {
-    return width === height ? 'square' : ( width > height ? 'landscape' : 'portrait' );
+    return width === height ? 'square' :  width > height ? 'landscape' : 'portrait';
 }

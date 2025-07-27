@@ -47,6 +47,10 @@ import { isPojo } from '../Object/isPojo.js';
  * @typedef {(*|boolean)[]} TRIOTestResult
  */
 
+/**
+ * TestRunner
+ * @class
+ */
 export class TestRunner {
 
     /**
