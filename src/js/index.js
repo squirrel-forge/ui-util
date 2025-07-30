@@ -99,12 +99,14 @@ export { Tracker } from './Logic/Tracker.js';
  */
 export { convertBytes } from './Number/convertBytes.js';
 export { gcd } from './Number/gcd.js';
+export { int2hex } from './Number/int2hex.js';
 export { isEven } from './Number/isEven.js';
 export { isFloat } from './Number/isFloat.js';
 export { leadingZeros } from './Number/leadingZeros.js';
 export { orientation } from './Number/orientation.js';
 export { rand } from './Number/rand.js';
 export { Ratio } from './Number/Ratio.js';
+export { rgb2hex } from './Number/rgb2hex.js';
 export { round } from './Number/round.js';
 export { snapValue } from './Number/snapValue.js';
 
@@ -126,6 +128,7 @@ export { escapeHTML } from './String/escapeHTML.js';
 export { hex2rgb } from './String/hex2rgb.js';
 export { isValidFunctionName } from './String/isValidFunctionName.js';
 export { normalizePath } from './String/normalizePath.js';
+export { rgba2hex } from './String/rgba2hex.js';
 export { strCamel2dash } from './String/strCamel2dash.js';
 export { simpleReplace } from './String/simpleReplace.js';
 export { str2node } from './String/str2node.js';

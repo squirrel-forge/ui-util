@@ -7,7 +7,7 @@
  - Updated *EventDispatcher* to allow for parent override.
  - Added extended behavior for *strAccess()* to allow reading of not "own prototype property" values.
  - Added extended behavior for *trimChar()* to allow for multiple chars and added *ltrimChar()* and *rtrimChar()*.
- - Added *hex2rgb()* for color conversion.
+ - Added *hex2rgb()*, *rgba2hex()*, *int2hex()* and *rgb2hex()* for color conversion.
  - Updated *simpleReplace()* with additional argument to allow for custom value conversion.
  - Added *strCamel2Dash()* for string conversion.
  - Added *strStyle()* convert css style object to style string.
