@@ -1,5 +1,6 @@
 /**
  * Get element tag-type
+ * @deprecated
  * @param {HTMLElement} element - Element
  * @return {string} - Tag-type string
  */

@@ -28,6 +28,8 @@ Package contents listing by language and namespace.
      - [scrollComplete()](docs/Animation.md#scrollcomplete)
      - [Scroller](docs/Animation.md#scroller)
      - [scrollTo()](docs/Animation.md#scrollto)
+     - [scrollTrigger()]
+     - [scrollTriggerAll()]
      - [Slide functions](docs/Animation.md#slide-functions)
        - [slideToggle()](docs/Animation.md#slidetoggle)
        - [slideHide()](docs/Animation.md#slidehide)
@@ -45,7 +47,7 @@ Package contents listing by language and namespace.
      - [appendAfter()](docs/DOM.md#appendafter)
      - [appendHTML()](docs/DOM.md#appendhtml)
      - [attributeJSON()](docs/DOM.md#attributejson)
-     - [getElementTagType()](docs/DOM.md#getelementtagtype)
+     - [getElementTagType()/deprecated](docs/DOM.md#getelementtagtype)
      - [getPropertyValues()](docs/DOM.md#getpropertyvalues)
      - [prependChild()](docs/DOM.md#prependchild)
      - [uniqid()](docs/DOM.md#uniqid)
@@ -54,6 +56,7 @@ Package contents listing by language and namespace.
      - [wrap()](docs/DOM.md#wrap)
    - [Error](docs/Error.md)
      - [Exception](docs/Error.md#exception)
+     - [ExceptionHandler]
    - [Events](docs/Events.md)
      - [bindMultiClick()](docs/Events.md#bindmulticlick)
      - [bindNodeList()](docs/Events.md#bindnodelist)
@@ -65,10 +68,12 @@ Package contents listing by language and namespace.
      - [Draggables()](docs/Events.md#draggables)
      - [EventDispatcher](docs/Events.md#eventdispatcher)
      - [hasTouch()]
+     - [poll()]
      - [getFocusable](docs/Events.md#getfocusable)
      - [tabFocusLock](docs/Events.md#tabfocuslock)
    - [HTTP](docs/HTTP.md)
      - [AsyncRequest](docs/HTTP.md#asyncrequest)
+     - [CookieManager]
      - [JsonP](docs/HTTP.md#JsonP)
      - [LocationManager](docs/HTTP.md#locationmanager)
    - [Layout](docs/Layout.md)
@@ -86,8 +91,12 @@ Package contents listing by language and namespace.
      - [isEven()](docs/Number.md#iseven)
      - [isFloat()](docs/Number.md#isfloat)
      - [leadingZeros()](docs/Number.md#leadingzeros)
+     - [orientation()]
      - [rand()](docs/Number.md#rand)
+     - [Ratio]
+     - [rgb2hex()]
      - [round()](docs/Number.md#round)
+     - [snapValue()]
    - [Object](docs/Object.md)
      - [cloneObject()](docs/Object.md#cloneobject)
      - [isPojo()](docs/Object.md#ispojo)
@@ -101,6 +110,7 @@ Package contents listing by language and namespace.
      - [hex2rgb()]
      - [isValidFunctionName()](docs/String.md#isvalidfunctionname)
      - [normalizePath()](docs/String.md#normalizePath)
+     - [rgba2hex()]
      - [simpleReplace()](docs/String.md#simplereplace)
      - [str2node()](docs/String.md#str2node)
      - [str2time()](docs/String.md#str2time)
@@ -109,6 +119,8 @@ Package contents listing by language and namespace.
      - [strSlug()](docs/String.md#strslug)
      - [strStyle()]
      - [trimChar()](docs/String.md#trimchar)
+     - [rtrimChar()]
+     - [ltrimChar()]
      - [ucfirst()](docs/String.md#ucfirst)
    - [Var](docs/Var.md)
      - [cast2type()](docs/Var.md#cast2type)
