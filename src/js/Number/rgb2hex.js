@@ -1,7 +1,7 @@
 /**
  * Requires
  */
-import { int2hex } from 'int2hex.js';
+import { int2hex } from './int2hex.js';
 
 /**
  * RGB to hex value

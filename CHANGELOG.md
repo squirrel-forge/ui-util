@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.10.1
+ - Fixed broken dependency path.
+
 ## 0.10.0
  - Minor readability and formatting fixes.
  - Updated *scrollTo()* and *Scroller* to allow for improved context handling.
